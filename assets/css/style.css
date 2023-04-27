@@ -1,0 +1,15 @@
+.bui-description {
+    padding: 10px;
+}
+
+.bui-container {
+    position: relative;
+    height: 100%;
+}
+
+.bui-container-inner {
+    max-width: 600px;
+    margin: 100px auto 0 auto;
+    text-align: center;
+    position: relative;
+}
