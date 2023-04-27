@@ -1,15 +1,19 @@
-.bui-description {
+.biu-description {
     padding: 10px;
 }
 
-.bui-container {
+.biu-container {
     position: relative;
     height: 100%;
 }
 
-.bui-container-inner {
+.biu-container-inner {
     max-width: 600px;
     margin: 100px auto 0 auto;
     text-align: center;
     position: relative;
+}
+
+.biu-folder-select {
+    margin-top: 20px;
 }
