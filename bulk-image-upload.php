@@ -58,6 +58,9 @@ function bulk_image_upload_render_plugin_page()
     $key = get_option('bulk_image_upload_security_key');
 
     //Connect here to service and get the information about existing connection status.
+    //https://developer.wordpress.org/apis/making-http-requests/
+
+
     //sorted by newest first.
     $last_uploads = [
         [
