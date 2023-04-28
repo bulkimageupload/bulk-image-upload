@@ -58,21 +58,47 @@ function bulk_image_upload_render_plugin_page()
     $key = get_option('bulk_image_upload_security_key');
 
     //Connect here to service and get the information about existing connection status.
-
+    //sorted by newest first.
     $last_uploads = [
         [
-            'ID' => 4900,
-            'Upload Job' => 'test1-05-03-2022-04-28',
-            'Status' => 'finished',
-            'Total' => 'uploaded',
-            'Created' => '2022-03-05 04:28:46',
+            'id' => 4905,
+            'upload_job' => 'test1-05-03-2022-04-28',
+            'status' => 'pending',
+            'total' => 15,
+            'uploaded' => 0,
+            'created' => '2022-03-05 04:28:46',
         ],
         [
-            'ID' => 4901,
-            'Upload Job' => 'test2-05-03-2022-04-28',
-            'Status' => 'finished',
-            'Total' => 'uploaded',
-            'Created' => '2022-03-05 05:28:46',
+            'id' => 4904,
+            'upload_job' => 'test1-05-03-2022-04-28',
+            'status' => 'running',
+            'total' => 15,
+            'uploaded' => 3,
+            'created' => '2022-03-05 04:28:46',
+        ],
+        [
+            'id' => 4903,
+            'upload_job' => 'test2-05-03-2022-04-28',
+            'status' => 'finished',
+            'total' => 15,
+            'uploaded' => 15,
+            'created' => '2022-03-05 05:28:46',
+        ],
+        [
+            'id' => 4902,
+            'upload_job' => 'test2-05-03-2022-04-28',
+            'status' => 'finished_with_errors',
+            'total' => 15,
+            'uploaded' => 14,
+            'created' => '2022-03-05 05:28:46',
+        ],
+        [
+            'id' => 4901,
+            'upload_job' => 'test2-05-03-2022-04-28',
+            'status' => 'failed',
+            'total' => 15,
+            'uploaded' => 0,
+            'created' => '2022-03-05 05:28:46',
         ]
     ];
 
@@ -82,7 +108,7 @@ function bulk_image_upload_render_plugin_page()
         'is_connected_to_service' => true,
         'is_connected_to_drive' => true,
         'is_upload_created' => true,
-        'last_uploads' => $last_uploads,
+        'uploads' => $last_uploads,
     ]);
 }
 

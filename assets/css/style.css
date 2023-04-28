@@ -8,7 +8,7 @@
 }
 
 .biu-container-inner {
-    max-width: 600px;
+    max-width: 1080px;
     margin: 100px auto 0 auto;
     text-align: center;
     position: relative;
@@ -20,4 +20,8 @@
 
 .biu-mt-10 {
     margin-top: 10px;
+}
+
+.biu-mt-20 {
+    margin-top: 20px;
 }

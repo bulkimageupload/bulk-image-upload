@@ -39,10 +39,49 @@
                 </div>
             <?php } ?>
 
+            <div class="biu-mt-10"></div>
+
             <?php
             $url = get_admin_url(null, 'admin.php?page=bulk-image-upload-create-new-upload');
-            echo '<a href="' . $url . '" class="button button-primary ' . '">' . esc_html__('Create New Upload', 'bulk_image_upload') . '</a>';
+            echo '<a href="' . $url . '" class="button button-primary' . '">' . esc_html__('Create New Upload', 'bulk_image_upload') . '</a>';
             ?>
+
+            <table class="widefat striped fixed biu-mt-20">
+                <thead>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Upload Job
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Created
+                    </th>
+                    <th>
+                        Total
+                    </th>
+                    <th>
+                        Uploaded
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($args['uploads'] as $upload) { ?>
+                    <tr>
+                        <td><?php echo esc_html($upload['id']) ?></td>
+                        <td><?php echo esc_html($upload['upload_job']) ?></td>
+                        <td><?php echo esc_html($upload['status']) ?></td>
+                        <td><?php echo esc_html($upload['created']) ?></td>
+                        <td><?php echo esc_html($upload['total']) ?></td>
+                        <td><?php echo esc_html($upload['uploaded']) ?></td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
 
         <?php } ?>
 
