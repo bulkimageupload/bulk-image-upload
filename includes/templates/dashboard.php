@@ -14,7 +14,9 @@
             </div>
 
             <?php
-            $url = 'https://bulkimageupload.com/register' . '&returnUrl=' . urlencode(get_admin_url(null, 'admin.php?page=bulk-image-upload'));
+            $domain = $args['domain'];
+            $key = $args['key'];
+            $url = 'https://bulkimageupload.com/register' . '?domain=' . urlencode($domain) . '&key=' . urlencode($key);
             echo '<a href="' . esc_url($url) . '" class="button button-primary ' . '">' . esc_html__('Connect', 'bulk_image_upload') . '</a>';
             ?>
 

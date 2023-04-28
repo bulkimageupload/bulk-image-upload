@@ -54,12 +54,35 @@ function bulk_image_upload_render_create_new_upload_page()
 
 function bulk_image_upload_render_plugin_page()
 {
+    $domain = get_site_url();
+    $key = get_option('bulk_image_upload_security_key');
+
     //Connect here to service and get the information about existing connection status.
 
+    $last_uploads = [
+        [
+            'ID' => 4900,
+            'Upload Job' => 'test1-05-03-2022-04-28',
+            'Status' => 'finished',
+            'Total' => 'uploaded',
+            'Created' => '2022-03-05 04:28:46',
+        ],
+        [
+            'ID' => 4901,
+            'Upload Job' => 'test2-05-03-2022-04-28',
+            'Status' => 'finished',
+            'Total' => 'uploaded',
+            'Created' => '2022-03-05 05:28:46',
+        ]
+    ];
+
     load_template(plugin_dir_path(__FILE__) . 'includes/templates/dashboard.php', true, [
-        'is_connected_to_service' => false,
-        'is_connected_to_drive' => false,
-        'is_upload_created' => false,
+        'domain' => $domain,
+        'key' => $key,
+        'is_connected_to_service' => true,
+        'is_connected_to_drive' => true,
+        'is_upload_created' => true,
+        'last_uploads' => $last_uploads,
     ]);
 }
 
