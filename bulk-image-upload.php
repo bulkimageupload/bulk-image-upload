@@ -71,3 +71,15 @@ function register_styles()
 }
 
 add_action('admin_print_styles', 'register_styles');
+
+// Register the activation hook to run code when the plugin is activated
+register_activation_hook(__FILE__, 'bulk_image_upload_activation_hook');
+
+function bulk_image_upload_activation_hook()
+{
+    // Generate a random key
+    $key = bin2hex(random_bytes(128));
+
+    // Save the key to the options table
+    update_option('bulk_image_upload_security_key', $key);
+}
