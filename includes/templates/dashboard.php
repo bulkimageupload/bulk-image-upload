@@ -8,11 +8,13 @@
         <?php if (array_key_exists('is_connected_to_service', $args) && $args['is_connected_to_service'] === false) { ?>
 
             <div class="biu-description">
-                <?php esc_html_e("Connect your store to Bulk Image Upload. We need permission to manage your products.", 'bulk_image_upload'); ?>
+                <?php
+                esc_html_e("Connect your store to Bulk Image Upload. We need permission to manage your products.", 'bulk_image_upload');
+                ?>
             </div>
 
             <?php
-            $url = urlencode(trailingslashit(get_home_url())) . '&returnUrl=' . urlencode(get_admin_url(null, 'admin.php?page=bulk-image-upload'));
+            $url = 'https://bulkimageupload.com/register' . '&returnUrl=' . urlencode(get_admin_url(null, 'admin.php?page=bulk-image-upload'));
             echo '<a href="' . esc_url($url) . '" class="button button-primary ' . '">' . esc_html__('Connect', 'bulk_image_upload') . '</a>';
             ?>
 

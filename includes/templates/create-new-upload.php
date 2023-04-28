@@ -59,7 +59,9 @@
             <h2><?php esc_html_e('See matching results', 'bulk_image_upload'); ?></h2>
 
             <div class="biu-description">
-                <?php esc_html_e('See how images matched to products before uploading images to products.', 'bulk_image_upload'); ?>
+                <?php
+                esc_html_e('See how images matched to products before uploading images to products.', 'bulk_image_upload');
+                ?>
             </div>
 
             <div class="biu-mt-10">
