@@ -26,6 +26,10 @@
 
         <?php } elseif (array_key_exists('is_connected_to_drive', $args) && $args['is_connected_to_drive'] === false) { ?>
 
+            <div class="biu-mt-20">
+                <img style="width: 350px" src="<?php echo Folder::getImagesUrl().'edit-photo.svg'; ?>">
+            </div>
+
             <div class="biu-description">
                 <?php esc_html_e("Connect to Google Drive. We need permission to access product images.", 'bulk_image_upload'); ?>
             </div>
