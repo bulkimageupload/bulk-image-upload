@@ -20,6 +20,7 @@ if (!defined('ABSPATH')) {
 
 require_once __DIR__ . '/src/Utilities/StatusColor.php';
 require_once __DIR__ . '/src/Utilities/ErrorTemplate.php';
+require_once __DIR__ . '/src/Utilities/Folder.php';
 
 function bulk_image_upload_register_menu_page()
 {
@@ -142,9 +143,9 @@ function bulk_image_upload_render_plugin_page()
     load_template(plugin_dir_path(__FILE__) . 'includes/templates/dashboard.php', true, [
         'domain' => $domain,
         'key' => $key,
-        'is_connected_to_service' => true,
-        'is_connected_to_drive' => true,
-        'is_upload_created' => true,
+        'is_connected_to_service' => false,
+        'is_connected_to_drive' => false,
+        'is_upload_created' => false,
         'uploads' => $last_uploads,
     ]);
 }

@@ -7,6 +7,10 @@
 
         <?php if (array_key_exists('is_connected_to_service', $args) && $args['is_connected_to_service'] === false) { ?>
 
+            <div class="biu-mt-20">
+                <img style="width: 350px" src="<?php echo Folder::getImagesUrl().'going-up.svg'; ?>">
+            </div>
+
             <div class="biu-description">
                 <?php
                 esc_html_e("Connect your store to Bulk Image Upload. We need permission to manage your products.", 'bulk_image_upload');
