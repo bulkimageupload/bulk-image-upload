@@ -11,6 +11,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * WC requires at least: 3.0.0
  * WC tested up to: 5.7.1
+ * Requires PHP: 7.4
  */
 
 // If this file is called directly, abort.
@@ -18,9 +19,9 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-require_once __DIR__ . '/src/Utilities/StatusColor.php';
-require_once __DIR__ . '/src/Utilities/ErrorTemplate.php';
-require_once __DIR__ . '/src/Utilities/Folder.php';
+require_once __DIR__ . '/src/Utilities/class-biu-status-color.php';
+require_once __DIR__ . '/src/Utilities/class-biu-error-template.php';
+require_once __DIR__ . '/src/Utilities/class-biu-folder.php';
 
 function bulk_image_upload_register_menu_page()
 {
@@ -143,10 +144,11 @@ function bulk_image_upload_render_plugin_page()
     load_template(plugin_dir_path(__FILE__) . 'includes/templates/dashboard.php', true, [
         'domain' => $domain,
         'key' => $key,
-        'is_connected_to_service' => false,
-        'is_connected_to_drive' => false,
-        'is_upload_created' => false,
+        'is_connected_to_service' => true,
+        'is_connected_to_drive' => true,
+        'is_upload_created' => true,
         'uploads' => $last_uploads,
+        'total_uploaded' => 546,
     ]);
 }
 
