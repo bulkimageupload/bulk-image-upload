@@ -12,7 +12,7 @@
         <h2><?php esc_html_e('Choose folder in Google Drive', 'bulk_image_upload'); ?></h2>
 
         <?php if (empty($args['folders'])) { ?>
-            <div class="notice notice-error">
+            <div class="notice notice-error biu-notice">
                 <?php esc_html_e("Folders not found! Please create folders on main level in your Google Drive account.", 'bulk_image_upload'); ?>
             </div>
 

@@ -7,7 +7,7 @@
 
         <h2 style="color: #b32d2e"><?php esc_html_e('Something Went Wrong', 'bulk_image_upload'); ?></h2>
 
-        <div class="notice notice-error">
+        <div class="notice notice-error biu-notice">
             <?php echo esc_html($args['error']); ?>
         </div>
 

@@ -8,7 +8,7 @@
         <?php if (array_key_exists('is_connected_to_service', $args) && $args['is_connected_to_service'] === false) { ?>
 
             <div class="biu-mt-20">
-                <img style="width: 350px" src="<?php echo Folder::getImagesUrl().'going-up.svg'; ?>">
+                <img style="width: 350px" src="<?php echo Folder::getImagesUrl() . 'going-up.svg'; ?>">
             </div>
 
             <div class="biu-description">
@@ -27,7 +27,7 @@
         <?php } elseif (array_key_exists('is_connected_to_drive', $args) && $args['is_connected_to_drive'] === false) { ?>
 
             <div class="biu-mt-20">
-                <img style="width: 350px" src="<?php echo Folder::getImagesUrl().'edit-photo.svg'; ?>">
+                <img style="width: 350px" src="<?php echo Folder::getImagesUrl() . 'edit-photo.svg'; ?>">
             </div>
 
             <div class="biu-description">
@@ -44,7 +44,7 @@
             <?php if (array_key_exists('is_upload_created', $args) && $args['is_upload_created'] === false) { ?>
 
                 <div class="biu-mt-20">
-                    <img style="width: 350px" src="<?php echo Folder::getImagesUrl().'online-shopping.svg'; ?>">
+                    <img style="width: 350px" src="<?php echo Folder::getImagesUrl() . 'online-shopping.svg'; ?>">
                 </div>
 
                 <div class="biu-description">
@@ -52,7 +52,13 @@
                 </div>
             <?php } ?>
 
-            <div class="biu-mt-10"></div>
+            <?php if (!empty($args['total_uploaded']) && $args['total_uploaded'] >= 100) { ?>
+                <div class="notice notice-success biu-mt-20 biu-notice">
+                    <?php echo sprintf(esc_html('You have successfully uploaded %d images to your store!'), $args['total_uploaded']) ?>
+                </div>
+            <?php } ?>
+
+            <div class="biu-mt-20"></div>
 
             <?php
             $url = get_admin_url(null, 'admin.php?page=bulk-image-upload-create-new-upload');
