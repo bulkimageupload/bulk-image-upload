@@ -60,7 +60,7 @@
 
             <div class="biu-description">
                 <?php
-                esc_html_e('See how images matched to products before uploading images to products.', 'bulk_image_upload');
+                esc_html_e('You will see how images matched to products before uploading images to products.', 'bulk_image_upload');
                 ?>
             </div>
 

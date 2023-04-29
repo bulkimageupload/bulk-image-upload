@@ -46,42 +46,48 @@
             echo '<a href="' . $url . '" class="button button-primary' . '">' . esc_html__('Create New Upload', 'bulk_image_upload') . '</a>';
             ?>
 
-            <table class="widefat striped fixed biu-mt-20">
-                <thead>
-                <tr>
-                    <th>
-                        ID
-                    </th>
-                    <th>
-                        Upload Job
-                    </th>
-                    <th>
-                        Status
-                    </th>
-                    <th>
-                        Created
-                    </th>
-                    <th>
-                        Total
-                    </th>
-                    <th>
-                        Uploaded
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php foreach ($args['uploads'] as $upload) { ?>
+            <?php if (!empty($args['uploads'])) { ?>
+                <table class="widefat fixed biu-mt-20">
+                    <thead style="background-color: #dcdcde">
                     <tr>
-                        <td><?php echo esc_html($upload['id']) ?></td>
-                        <td><?php echo esc_html($upload['upload_job']) ?></td>
-                        <td><?php echo esc_html($upload['status']) ?></td>
-                        <td><?php echo esc_html($upload['created']) ?></td>
-                        <td><?php echo esc_html($upload['total']) ?></td>
-                        <td><?php echo esc_html($upload['uploaded']) ?></td>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Upload Job
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Created
+                        </th>
+                        <th>
+                            Total
+                        </th>
+                        <th>
+                            Uploaded
+                        </th>
+                        <th>
+                            Details
+                        </th>
                     </tr>
-                <?php } ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($args['uploads'] as $upload) { ?>
+                        <tr style="text-align: left; background-color: <?php echo StatusColor::getColorByStatusName($upload['status']) ?>">
+                            <td><?php echo esc_html($upload['id']) ?></td>
+                            <td><?php echo esc_html($upload['upload_job']) ?></td>
+                            <td><?php echo esc_html($upload['status']) ?></td>
+                            <td><?php echo esc_html($upload['created']) ?></td>
+                            <td><?php echo esc_html($upload['total']) ?></td>
+                            <td><?php echo esc_html($upload['uploaded']) ?></td>
+                            <td><a href="#">Show Logs</a></td>
+                        </tr>
+                    <?php } ?>
+                    </tbody>
+                </table>
+            <?php } ?>
 
         <?php } ?>
 

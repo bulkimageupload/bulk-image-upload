@@ -18,6 +18,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+require_once __DIR__.'/src/Utilities/StatusColor.php';
+
 function bulk_image_upload_register_menu_page()
 {
     add_menu_page(
