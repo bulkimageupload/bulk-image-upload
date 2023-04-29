@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-require_once __DIR__.'/src/Utilities/StatusColor.php';
+require_once __DIR__ . '/src/Utilities/StatusColor.php';
 
 function bulk_image_upload_register_menu_page()
 {
@@ -34,10 +34,19 @@ function bulk_image_upload_register_menu_page()
     add_submenu_page(
         null,
         'Create New Upload',
-        esc_html('Create New Upload'),
+        'Create New Upload',
         'manage_options',
         'bulk-image-upload-create-new-upload',
         'bulk_image_upload_render_create_new_upload_page'
+    );
+
+    add_submenu_page(
+        null,
+        'Job Logs',
+        'Job Logs',
+        'manage_options',
+        'bulk-image-upload-job-logs',
+        'bulk_image_upload_render_job_logs'
     );
 }
 
@@ -46,11 +55,34 @@ add_action('admin_menu', 'bulk_image_upload_register_menu_page');
 function bulk_image_upload_render_create_new_upload_page()
 {
     load_template(plugin_dir_path(__FILE__) . 'includes/templates/create-new-upload.php', true, [
-        'folders' => array(
+        'folders' => [
             'test1',
             'test2',
             'test3',
-        ),
+        ],
+    ]);
+}
+
+function bulk_image_upload_render_job_logs()
+{
+    if (empty($_GET['job_id'])) {
+        echo __('Job ID is mandatory', 'bulk_image_upload');
+        exit;
+    }
+
+    $job_id = $_GET['job_id'];
+
+    //Ask service information about job.
+
+    load_template(plugin_dir_path(__FILE__) . 'includes/templates/job-logs.php', true, [
+        'job' => [
+            'id' => 4903,
+            'upload_job' => 'test2-05-03-2022-04-28',
+            'status' => 'finished',
+            'total' => 15,
+            'uploaded' => 15,
+            'created' => '2022-03-05 05:28:46',
+        ],
     ]);
 }
 
@@ -132,7 +164,7 @@ register_activation_hook(__FILE__, 'bulk_image_upload_activation_hook');
 function bulk_image_upload_activation_hook()
 {
     // Generate a random key
-    $key = bin2hex(random_bytes(128));
+    $key = bin2hex(random_bytes(72));
 
     // Save the key to the options table
     update_option('bulk_image_upload_security_key', $key);

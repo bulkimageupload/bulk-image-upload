@@ -82,7 +82,11 @@
                             <td><?php echo esc_html($upload['created']) ?></td>
                             <td><?php echo esc_html($upload['total']) ?></td>
                             <td><?php echo esc_html($upload['uploaded']) ?></td>
-                            <td><a href="#">Show Logs</a></td>
+                            <td>
+                                <a href="<?php echo get_admin_url(null, 'admin.php?page=bulk-image-upload-job-logs') . '&job_id=' . $upload['id'] ?>">
+                                    Show Logs
+                                </a>
+                            </td>
                         </tr>
                     <?php } ?>
                     </tbody>
