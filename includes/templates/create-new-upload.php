@@ -5,7 +5,7 @@
 
         <hr>
 
-        <h2><?php esc_html_e('Choose Folder in Google Drive', 'bulk_image_upload'); ?></h2>
+        <h2><?php esc_html_e('Choose folder in Google Drive', 'bulk_image_upload'); ?></h2>
 
         <?php if (empty($args['folders'])) { ?>
             <div class="notice notice-error">
