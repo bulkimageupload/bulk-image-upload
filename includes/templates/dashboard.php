@@ -62,8 +62,10 @@
 
             <?php
             $url = get_admin_url(null, 'admin.php?page=bulk-image-upload-create-new-upload');
-            echo '<a href="' . $url . '" class="button button-primary' . '">' . esc_html__('Create New Upload', 'bulk_image_upload') . '</a>';
+            echo '<a id="create_new_button" href="' . $url . '" class="button button-primary' . '">' . esc_html__('Create New Upload', 'bulk_image_upload') . '</a>';
             ?>
+
+            <img style="margin-top: 10px; display: none" id="loading_create_new" width="10" src="<?php echo Folder::getImagesUrl() . 'loading.gif'; ?>" />
 
             <?php if (!empty($args['uploads'])) { ?>
                 <table class="widefat fixed biu-mt-20">
@@ -116,7 +118,13 @@
 
         <script type="text/javascript">
             jQuery(document).ready(function () {
-                console.log('hello');
+                jQuery("#create_new_button").click(function (e) {
+                    e.preventDefault();
+                    jQuery("#create_new_button").addClass("button-primary-disabled");
+                    jQuery("#loading_create_new").show();
+                    let url=jQuery(this).attr("href");
+                    window.location=url;
+                });
             });
         </script>
     </div>
