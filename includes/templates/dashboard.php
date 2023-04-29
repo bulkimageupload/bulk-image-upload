@@ -42,6 +42,11 @@
         <?php } else { ?>
 
             <?php if (array_key_exists('is_upload_created', $args) && $args['is_upload_created'] === false) { ?>
+
+                <div class="biu-mt-20">
+                    <img style="width: 350px" src="<?php echo Folder::getImagesUrl().'online-shopping.svg'; ?>">
+                </div>
+
                 <div class="biu-description">
                     <?php esc_html_e("Congrats! You are ready to create your first upload.", 'bulk_image_upload'); ?>
                 </div>

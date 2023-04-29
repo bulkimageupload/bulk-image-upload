@@ -5,6 +5,10 @@
 
         <hr>
 
+        <div class="biu-mt-20">
+            <img style="width: 250px" src="<?php echo Folder::getImagesUrl().'completed-steps.svg'; ?>">
+        </div>
+
         <h2><?php esc_html_e('Choose folder in Google Drive', 'bulk_image_upload'); ?></h2>
 
         <?php if (empty($args['folders'])) { ?>
