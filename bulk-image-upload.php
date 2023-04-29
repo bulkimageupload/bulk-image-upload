@@ -66,7 +66,9 @@ function bulk_image_upload_render_create_new_upload_page()
 function bulk_image_upload_render_job_logs()
 {
     if (empty($_GET['job_id'])) {
-        echo __('Job ID is mandatory', 'bulk_image_upload');
+        load_template(plugin_dir_path(__FILE__) . 'includes/templates/error.php', true, [
+            'error' => __('Job ID is mandatory', 'bulk_image_upload')
+        ]);
         exit;
     }
 
