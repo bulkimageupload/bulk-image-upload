@@ -13,7 +13,7 @@ function one() {
 
 function two() {
     Page2AssetType::create();
-    Folder::getFolder();
+    Bulk_Image_Upload_Folder::getFolder();
 }
 
 Channels::includeAsset('Asset');

@@ -19,7 +19,7 @@
 		<?php if ( array_key_exists( 'is_connected_to_service', $args ) && $args['is_connected_to_service'] === false ) { ?>
 
 			<div class="biu-mt-20">
-				<img style="width: 350px" src="<?php echo Folder::getImagesUrl() . 'going-up.svg'; ?>">
+				<img style="width: 350px" src="<?php echo Bulk_Image_Upload_Folder::get_images_url() . 'going-up.svg'; ?>">
 			</div>
 
 			<div class="biu-description">
@@ -38,7 +38,7 @@
 		<?php } elseif ( array_key_exists( 'is_connected_to_drive', $args ) && $args['is_connected_to_drive'] === false ) { ?>
 
 			<div class="biu-mt-20">
-				<img style="width: 350px" src="<?php echo Folder::getImagesUrl() . 'edit-photo.svg'; ?>">
+				<img style="width: 350px" src="<?php echo Bulk_Image_Upload_Folder::get_images_url() . 'edit-photo.svg'; ?>">
 			</div>
 
 			<div class="biu-description">
@@ -55,7 +55,7 @@
 			<?php if ( array_key_exists( 'is_upload_created', $args ) && $args['is_upload_created'] === false ) { ?>
 
 				<div class="biu-mt-20">
-					<img style="width: 350px" src="<?php echo Folder::getImagesUrl() . 'online-shopping.svg'; ?>">
+					<img style="width: 350px" src="<?php echo Bulk_Image_Upload_Folder::get_images_url() . 'online-shopping.svg'; ?>">
 				</div>
 
 				<div class="biu-description">
@@ -77,7 +77,7 @@
 			?>
 
 			<img style="margin-top: 10px; display: none" id="loading_create_new" width="10"
-				 src="<?php echo Folder::getImagesUrl() . 'loading.gif'; ?>"/>
+				 src="<?php echo Bulk_Image_Upload_Folder::get_images_url() . 'loading.gif'; ?>"/>
 
 			<?php if ( ! empty( $args['uploads'] ) ) { ?>
 				<table class="widefat fixed biu-mt-20">
