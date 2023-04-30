@@ -5,5 +5,3 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 }
 
 delete_option('bulk_image_upload_security_key');
-
-die("geldiiiii");
