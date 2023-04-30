@@ -1,3 +1,13 @@
+<?php
+/**
+ * This view being shown to display errors.
+ *
+ * @package bulk-image-upload-for-woocommerce
+ *
+ */
+
+?>
+
 <div class="biu-container">
 	<div class="biu-container-inner">
 
@@ -12,7 +22,8 @@
 		</div>
 
 		<div class="biu-mt-20">
-			<a class="button button-primary" href="<?php echo get_admin_url( null, 'admin.php?page=bulk-image-upload' ); ?>">
+			<a class="button button-primary"
+			   href="<?php echo esc_url( get_admin_url( null, 'admin.php?page=bulk-image-upload' ) ); ?>">
 				Go to Dashboard
 			</a>
 		</div>
