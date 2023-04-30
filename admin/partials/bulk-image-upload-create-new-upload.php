@@ -40,9 +40,9 @@
 
 				<select class="biu-folder-select">
 					<option>Select Folder</option>
-					<?php foreach ( $args['folders'] as $folder ) { ?>
-						<option value="<?php echo esc_html( $folder ); ?>">
-							<?php echo esc_html( $folder ); ?>
+					<?php foreach ( $args['folders'] as $bulk_image_upload_folder ) { ?>
+						<option value="<?php echo esc_html( $bulk_image_upload_folder ); ?>">
+							<?php echo esc_html( $bulk_image_upload_folder ); ?>
 						</option>
 					<?php } ?>
 				</select>
@@ -79,7 +79,7 @@
 				</div>
 
 				<div class="biu-mt-10">
-					<?php echo '<a href="#" class="button button-primary disabled ' . '">' . esc_html__( 'Start Matching', 'bulk-image-upload' ) . '</a>'; ?>
+					<?php echo '<a href="#" class="button button-primary disabled">' . esc_html__( 'Start Matching', 'bulk-image-upload' ) . '</a>'; ?>
 				</div>
 			</div>
 
