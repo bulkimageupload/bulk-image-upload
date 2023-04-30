@@ -78,6 +78,10 @@ function bulk_image_upload_register_menu_page()
 
 function bulk_image_upload_render_create_new_upload_page()
 {
+    if (!is_woocommerce_plugin_active()) {
+        ErrorTemplate::showErrorTemplate('WooCommerce plugin needs to be installed.');
+    }
+
     load_template(plugin_dir_path(__FILE__) . 'admin/partials/bulk-image-upload-create-new-upload.php', true, [
         'folders' => [
             'test1',
@@ -111,6 +115,10 @@ function bulk_image_upload_render_job_logs()
 
 function bulk_image_upload_render_plugin_page()
 {
+    if (!is_woocommerce_plugin_active()) {
+        ErrorTemplate::showErrorTemplate('WooCommerce plugin needs to be installed.');
+    }
+
     $domain = get_site_url();
     $key = get_option('bulk_image_upload_security_key');
 
@@ -175,6 +183,21 @@ function bulk_image_upload_render_plugin_page()
         'uploads' => $last_uploads,
         'total_uploaded' => 546,
     ]);
+}
+
+function is_woocommerce_plugin_active()
+{
+    // Test to see if WooCommerce is active (including network activated).
+    $plugin_path = trailingslashit(WP_PLUGIN_DIR) . 'woocommerce/woocommerce.php';
+
+    if (
+        in_array($plugin_path, wp_get_active_and_valid_plugins())
+        || in_array($plugin_path, wp_get_active_network_plugins())
+    ) {
+        return true;
+    }
+
+    return false;
 }
 
 function register_styles()
