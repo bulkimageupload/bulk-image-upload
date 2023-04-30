@@ -14,6 +14,7 @@
  * Requires PHP: 7.4
  * Text Domain: bulk-image-upload
  * Developer: Bulk Image Upload
+ * Developer URI: https://bulkimageupload.com
  * Woo:
  */
 
