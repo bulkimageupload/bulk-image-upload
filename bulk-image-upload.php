@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Name: Bulk Image Upload for WooCommerce
  * Plugin URI: https://bulkimageupload.com
@@ -16,6 +15,8 @@
  * Developer: Bulk Image Upload
  * Developer URI: https://bulkimageupload.com
  * Woo:
+ *
+ * @package bulk-image-upload-for-woocommerce
  */
 
 // If this file is called directly, abort.
@@ -29,25 +30,35 @@ require_once __DIR__ . '/includes/class-bulk-image-upload-status-color.php';
 require_once __DIR__ . '/includes/class-bulk-image-upload-error-template.php';
 require_once __DIR__ . '/includes/class-bulk-image-upload-folder.php';
 
-// Register the activation hook to run code when the plugin is activated
+// Register the activation hook to run code when the plugin is activated.
 register_activation_hook( __FILE__, 'bulk_image_upload_activation_hook' );
 
 add_action( 'admin_menu', 'bulk_image_upload_register_menu_page' );
 
-add_action( 'admin_print_styles', 'register_styles' );
+add_action( 'admin_print_styles', 'bulk_image_upload_register_styles' );
 
+/**
+ * Performs actions after activation of plugin.
+ *
+ * @return void
+ */
 function bulk_image_upload_activation_hook() {
 	$key = get_option( 'bulk_image_upload_security_key' );
 
 	if ( empty( $key ) ) {
-		// Generate a random key
+		// Generate a random key.
 		$key = bin2hex( random_bytes( 72 ) );
 
-		// Save the key to the options table
+		// Save the key to the options table.
 		update_option( 'bulk_image_upload_security_key', $key );
 	}
 }
 
+/**
+ * Registering all menu items here.
+ *
+ * @return void
+ */
 function bulk_image_upload_register_menu_page() {
 	add_menu_page(
 		'Bulk Image Upload',
@@ -86,8 +97,14 @@ function bulk_image_upload_register_menu_page() {
 	);
 }
 
+/**
+ * Backend logic of create new upload page.
+ * Fetching folder information from service and displaying to user.
+ *
+ * @return void
+ */
 function bulk_image_upload_render_create_new_upload_page() {
-	if ( ! is_woocommerce_plugin_active() ) {
+	if ( ! bulk_image_upload_is_woocommerce_plugin_active() ) {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'WooCommerce plugin needs to be installed.' );
 	}
 
@@ -104,6 +121,11 @@ function bulk_image_upload_render_create_new_upload_page() {
 	);
 }
 
+/**
+ * The function fetching job information from the service by job_id
+ *
+ * @return void
+ */
 function bulk_image_upload_render_job_logs() {
 	if ( empty( $_GET['job_id'] ) ) {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Job ID is mandatory' );
@@ -129,8 +151,13 @@ function bulk_image_upload_render_job_logs() {
 	);
 }
 
+/**
+ * This is backend of dashboard page. All information being fetched from the service.
+ *
+ * @return void
+ */
 function bulk_image_upload_render_plugin_page() {
-	if ( ! is_woocommerce_plugin_active() ) {
+	if ( ! bulk_image_upload_is_woocommerce_plugin_active() ) {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'WooCommerce plugin needs to be installed.' );
 	}
 
@@ -142,7 +169,6 @@ function bulk_image_upload_render_plugin_page() {
 	}
 
 	// Connect here to service and get the information about existing connection status.
-	// https://developer.wordpress.org/apis/making-http-requests/
 
 	// sorted by newest first.
 	$last_uploads = array(
@@ -203,7 +229,12 @@ function bulk_image_upload_render_plugin_page() {
 	);
 }
 
-function is_woocommerce_plugin_active() {
+/**
+ * This function helps to check if WooCommerce plugin installed and active.
+ *
+ * @return bool
+ */
+function bulk_image_upload_is_woocommerce_plugin_active() {
 	// Test to see if WooCommerce is active (including network activated).
 	$plugin_path = trailingslashit( WP_PLUGIN_DIR ) . 'woocommerce/woocommerce.php';
 
@@ -217,8 +248,13 @@ function is_woocommerce_plugin_active() {
 	return false;
 }
 
-function register_styles() {
+/**
+ * This function is used to include css files into admin.
+ *
+ * @return void
+ */
+function bulk_image_upload_register_styles() {
 	$css_version = '1';
 	$plugin_url  = plugin_dir_url( __FILE__ );
-	wp_enqueue_style( 'style', $plugin_url . '/admin/assets/css/style.css?version=' . $css_version );
+	wp_enqueue_style( 'style', $plugin_url . '/admin/assets/css/style.css', array(), $css_version );
 }
