@@ -12,7 +12,8 @@
  * WC requires at least: 3.0.0
  * WC tested up to: 6.2
  * Requires PHP: 7.4
- * Text Domain: bulk_image_upload
+ * Text Domain: bulk-image-upload
+ * Developer: Bulk Image Upload
  */
 
 // If this file is called directly, abort.
@@ -51,17 +52,26 @@ function bulk_image_upload_register_menu_page()
     add_menu_page(
         'Bulk Image Upload',
         'Bulk Image Upload',
-        'manage_options',
+        'manage_woocommerce',
         'bulk-image-upload',
         'bulk_image_upload_render_plugin_page',
         'dashicons-upload'
     );
 
     add_submenu_page(
+        'woocommerce',
+        'Bulk Image Upload',
+        'Bulk Image Upload',
+        'manage_woocommerce',
+        'bulk-image-upload',
+        'bulk_image_upload_render_plugin_page'
+    );
+
+    add_submenu_page(
         null,
         'Create New Upload',
         'Create New Upload',
-        'manage_options',
+        'manage_woocommerce',
         'bulk-image-upload-create-new-upload',
         'bulk_image_upload_render_create_new_upload_page'
     );
@@ -70,7 +80,7 @@ function bulk_image_upload_register_menu_page()
         null,
         'Job Logs',
         'Job Logs',
-        'manage_options',
+        'manage_woocommerce',
         'bulk-image-upload-job-logs',
         'bulk_image_upload_render_job_logs'
     );
