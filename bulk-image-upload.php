@@ -15,15 +15,15 @@
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
+if (!defined('WPINC')) {
     die;
 }
 
-define( 'BULK_IMAGE_UPLOAD_VERSION', '1.0.0' );
+define('BULK_IMAGE_UPLOAD_VERSION', '1.0.0');
 
-require_once __DIR__ . '/src/Utilities/class-biu-status-color.php';
-require_once __DIR__ . '/src/Utilities/class-biu-error-template.php';
-require_once __DIR__ . '/src/Utilities/class-biu-folder.php';
+require_once __DIR__ . '/includes/class-biu-status-color.php';
+require_once __DIR__ . '/includes/class-biu-error-template.php';
+require_once __DIR__ . '/includes/class-biu-folder.php';
 
 function bulk_image_upload_register_menu_page()
 {
@@ -150,8 +150,8 @@ function bulk_image_upload_render_plugin_page()
     load_template(plugin_dir_path(__FILE__) . 'admin/partials/dashboard.php', true, [
         'domain' => $domain,
         'key' => $key,
-        'is_connected_to_service' => false,
-        'is_connected_to_drive' => false,
+        'is_connected_to_service' => true,
+        'is_connected_to_drive' => true,
         'is_upload_created' => false,
         'uploads' => $last_uploads,
         'total_uploaded' => 546,
