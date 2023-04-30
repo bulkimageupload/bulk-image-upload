@@ -108,7 +108,7 @@
 					</thead>
 					<tbody>
 					<?php foreach ( $args['uploads'] as $upload ) { ?>
-						<tr style="text-align: left; background-color: <?php echo StatusColor::getColorByStatusName( $upload['status'] ); ?>">
+						<tr style="text-align: left; background-color: <?php echo Bulk_Image_Upload_Status_Color::get_color_by_status( $upload['status'] ); ?>">
 							<td><?php echo esc_html( $upload['id'] ); ?></td>
 							<td><?php echo esc_html( $upload['upload_job'] ); ?></td>
 							<td><?php echo esc_html( $upload['status'] ); ?></td>
