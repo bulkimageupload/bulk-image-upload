@@ -59,7 +59,7 @@ add_action('admin_menu', 'bulk_image_upload_register_menu_page');
 
 function bulk_image_upload_render_create_new_upload_page()
 {
-    load_template(plugin_dir_path(__FILE__) . 'admin/partials/create-new-upload.php', true, [
+    load_template(plugin_dir_path(__FILE__) . 'admin/partials/bulk-image-upload-create-new-upload.php', true, [
         'folders' => [
             'test1',
             'test2',
@@ -78,7 +78,7 @@ function bulk_image_upload_render_job_logs()
 
     //Ask service information about job.
 
-    load_template(plugin_dir_path(__FILE__) . 'admin/partials/job-logs.php', true, [
+    load_template(plugin_dir_path(__FILE__) . 'admin/partials/bulk-image-upload-job-logs.php', true, [
         'job' => [
             'id' => 4903,
             'upload_job' => 'test2-05-03-2022-04-28',
@@ -147,7 +147,7 @@ function bulk_image_upload_render_plugin_page()
         ]
     ];
 
-    load_template(plugin_dir_path(__FILE__) . 'admin/partials/dashboard.php', true, [
+    load_template(plugin_dir_path(__FILE__) . 'admin/partials/bulk-image-upload-dashboard.php', true, [
         'domain' => $domain,
         'key' => $key,
         'is_connected_to_service' => true,
