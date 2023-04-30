@@ -12,6 +12,7 @@
  * WC requires at least: 3.0.0
  * WC tested up to: 6.2
  * Requires PHP: 7.4
+ * Text Domain: bulk_image_upload
  */
 
 // If this file is called directly, abort.
@@ -24,6 +25,26 @@ define('BULK_IMAGE_UPLOAD_VERSION', '1.0.0');
 require_once __DIR__ . '/includes/class-bulk-image-upload-status-color.php';
 require_once __DIR__ . '/includes/class-bulk-image-upload-error-template.php';
 require_once __DIR__ . '/includes/class-bulk-image-upload-folder.php';
+
+// Register the activation hook to run code when the plugin is activated
+register_activation_hook(__FILE__, 'bulk_image_upload_activation_hook');
+
+add_action('admin_menu', 'bulk_image_upload_register_menu_page');
+
+add_action('admin_print_styles', 'register_styles');
+
+function bulk_image_upload_activation_hook()
+{
+    $key = get_option('bulk_image_upload_security_key');
+
+    if (empty($key)) {
+        // Generate a random key
+        $key = bin2hex(random_bytes(72));
+
+        // Save the key to the options table
+        update_option('bulk_image_upload_security_key', $key);
+    }
+}
 
 function bulk_image_upload_register_menu_page()
 {
@@ -54,8 +75,6 @@ function bulk_image_upload_register_menu_page()
         'bulk_image_upload_render_job_logs'
     );
 }
-
-add_action('admin_menu', 'bulk_image_upload_register_menu_page');
 
 function bulk_image_upload_render_create_new_upload_page()
 {
@@ -163,22 +182,4 @@ function register_styles()
     $css_version = '1';
     $plugin_url = plugin_dir_url(__FILE__);
     wp_enqueue_style('style', $plugin_url . '/admin/assets/css/style.css?version=' . $css_version);
-}
-
-add_action('admin_print_styles', 'register_styles');
-
-// Register the activation hook to run code when the plugin is activated
-register_activation_hook(__FILE__, 'bulk_image_upload_activation_hook');
-
-function bulk_image_upload_activation_hook()
-{
-    $key = get_option('bulk_image_upload_security_key');
-
-    if (empty($key)) {
-        // Generate a random key
-        $key = bin2hex(random_bytes(72));
-
-        // Save the key to the options table
-        update_option('bulk_image_upload_security_key', $key);
-    }
 }
