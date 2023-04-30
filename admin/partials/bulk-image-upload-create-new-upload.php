@@ -1,3 +1,12 @@
+<?php
+/**
+ * This view being shown when user is creating new upload.
+ *
+ * @package bulk-image-upload-for-woocommerce
+ */
+
+?>
+
 <div class="biu-container">
 	<div class="biu-container-inner">
 

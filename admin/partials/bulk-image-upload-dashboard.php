@@ -1,3 +1,14 @@
+<?php
+/**
+ * This is main page of the plugin, based on steps of setup different view being shown.
+ * User should be able to connect mandatory service and see the button to create new upload
+ * Additionally last upload jobs created shown in this view.
+ *
+ * @package bulk-image-upload-for-woocommerce
+ */
+
+?>
+
 <div class="biu-container">
 	<div class="biu-container-inner">
 
@@ -65,7 +76,8 @@
 			echo '<a id="create_new_button" href="' . $url . '" class="button button-primary' . '">' . esc_html__( 'Create New Upload', 'bulk-image-upload' ) . '</a>';
 			?>
 
-			<img style="margin-top: 10px; display: none" id="loading_create_new" width="10" src="<?php echo Folder::getImagesUrl() . 'loading.gif'; ?>" />
+			<img style="margin-top: 10px; display: none" id="loading_create_new" width="10"
+				 src="<?php echo Folder::getImagesUrl() . 'loading.gif'; ?>"/>
 
 			<?php if ( ! empty( $args['uploads'] ) ) { ?>
 				<table class="widefat fixed biu-mt-20">
@@ -122,8 +134,8 @@
 					e.preventDefault();
 					jQuery("#create_new_button").addClass("button-primary-disabled");
 					jQuery("#loading_create_new").show();
-					let url=jQuery(this).attr("href");
-					window.location=url;
+					let url = jQuery(this).attr("href");
+					window.location = url;
 				});
 			});
 		</script>

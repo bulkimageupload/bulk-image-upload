@@ -3,7 +3,6 @@
  * This view being shown to display errors.
  *
  * @package bulk-image-upload-for-woocommerce
- *
  */
 
 ?>
