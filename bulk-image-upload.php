@@ -7,10 +7,10 @@
  * Version: 1.0.0
  * Author: Bulk Image Upload
  * Author URI: https://bulkimageupload.com
- * License: GPL-2.0+
- * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+ * License: GPL-3.0+
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
  * WC requires at least: 3.0.0
- * WC tested up to: 5.7.1
+ * WC tested up to: 6.2
  * Requires PHP: 7.4
  */
 
@@ -166,9 +166,13 @@ register_activation_hook(__FILE__, 'bulk_image_upload_activation_hook');
 
 function bulk_image_upload_activation_hook()
 {
-    // Generate a random key
-    $key = bin2hex(random_bytes(72));
+    $key = get_option('bulk_image_upload_security_key');
 
-    // Save the key to the options table
-    update_option('bulk_image_upload_security_key', $key);
+    if (empty($key)) {
+        // Generate a random key
+        $key = bin2hex(random_bytes(72));
+
+        // Save the key to the options table
+        update_option('bulk_image_upload_security_key', $key);
+    }
 }
