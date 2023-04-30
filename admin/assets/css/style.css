@@ -1,31 +1,31 @@
 .biu-description {
-    padding: 10px;
+	padding: 10px;
 }
 
 .biu-container {
-    position: relative;
-    height: 100%;
+	position: relative;
+	height: 100%;
 }
 
 .biu-container-inner {
-    max-width: 1080px;
-    margin: 100px auto 0 auto;
-    text-align: center;
-    position: relative;
+	max-width: 1080px;
+	margin: 100px auto 0 auto;
+	text-align: center;
+	position: relative;
 }
 
 .biu-folder-select {
-    margin-top: 10px;
+	margin-top: 10px;
 }
 
 .biu-mt-10 {
-    margin-top: 10px;
+	margin-top: 10px;
 }
 
 .biu-mt-20 {
-    margin-top: 20px;
+	margin-top: 20px;
 }
 
 .biu-notice {
-    padding: 10px;
+	padding: 10px;
 }
