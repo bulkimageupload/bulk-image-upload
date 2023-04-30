@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
+
 class StatusColor
 {
     const JOB_STATUS_PENDING = 'pending';

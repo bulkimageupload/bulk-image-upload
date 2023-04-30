@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
+
 class ErrorTemplate
 {
     public static function showErrorTemplate($errorMessage)
