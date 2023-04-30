@@ -88,7 +88,7 @@ function bulk_image_upload_register_menu_page() {
 
 function bulk_image_upload_render_create_new_upload_page() {
 	if ( ! is_woocommerce_plugin_active() ) {
-		ErrorTemplate::showErrorTemplate( 'WooCommerce plugin needs to be installed.' );
+		Bulk_Image_Upload_Error_Template::show_error_template( 'WooCommerce plugin needs to be installed.' );
 	}
 
 	load_template(
@@ -106,7 +106,7 @@ function bulk_image_upload_render_create_new_upload_page() {
 
 function bulk_image_upload_render_job_logs() {
 	if ( empty( $_GET['job_id'] ) ) {
-		ErrorTemplate::showErrorTemplate( 'Job ID is mandatory' );
+		Bulk_Image_Upload_Error_Template::show_error_template( 'Job ID is mandatory' );
 	}
 
 	$job_id = $_GET['job_id'];
@@ -131,14 +131,14 @@ function bulk_image_upload_render_job_logs() {
 
 function bulk_image_upload_render_plugin_page() {
 	if ( ! is_woocommerce_plugin_active() ) {
-		ErrorTemplate::showErrorTemplate( 'WooCommerce plugin needs to be installed.' );
+		Bulk_Image_Upload_Error_Template::show_error_template( 'WooCommerce plugin needs to be installed.' );
 	}
 
 	$domain = get_site_url();
 	$key    = get_option( 'bulk_image_upload_security_key' );
 
 	if ( empty( $key ) ) {
-		ErrorTemplate::showErrorTemplate( 'Security Key not found. Please reinstall the app to fix the issue.' );
+		Bulk_Image_Upload_Error_Template::show_error_template( 'Security Key not found. Please reinstall the app to fix the issue.' );
 	}
 
 	// Connect here to service and get the information about existing connection status.
