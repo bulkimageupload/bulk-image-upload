@@ -4,6 +4,6 @@ class Folder
 {
     public static function getImagesUrl()
     {
-        return trailingslashit(plugin_dir_url(__FILE__)) . '../../assets/images/';
+        return trailingslashit(plugin_dir_url(__FILE__)) . '../../admin/assets/images/';
     }
 }

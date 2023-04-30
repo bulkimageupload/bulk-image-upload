@@ -162,7 +162,7 @@ function register_styles()
 {
     $css_version = '1';
     $plugin_url = plugin_dir_url(__FILE__);
-    wp_enqueue_style('style', $plugin_url . '/assets/css/style.css?version=' . $css_version);
+    wp_enqueue_style('style', $plugin_url . '/admin/assets/css/style.css?version=' . $css_version);
 }
 
 add_action('admin_print_styles', 'register_styles');
