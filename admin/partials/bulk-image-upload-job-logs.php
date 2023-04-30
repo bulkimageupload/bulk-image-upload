@@ -1,7 +1,7 @@
 <div class="biu-container">
     <div class="biu-container-inner">
 
-        <h1><?php esc_html_e('Bulk Image Upload', 'bulk_image_upload'); ?></h1>
+        <h1><?php esc_html_e('Bulk Image Upload', 'bulk-image-upload'); ?></h1>
 
         <hr>
 
