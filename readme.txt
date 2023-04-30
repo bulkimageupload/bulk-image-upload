@@ -2,8 +2,8 @@
 Contributors: faridmovsumov
 Tags: woocommerce, bulk upload, product images
 Requires at least: 5.3
-Tested up to: 6.1.1
-Requires PHP: 5.6
+Tested up to: 6.2
+Requires PHP: 7.4
 Stable tag: 2.1.36
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
