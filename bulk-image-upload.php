@@ -21,9 +21,9 @@ if (!defined('WPINC')) {
 
 define('BULK_IMAGE_UPLOAD_VERSION', '1.0.0');
 
-require_once __DIR__ . '/includes/class-biu-status-color.php';
-require_once __DIR__ . '/includes/class-biu-error-template.php';
-require_once __DIR__ . '/includes/class-biu-folder.php';
+require_once __DIR__ . '/includes/class-bulk-image-upload-status-color.php';
+require_once __DIR__ . '/includes/class-bulk-image-upload-error-template.php';
+require_once __DIR__ . '/includes/class-bulk-image-upload-folder.php';
 
 function bulk_image_upload_register_menu_page()
 {
