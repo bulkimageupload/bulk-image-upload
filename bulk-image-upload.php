@@ -93,6 +93,10 @@ function bulk_image_upload_render_plugin_page()
     $domain = get_site_url();
     $key = get_option('bulk_image_upload_security_key');
 
+    if (empty($key)) {
+        ErrorTemplate::showErrorTemplate('Security Key not found. Please reinstall the app to fix the issue.');
+    }
+
     //Connect here to service and get the information about existing connection status.
     //https://developer.wordpress.org/apis/making-http-requests/
 
