@@ -16,10 +16,11 @@
 
 		<hr>
 
-		<?php if ( array_key_exists( 'is_connected_to_service', $args ) && $args['is_connected_to_service'] === false ) { ?>
+		<?php if ( array_key_exists( 'is_connected_to_service', $args ) && false === $args['is_connected_to_service'] ) { ?>
 
 			<div class="biu-mt-20">
-				<img style="width: 350px" src="<?php echo Bulk_Image_Upload_Folder::get_images_url() . 'going-up.svg'; ?>">
+				<img style="width: 350px"
+					src="<?php echo esc_url( Bulk_Image_Upload_Folder::get_images_url() . 'going-up.svg' ); ?>">
 			</div>
 
 			<div class="biu-description">
@@ -29,16 +30,17 @@
 			</div>
 
 			<?php
-			$domain = $args['domain'];
-			$key    = $args['key'];
-			$url    = 'https://bulkimageupload.com/register' . '?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key );
-			echo '<a href="' . esc_url( $url ) . '" class="button button-primary ' . '">' . esc_html__( 'Connect', 'bulk-image-upload' ) . '</a>';
+			$bulk_image_upload_domain = $args['domain'];
+			$bulk_image_upload_key            = $args['key'];
+			$bulk_image_upload_connection_url = 'https://bulkimageupload.com/register?domain=' . urlencode( $bulk_image_upload_domain ) . '&key=' . urlencode( $bulk_image_upload_key );
+			echo '<a href="' . esc_url( $bulk_image_upload_connection_url ) . '" class="button button-primary">' . esc_html__( 'Connect', 'bulk-image-upload' ) . '</a>';
 			?>
 
-		<?php } elseif ( array_key_exists( 'is_connected_to_drive', $args ) && $args['is_connected_to_drive'] === false ) { ?>
+		<?php } elseif ( array_key_exists( 'is_connected_to_drive', $args ) && false === $args['is_connected_to_drive'] ) { ?>
 
 			<div class="biu-mt-20">
-				<img style="width: 350px" src="<?php echo Bulk_Image_Upload_Folder::get_images_url() . 'edit-photo.svg'; ?>">
+				<img style="width: 350px"
+					src="<?php echo esc_url( Bulk_Image_Upload_Folder::get_images_url() . 'edit-photo.svg' ); ?>">
 			</div>
 
 			<div class="biu-description">
@@ -46,16 +48,17 @@
 			</div>
 
 			<?php
-			$url = urlencode( trailingslashit( get_home_url() ) ) . '&returnUrl=' . urlencode( get_admin_url( null, 'admin.php?page=bulk-image-upload' ) );
-			echo '<a href="' . esc_url( $url ) . '" class="button button-primary ' . '">' . esc_html__( 'Connect to Google Drive', 'bulk-image-upload' ) . '</a>';
+			$bulk_image_upload_connection_url = urlencode( trailingslashit( get_home_url() ) ) . '&returnUrl=' . urlencode( get_admin_url( null, 'admin.php?page=bulk-image-upload' ) );
+			echo '<a href="' . esc_url( $bulk_image_upload_connection_url ) . '" class="button button-primary">' . esc_html__( 'Connect to Google Drive', 'bulk-image-upload' ) . '</a>';
 			?>
 
 		<?php } else { ?>
 
-			<?php if ( array_key_exists( 'is_upload_created', $args ) && $args['is_upload_created'] === false ) { ?>
+			<?php if ( array_key_exists( 'is_upload_created', $args ) && false === $args['is_upload_created'] ) { ?>
 
 				<div class="biu-mt-20">
-					<img style="width: 350px" src="<?php echo Bulk_Image_Upload_Folder::get_images_url() . 'online-shopping.svg'; ?>">
+					<img style="width: 350px"
+						src="<?php echo esc_url( Bulk_Image_Upload_Folder::get_images_url() . 'online-shopping.svg' ); ?>">
 				</div>
 
 				<div class="biu-description">
@@ -65,19 +68,19 @@
 
 			<?php if ( ! empty( $args['total_uploaded'] ) && $args['total_uploaded'] >= 100 ) { ?>
 				<div class="notice notice-success biu-mt-20 biu-notice">
-					<?php echo sprintf( esc_html( 'You have successfully uploaded %d images to your store!' ), $args['total_uploaded'] ); ?>
+					<?php echo sprintf( esc_html( 'You have successfully uploaded %d images to your store!' ), esc_html( $args['total_uploaded'] ) ); ?>
 				</div>
 			<?php } ?>
 
 			<div class="biu-mt-20"></div>
 
 			<?php
-			$url = get_admin_url( null, 'admin.php?page=bulk-image-upload-create-new-upload' );
-			echo '<a id="create_new_button" href="' . $url . '" class="button button-primary' . '">' . esc_html__( 'Create New Upload', 'bulk-image-upload' ) . '</a>';
+			$bulk_image_upload_connection_url = get_admin_url( null, 'admin.php?page=bulk-image-upload-create-new-upload' );
+			echo '<a id="create_new_button" href="' . esc_url( $bulk_image_upload_connection_url ) . '" class="button button-primary">' . esc_html__( 'Create New Upload', 'bulk-image-upload' ) . '</a>';
 			?>
 
 			<img style="margin-top: 10px; display: none" id="loading_create_new" width="10"
-				 src="<?php echo Bulk_Image_Upload_Folder::get_images_url() . 'loading.gif'; ?>"/>
+				src="<?php echo esc_url( Bulk_Image_Upload_Folder::get_images_url() . 'loading.gif' ); ?>"/>
 
 			<?php if ( ! empty( $args['uploads'] ) ) { ?>
 				<table class="widefat fixed biu-mt-20">
@@ -107,17 +110,17 @@
 					</tr>
 					</thead>
 					<tbody>
-					<?php foreach ( $args['uploads'] as $upload ) { ?>
-						<tr style="text-align: left; background-color: <?php echo Bulk_Image_Upload_Status_Color::get_color_by_status( $upload['status'] ); ?>">
-							<td><?php echo esc_html( $upload['id'] ); ?></td>
-							<td><?php echo esc_html( $upload['upload_job'] ); ?></td>
-							<td><?php echo esc_html( $upload['status'] ); ?></td>
-							<td><?php echo esc_html( $upload['created'] ); ?></td>
-							<td><?php echo esc_html( $upload['total'] ); ?></td>
-							<td><?php echo esc_html( $upload['uploaded'] ); ?></td>
+					<?php foreach ( $args['uploads'] as $bulk_image_upload_job ) { ?>
+						<tr style="text-align: left; background-color: <?php echo esc_html( Bulk_Image_Upload_Status_Color::get_color_by_status( $bulk_image_upload_job['status'] ) ); ?>">
+						<td><?php echo esc_html( $bulk_image_upload_job['id'] ); ?></td>
+							<td><?php echo esc_html( $bulk_image_upload_job['upload_job'] ); ?></td>
+							<td><?php echo esc_html( $bulk_image_upload_job['status'] ); ?></td>
+							<td><?php echo esc_html( $bulk_image_upload_job['created'] ); ?></td>
+							<td><?php echo esc_html( $bulk_image_upload_job['total'] ); ?></td>
+							<td><?php echo esc_html( $bulk_image_upload_job['uploaded'] ); ?></td>
 							<td>
-								<a href="<?php echo get_admin_url( null, 'admin.php?page=bulk-image-upload-job-logs' ) . '&job_id=' . $upload['id']; ?>">
-									Show Logs
+								<a href="<?php echo esc_url( get_admin_url( null, 'admin.php?page=bulk-image-upload-job-logs' ) . '&job_id=' . $bulk_image_upload_job['id'] ); ?>">
+								Show Logs
 								</a>
 							</td>
 						</tr>
