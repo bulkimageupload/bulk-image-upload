@@ -60,14 +60,6 @@ function bulk_image_upload_activation_hook() {
  * @return void
  */
 function bulk_image_upload_register_menu_page() {
-	add_menu_page(
-		'Bulk Image Upload',
-		'Bulk Image Upload',
-		'manage_woocommerce',
-		'bulk-image-upload',
-		'bulk_image_upload_render_plugin_page',
-		'dashicons-upload'
-	);
 
 	add_submenu_page(
 		'woocommerce',
