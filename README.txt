@@ -27,7 +27,7 @@ If everything looks good you can simply click on "Start Upload" and we will uplo
 == Installation ==
 1. Upload 'bulk-image-upload-for-woocommerce' to the '/wp-content/plugins/' directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Click on "Bulk Image Upload" in the admin menu.
+3. Click on "Bulk Image Upload" under the WooCommerce menu.
 4. Allow Bulk Image Upload service connect to WooCommerce Rest API by clicking on Connect button in the main page.
 5. Connect your Google Drive account and give permission to read images.
 6. You are ready to create your first upload job.
