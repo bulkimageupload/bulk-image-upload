@@ -212,8 +212,8 @@ function bulk_image_upload_render_plugin_page() {
 		array(
 			'domain'                  => $domain,
 			'key'                     => $key,
-			'is_connected_to_service' => true,
-			'is_connected_to_drive'   => true,
+			'is_connected_to_service' => false,
+			'is_connected_to_drive'   => false,
 			'is_upload_created'       => false,
 			'uploads'                 => $last_uploads,
 			'total_uploaded'          => 546,

@@ -32,7 +32,7 @@
 			<?php
 			$bulk_image_upload_domain = $args['domain'];
 			$bulk_image_upload_key            = $args['key'];
-			$bulk_image_upload_connection_url = 'https://bulkimageupload.com/register?domain=' . urlencode( $bulk_image_upload_domain ) . '&key=' . urlencode( $bulk_image_upload_key );
+			$bulk_image_upload_connection_url = 'https://bulkimageupload.com/woo-commerce/register?domain=' . urlencode( $bulk_image_upload_domain ) . '&key=' . urlencode( $bulk_image_upload_key ).'&user_id='.get_current_user_id();
 			echo '<a href="' . esc_url( $bulk_image_upload_connection_url ) . '" class="button button-primary">' . esc_html__( 'Connect', 'bulk-image-upload' ) . '</a>';
 			?>
 
