@@ -10,7 +10,7 @@
  * License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
  * WC requires at least: 3.0.0
  * WC tested up to: 6.2
- * Requires PHP: 7.4
+ * Requires PHP: 7.2
  * Text Domain: bulk-image-upload
  * Developer: Bulk Image Upload
  * Developer URI: https://bulkimageupload.com
