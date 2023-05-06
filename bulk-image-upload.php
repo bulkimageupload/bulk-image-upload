@@ -34,8 +34,8 @@ require_once __DIR__ . '/includes/class-bulk-image-upload-folder.php';
 register_activation_hook( __FILE__, 'bulk_image_upload_activation_hook' );
 
 add_action( 'admin_menu', 'bulk_image_upload_register_menu_page' );
-
 add_action( 'admin_print_styles', 'bulk_image_upload_register_styles' );
+add_action('admin_init', 'bulk_image_upload_redirect_to_onboarding_page');
 
 /**
  * Performs actions after activation of plugin.
@@ -51,6 +51,17 @@ function bulk_image_upload_activation_hook() {
 
 		// Save the key to the options table.
 		update_option( 'bulk_image_upload_security_key', $key );
+	}
+
+	add_option('bulk_image_upload_do_activation_redirect', true);
+}
+
+function bulk_image_upload_redirect_to_onboarding_page() {
+	if ( get_option( 'bulk_image_upload_do_activation_redirect', false ) ) {
+		delete_option( 'bulk_image_upload_do_activation_redirect' );
+		$bulk_image_upload_plugin_url = get_admin_url( null, 'admin.php?page=bulk-image-upload' );
+		wp_redirect( $bulk_image_upload_plugin_url );
+		exit;
 	}
 }
 
