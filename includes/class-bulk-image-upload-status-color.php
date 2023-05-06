@@ -14,11 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Bulk_Image_Upload_Status_Color {
 
-	const JOB_STATUS_PENDING = 'pending';
-	const JOB_STATUS_RUNNING = 'running';
-	const JOB_STATUS_FINISHED = 'finished';
+	const JOB_STATUS_PENDING              = 'pending';
+	const JOB_STATUS_RUNNING              = 'running';
+	const JOB_STATUS_FINISHED             = 'finished';
 	const JOB_STATUS_FINISHED_WITH_ERRORS = 'finished_with_errors';
-	const JOB_STATUS_FAILED = 'failed';
+	const JOB_STATUS_FAILED               = 'failed';
 
 	/**
 	 * Mapping of statuses to color codes
