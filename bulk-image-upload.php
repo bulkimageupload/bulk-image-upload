@@ -57,20 +57,6 @@ function bulk_image_upload_activation_hook() {
 }
 
 /**
- * This function helps with onboarding flow. It redirects user to initial page after activation of plugin.
- *
- * @return void
- */
-function bulk_image_upload_redirect_to_onboarding_page() {
-	if ( get_option( 'bulk_image_upload_do_activation_redirect', false ) ) {
-		delete_option( 'bulk_image_upload_do_activation_redirect' );
-		$bulk_image_upload_plugin_url = get_admin_url( null, 'admin.php?page=bulk-image-upload' );
-		wp_redirect( $bulk_image_upload_plugin_url );
-		exit;
-	}
-}
-
-/**
  * Registering all menu items here.
  *
  * @return void
@@ -265,4 +251,18 @@ function bulk_image_upload_register_styles() {
 	$css_version = '1';
 	$plugin_url  = plugin_dir_url( __FILE__ );
 	wp_enqueue_style( 'style', $plugin_url . '/admin/assets/css/style.css', array(), $css_version );
+}
+
+/**
+ * This function helps with onboarding flow. It redirects user to initial page after activation of plugin.
+ *
+ * @return void
+ */
+function bulk_image_upload_redirect_to_onboarding_page() {
+	if ( get_option( 'bulk_image_upload_do_activation_redirect', false ) ) {
+		delete_option( 'bulk_image_upload_do_activation_redirect' );
+		$bulk_image_upload_plugin_url = get_admin_url( null, 'admin.php?page=bulk-image-upload' );
+		wp_redirect( $bulk_image_upload_plugin_url );
+		exit;
+	}
 }
