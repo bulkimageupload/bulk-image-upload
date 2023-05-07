@@ -7,6 +7,8 @@
  * @package bulk-image-upload-for-woocommerce
  */
 
+$bulk_image_upload_domain         = $args['domain'];
+$bulk_image_upload_key            = $args['key'];
 ?>
 
 <div class="biu-container">
@@ -30,8 +32,6 @@
 			</div>
 
 			<?php
-			$bulk_image_upload_domain         = $args['domain'];
-			$bulk_image_upload_key            = $args['key'];
 			$bulk_image_upload_connection_url = 'https://bulkimageupload.com/woo-commerce/register?domain=' . urlencode( $bulk_image_upload_domain ) . '&key=' . urlencode( $bulk_image_upload_key ) . '&user_id=' . get_current_user_id();
 			echo '<a href="' . esc_url( $bulk_image_upload_connection_url ) . '" class="button button-primary button-large">' . esc_html__( 'Connect', 'bulk-image-upload' ) . '</a>';
 			?>
@@ -48,7 +48,7 @@
 			</div>
 
 			<?php
-			$bulk_image_upload_connection_url = urlencode( trailingslashit( get_home_url() ) ) . '&returnUrl=' . urlencode( get_admin_url( null, 'admin.php?page=bulk-image-upload' ) );
+			$bulk_image_upload_connection_url = 'https://bulkimageupload.com/woo-commerce/connect-google-drive?domain=' . urlencode( $bulk_image_upload_domain ) . '&key=' . urlencode( $bulk_image_upload_key ) . '&user_id=' . get_current_user_id();
 			echo '<a href="' . esc_url( $bulk_image_upload_connection_url ) . '" class="button button-primary button-large">' . esc_html__( 'Connect to Google Drive', 'bulk-image-upload' ) . '</a>';
 			?>
 
