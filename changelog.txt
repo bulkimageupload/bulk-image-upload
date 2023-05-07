@@ -1,0 +1,4 @@
+*** Bulk Image Upload for WooCommerce ***
+
+2023-05-25 - version 1.0.0
+* Initial release
