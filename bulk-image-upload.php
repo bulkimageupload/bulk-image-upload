@@ -159,8 +159,13 @@ function bulk_image_upload_render_plugin_page() {
 	$key    = get_option( 'bulk_image_upload_security_key' );
 
 	if ( empty( $key ) ) {
-		Bulk_Image_Upload_Error_Template::show_error_template( 'Security Key not found. Please reinstall the app to fix the issue.' );
+		Bulk_Image_Upload_Error_Template::show_error_template( 'Security Key not found. Please reactivate the app to fix the issue.' );
 	}
+
+	//$response = wp_remote_get( 'https://bulkimageupload.com/woo-commerce/dashboard?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) );
+	//$body     = wp_remote_retrieve_body( $response );
+	//var_dump($response['response']['code']);exit;
+	//var_dump($body);exit;
 
 	// Connect here to service and get the information about existing connection status.
 
