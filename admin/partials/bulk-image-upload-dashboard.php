@@ -7,8 +7,8 @@
  * @package bulk-image-upload-for-woocommerce
  */
 
-$bulk_image_upload_domain         = $args['domain'];
-$bulk_image_upload_key            = $args['key'];
+$bulk_image_upload_domain = $args['domain'];
+$bulk_image_upload_key    = $args['key'];
 ?>
 
 <div class="biu-container">
