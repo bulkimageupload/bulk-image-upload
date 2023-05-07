@@ -49,7 +49,7 @@
 
 			<?php
 			$bulk_image_upload_connection_url = urlencode( trailingslashit( get_home_url() ) ) . '&returnUrl=' . urlencode( get_admin_url( null, 'admin.php?page=bulk-image-upload' ) );
-			echo '<a href="' . esc_url( $bulk_image_upload_connection_url ) . '" class="button button-primary">' . esc_html__( 'Connect to Google Drive', 'bulk-image-upload' ) . '</a>';
+			echo '<a href="' . esc_url( $bulk_image_upload_connection_url ) . '" class="button button-primary button-large">' . esc_html__( 'Connect to Google Drive', 'bulk-image-upload' ) . '</a>';
 			?>
 
 		<?php } else { ?>
