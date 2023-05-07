@@ -36,6 +36,7 @@ register_activation_hook( __FILE__, 'bulk_image_upload_activation_hook' );
 add_action( 'admin_menu', 'bulk_image_upload_register_menu_page' );
 add_action( 'admin_print_styles', 'bulk_image_upload_register_styles' );
 add_action( 'admin_init', 'bulk_image_upload_redirect_to_onboarding_page' );
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'add_plugin_action_links' );
 
 /**
  * Performs actions after activation of plugin.
@@ -270,4 +271,36 @@ function bulk_image_upload_redirect_to_onboarding_page() {
 		wp_redirect( $bulk_image_upload_plugin_url );
 		exit;
 	}
+}
+
+/**
+ * This function is adding quick links which can be seen in installed plugins page.
+ *
+ * @param $links
+ *
+ * @return array
+ */
+function add_plugin_action_links( $links ) {
+
+	$custom_links = array();
+
+	$custom_links['get_started'] = sprintf(
+		wp_kses(
+		/* translators: %s Support url */
+			__( '<a href="%s">Get Started</a>', 'bulk-image-upload' ),
+			array( 'a' => array( 'href' => array() ) )
+		),
+		esc_url( get_admin_url( null, 'admin.php?page=bulk-image-upload' ) )
+	);
+
+	$custom_links['support'] = sprintf(
+		wp_kses(
+		/* translators: %s Support url */
+			__( '<a href="%s">Support</a>', 'bulk-image-upload' ),
+			array( 'a' => array( 'href' => array() ) )
+		),
+		esc_url( 'https://woocommerce.com/my-account/create-a-ticket/' )
+	);
+
+	return array_merge( $custom_links, $links );
 }
