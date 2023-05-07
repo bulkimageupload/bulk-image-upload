@@ -125,7 +125,7 @@ function bulk_image_upload_render_job_logs() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Job ID is mandatory' );
 	}
 
-	$job_id = $_GET['job_id'];
+	$job_id = intval($_GET['job_id']);
 
 	// Ask service information about job.
 
