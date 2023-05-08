@@ -163,12 +163,14 @@ function bulk_image_upload_render_plugin_page() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Security Key not found. Please reactivate the app to fix the issue.' );
 	}
 
-	//$response = wp_remote_get( 'https://bulkimageupload.com/woo-commerce/dashboard?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) );
-	//$body     = wp_remote_retrieve_body( $response );
-	//var_dump($response['response']['code']);exit;
-	//var_dump($body);exit;
+	$response = wp_remote_get( 'https://bulkimageupload.com/woo-commerce/dashboard?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) );
 
-	// Connect here to service and get the information about existing connection status.
+	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
+		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
+	}
+
+	$body      = wp_remote_retrieve_body( $response );
+	$body_json = json_decode( $body, true );
 
 	// sorted by newest first.
 	$last_uploads = array(
@@ -214,18 +216,17 @@ function bulk_image_upload_render_plugin_page() {
 		),
 	);
 
+	$shop_data = array(
+		'domain' => $domain,
+		'key'    => $key,
+	);
+
+	$arguments = array_merge( $shop_data, $body_json );
+
 	load_template(
 		plugin_dir_path( __FILE__ ) . 'admin/partials/bulk-image-upload-dashboard.php',
 		true,
-		array(
-			'domain'                  => $domain,
-			'key'                     => $key,
-			'is_connected_to_service' => false,
-			'is_connected_to_drive'   => false,
-			'is_upload_created'       => false,
-			'uploads'                 => $last_uploads,
-			'total_uploaded'          => 546,
-		)
+		$arguments
 	);
 }
 
