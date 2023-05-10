@@ -103,15 +103,27 @@ function bulk_image_upload_render_create_new_upload_page() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'WooCommerce plugin needs to be installed.' );
 	}
 
+	$domain = get_site_url();
+	$key    = get_option( 'bulk_image_upload_security_key' );
+
+	if ( empty( $key ) ) {
+		Bulk_Image_Upload_Error_Template::show_error_template( 'Security Key not found. Please reactivate the app to fix the issue.' );
+	}
+
+	$response = wp_remote_get( 'https://bulkimageupload.com/google-drive-list-folders?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) );
+
+	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
+		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
+	}
+
+	$body      = wp_remote_retrieve_body( $response );
+	$folders = json_decode( $body, true );
+
 	load_template(
 		plugin_dir_path( __FILE__ ) . 'admin/partials/bulk-image-upload-create-new-upload.php',
 		true,
 		array(
-			'folders' => array(
-				'test1',
-				'test2',
-				'test3',
-			),
+			'folders' => $folders,
 		)
 	);
 }
