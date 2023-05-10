@@ -48,7 +48,7 @@ $bulk_image_upload_key    = $args['key'];
 			</div>
 
 			<?php
-			$bulk_image_upload_connection_url = 'https://bulkimageupload.com/connect-google-drive?domain=' . urlencode( $bulk_image_upload_domain ) . '&key=' . urlencode( $bulk_image_upload_key ) . '&user_id=' . get_current_user_id();
+			$bulk_image_upload_connection_url = 'https://bulkimageupload.com/connect-google-drive?domain=' . urlencode( $bulk_image_upload_domain ) . '&key=' . urlencode( $bulk_image_upload_key );
 			echo '<a href="' . esc_url( $bulk_image_upload_connection_url ) . '" class="button button-primary button-large">' . esc_html__( 'Connect to Google Drive', 'bulk-image-upload' ) . '</a>';
 			?>
 
