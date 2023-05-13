@@ -90,6 +90,56 @@ function bulk_image_upload_register_menu_page() {
 		'bulk-image-upload-job-logs',
 		'bulk_image_upload_render_job_logs'
 	);
+
+	add_submenu_page(
+		null,
+		'Matching Results',
+		'Matching Results',
+		'manage_woocommerce',
+		'bulk-image-upload-matching-results',
+		'bulk_image_upload_render_matching_results'
+	);
+}
+
+/**
+ * This is backend logic of displaying image matching results to the user.
+ * It is fetching matching results from service and displaying to the user.
+ *
+ * @return void
+ */
+function bulk_image_upload_render_matching_results() {
+	if ( ! bulk_image_upload_is_woocommerce_plugin_active() ) {
+		Bulk_Image_Upload_Error_Template::show_error_template( 'WooCommerce plugin needs to be installed.' );
+	}
+
+	if ( empty( $_GET['folder'] ) ) {
+		Bulk_Image_Upload_Error_Template::show_error_template( 'Folder is mandatory.' );
+	}
+
+	$folder = sanitize_text_field($_GET['folder']);
+	$domain = get_site_url();
+	$key    = get_option( 'bulk_image_upload_security_key' );
+
+	if ( empty( $key ) ) {
+		Bulk_Image_Upload_Error_Template::show_error_template( 'Security Key not found. Please reactivate the app to fix the issue.' );
+	}
+
+	$response = wp_remote_get( 'https://bulkimageupload.com/google-drive/matching-results?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&folder=' . urlencode( $folder ) );
+
+	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
+		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
+	}
+
+	$body             = wp_remote_retrieve_body( $response );
+	$matching_results = json_decode( $body, true );
+
+	load_template(
+		plugin_dir_path( __FILE__ ) . 'admin/partials/bulk-image-upload-matching-results.php',
+		true,
+		array(
+			'matching_results' => $matching_results,
+		)
+	);
 }
 
 /**
@@ -116,7 +166,7 @@ function bulk_image_upload_render_create_new_upload_page() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
 	}
 
-	$body      = wp_remote_retrieve_body( $response );
+	$body    = wp_remote_retrieve_body( $response );
 	$folders = json_decode( $body, true );
 
 	load_template(
