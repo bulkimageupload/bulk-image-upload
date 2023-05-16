@@ -38,7 +38,7 @@
 					<a href="#"><?php esc_html_e( 'click here', 'bulk-image-upload' ); ?></a>
 				</div>
 
-				<select class="biu-folder-select">
+				<select id="choose-folder-dropdown" class="biu-select">
 					<option>Select Folder</option>
 					<?php foreach ( $args['folders'] as $bulk_image_upload_folder_key => $bulk_image_upload_folder ) { ?>
 						<option value="<?php echo esc_html( $bulk_image_upload_folder_key ); ?>">
@@ -57,7 +57,7 @@
 					<?php esc_html_e( 'We recommend to match images by exact SKU for the maximum efficiency.', 'bulk-image-upload' ); ?>
 				</div>
 
-				<select class="biu-folder-select">
+				<select id="choose-matching-dropdown" class="biu-select">
 					<?php foreach ($args['matching_methods'] as $bulk_image_upload_matching_method_key => $bulk_image_upload_matching_method) { ?>
 					<option value="<?php echo esc_html($bulk_image_upload_matching_method_key); ?>">
 						<?php echo esc_html($bulk_image_upload_matching_method); ?>
@@ -78,7 +78,9 @@
 				</div>
 
 				<div class="biu-mt-10">
-					<?php echo '<a href="#" class="button button-primary disabled">' . esc_html__( 'Start Matching', 'bulk-image-upload' ) . '</a>'; ?>
+					<?php echo '<a id="matching-button" href="#" class="button button-primary disabled">' . esc_html__( 'Start Matching', 'bulk-image-upload' ) . '</a>'; ?>
+					<img style="margin-top: 10px; display: none" id="loading-start-matching" width="10"
+						 src="<?php echo esc_url( Bulk_Image_Upload_Folder::get_images_url() . 'loading.gif' ); ?>"/>
 				</div>
 			</div>
 
@@ -86,7 +88,28 @@
 
 		<script type="text/javascript">
 			jQuery(document).ready(function () {
-				console.log('hello');
+				jQuery("#choose-folder-dropdown").on('change', function(){
+					if(this.value === 'Select Folder'){
+						jQuery("#matching-button").addClass('disabled');
+					}else{
+						jQuery("#matching-button").removeClass('disabled');
+					}
+				});
+
+				jQuery("#matching-button").click(function (e) {
+					e.preventDefault();
+					jQuery("#matching-button").addClass('disabled');
+					jQuery("#loading-start-matching").show();
+
+					let folder_id = jQuery("#choose-folder-dropdown").val();
+					let matching_method = jQuery("#choose-matching-dropdown").val();
+
+					jQuery("#choose-folder-dropdown").prop('disabled', 'disabled');
+					jQuery("#choose-matching-dropdown").prop('disabled', 'disabled');
+
+					let url= "<?php echo esc_url(get_admin_url( null, 'admin.php?page=bulk-image-upload-matching-results' )); ?>&folder_id="+folder_id+"&matching_method="+matching_method;
+					window.location=url;
+				});
 			});
 		</script>
 	</div>

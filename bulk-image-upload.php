@@ -112,19 +112,24 @@ function bulk_image_upload_render_matching_results() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'WooCommerce plugin needs to be installed.' );
 	}
 
-	if ( empty( $_GET['folder'] ) ) {
-		Bulk_Image_Upload_Error_Template::show_error_template( 'Folder is mandatory.' );
+	if ( empty( $_GET['folder_id'] ) ) {
+		Bulk_Image_Upload_Error_Template::show_error_template( 'folder is mandatory parameter.' );
 	}
 
-	$folder = sanitize_text_field($_GET['folder']);
-	$domain = get_site_url();
-	$key    = get_option( 'bulk_image_upload_security_key' );
+	if ( empty( $_GET['matching_method'] ) ) {
+		Bulk_Image_Upload_Error_Template::show_error_template( 'matching_method is mandatory parameter.' );
+	}
+
+	$folder_id       = sanitize_text_field($_GET['folder_id']);
+	$matching_method = sanitize_text_field($_GET['matching_method']);
+	$domain          = get_site_url();
+	$key             = get_option( 'bulk_image_upload_security_key' );
 
 	if ( empty( $key ) ) {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Security Key not found. Please reactivate the app to fix the issue.' );
 	}
 
-	$response = wp_remote_get( 'https://bulkimageupload.com/google-drive/matching-results?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&folder=' . urlencode( $folder ) );
+	$response = wp_remote_get( 'https://bulkimageupload.com/google-drive/matching-results?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&folder=' . urlencode( $folder_id ) . '&matching_method=' . urlencode($matching_method) );
 
 	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
