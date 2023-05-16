@@ -40,8 +40,8 @@
 
 				<select class="biu-folder-select">
 					<option>Select Folder</option>
-					<?php foreach ( $args['folders'] as $bulk_image_upload_folder ) { ?>
-						<option value="<?php echo esc_html( $bulk_image_upload_folder ); ?>">
+					<?php foreach ( $args['folders'] as $bulk_image_upload_folder_key => $bulk_image_upload_folder ) { ?>
+						<option value="<?php echo esc_html( $bulk_image_upload_folder_key ); ?>">
 							<?php echo esc_html( $bulk_image_upload_folder ); ?>
 						</option>
 					<?php } ?>
@@ -58,12 +58,11 @@
 				</div>
 
 				<select class="biu-folder-select">
-					<option
-						value="sku"><?php esc_html_e( 'Match by exact SKU (recommended)', 'bulk-image-upload' ); ?></option>
-					<option
-						value="sku_wildcard"><?php esc_html_e( 'Match if image contains SKU', 'bulk-image-upload' ); ?></option>
-					<option
-						value="sku_contains_image"><?php esc_html_e( 'Match if SKU contains image name', 'bulk-image-upload' ); ?></option>
+					<?php foreach ($args['matching_methods'] as $bulk_image_upload_matching_method_key => $bulk_image_upload_matching_method) { ?>
+					<option value="<?php echo esc_html($bulk_image_upload_matching_method_key); ?>">
+						<?php echo esc_html($bulk_image_upload_matching_method); ?>
+					</option>
+					<?php } ?>
 				</select>
 			</div>
 

@@ -166,14 +166,15 @@ function bulk_image_upload_render_create_new_upload_page() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
 	}
 
-	$body    = wp_remote_retrieve_body( $response );
-	$folders = json_decode( $body, true );
+	$body = wp_remote_retrieve_body( $response );
+	$data = json_decode( $body, true );
 
 	load_template(
 		plugin_dir_path( __FILE__ ) . 'admin/partials/bulk-image-upload-create-new-upload.php',
 		true,
 		array(
-			'folders' => $folders,
+			'folders' => $data['folders'],
+			'matching_methods' => $data['matchingMethods']
 		)
 	);
 }
