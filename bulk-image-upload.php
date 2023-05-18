@@ -132,11 +132,43 @@ function bulk_image_upload_render_matching_results() {
 	$response = wp_remote_get( 'https://bulkimageupload.com/google-drive/matching-results?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&folder=' . urlencode( $folder_id ) . '&matching_method=' . urlencode($matching_method) );
 
 	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
-		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
+		//Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
 	}
 
 	$body             = wp_remote_retrieve_body( $response );
 	$matching_results = json_decode( $body, true );
+
+	$matching_results = [
+		'matching_key' => uniqid(),
+		'matched_images' => [
+			[
+				'thumbnail' => 'https://botmake.io/storage/24c9e15e52afc47c225b757e7bee1f9d/users/7d2ca05e3c2770f4ce2a8456d2ee639c.jpg?v=1684389620',
+				'image_name' => 'deneme.jpg',
+				'image_size' => '5KB',
+				'position' => '1',
+				'variant_url' => 'https://botmake.io/storage/24c9e15e52afc47c225b757e7bee1f9d/users/7d2ca05e3c2770f4ce2a8456d2ee639c.jpg?v=1684389620',
+				'variant_name' => 'deneme / red',
+				'sku' => 'deneme',
+			],
+			[
+				'thumbnail' => 'https://botmake.io/storage/24c9e15e52afc47c225b757e7bee1f9d/users/7d2ca05e3c2770f4ce2a8456d2ee639c.jpg?v=1684389620',
+				'image_name' => 'deneme.jpg',
+				'image_size' => '5KB',
+				'position' => '1',
+				'variant_url' => 'https://botmake.io/storage/24c9e15e52afc47c225b757e7bee1f9d/users/7d2ca05e3c2770f4ce2a8456d2ee639c.jpg?v=1684389620',
+				'variant_name' => 'deneme / red',
+				'sku' => 'deneme',
+			]
+		],
+		'non_matched_images' => [
+			[
+				'thumbnail' => 'https://botmake.io/storage/24c9e15e52afc47c225b757e7bee1f9d/users/7d2ca05e3c2770f4ce2a8456d2ee639c.jpg?v=1684389620',
+				'image_name' => 'olmadi.jpg',
+				'image_size' => '8kb',
+				'expected_sku' => 'olmadi',
+			]
+		]
+	];
 
 	load_template(
 		plugin_dir_path( __FILE__ ) . 'admin/partials/bulk-image-upload-matching-results.php',
