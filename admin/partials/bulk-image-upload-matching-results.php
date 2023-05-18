@@ -36,7 +36,7 @@
 				<?php foreach ($args['matching_results']['matched_images'] as $bulk_image_upload_matched_image) { ?>
 					<tr style="text-align: left;">
 						<td>
-							<img width="150" referrerPolicy="no-referrer" src="<?php echo esc_html($bulk_image_upload_matched_image['thumbnail']); ?>">
+							<img height="150" referrerPolicy="no-referrer" src="<?php echo esc_html($bulk_image_upload_matched_image['thumbnail']); ?>">
 						</td>
 						<td>
 							<?php echo esc_html($bulk_image_upload_matched_image['image_name']); ?>
