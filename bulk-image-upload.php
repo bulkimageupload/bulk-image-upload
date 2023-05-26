@@ -129,7 +129,7 @@ function bulk_image_upload_render_matching_results() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Security Key not found. Please reactivate the app to fix the issue.' );
 	}
 
-	$response = wp_remote_get( 'https://bulkimageupload.com/google-drive/matching-results?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&folder=' . urlencode( $folder_id ) . '&matching_method=' . urlencode($matching_method) );
+	$response = wp_remote_get( 'https://bulkimageupload.com/woo-commerce/match-images?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&folderKey=' . urlencode( $folder_id ) . '&matchingMethod=' . urlencode($matching_method) );
 
 	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
 		//Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );

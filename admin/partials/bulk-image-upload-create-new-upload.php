@@ -42,7 +42,7 @@
 					<option>Select Folder</option>
 					<?php foreach ( $args['folders'] as $bulk_image_upload_folder_key => $bulk_image_upload_folder ) { ?>
 						<option value="<?php echo esc_html( $bulk_image_upload_folder_key ); ?>">
-							<?php echo esc_html( $bulk_image_upload_folder ); ?>
+							<?php echo esc_html( $bulk_image_upload_folder['name'] ); ?>
 						</option>
 					<?php } ?>
 				</select>
