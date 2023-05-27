@@ -1,4 +1,4 @@
-Bulk Image Upload
+Bulk Image Upload.
 =================
 
 ## Check Standards
