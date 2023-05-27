@@ -123,7 +123,7 @@ function bulk_image_upload_remove_google_drive_connection() {
 	$domain = get_site_url();
 	$key    = get_option( 'bulk_image_upload_security_key' );
 
-	$remove_google_drive_connection_endpoint_url = 'https://bulkimageupload.com/google-drive/woo-commerce/remove-connection?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key );
+	$remove_google_drive_connection_endpoint_url = 'https://bulkimageupload.com/google/remove-connection?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key );
 
 	$response = wp_remote_get( $remove_google_drive_connection_endpoint_url );
 
