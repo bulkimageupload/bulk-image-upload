@@ -129,7 +129,9 @@ function bulk_image_upload_render_matching_results() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Security Key not found. Please reactivate the app to fix the issue.' );
 	}
 
-	$response = wp_remote_get( 'https://bulkimageupload.com/woo-commerce/match-images?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&folderKey=' . urlencode( $folder_id ) . '&matchingMethod=' . urlencode($matching_method) );
+	$matching_endpoint_url = 'https://bulkimageupload.com/woo-commerce/match-images?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&folderKey=' . urlencode( $folder_id ) . '&matchingMethod=' . urlencode($matching_method);
+
+	$response = wp_remote_get( $matching_endpoint_url );
 
 	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
@@ -138,38 +140,35 @@ function bulk_image_upload_render_matching_results() {
 	$body             = wp_remote_retrieve_body( $response );
 	$matching_results = json_decode( $body, true );
 
-	echo "<pre>";
-	var_dump($matching_results);exit;
-
 	/*
 	$matching_results = [
-		'matching_key' => uniqid(),
+		'hash' => uniqid(),
 		'matched_images' => [
 			[
-				'thumbnail' => 'https://botmake.io/storage/24c9e15e52afc47c225b757e7bee1f9d/users/7d2ca05e3c2770f4ce2a8456d2ee639c.jpg?v=1684389620',
-				'image_name' => 'deneme.jpg',
-				'image_size' => '5KB',
+				'thumbnailUrl' => 'https://botmake.io/storage/24c9e15e52afc47c225b757e7bee1f9d/users/7d2ca05e3c2770f4ce2a8456d2ee639c.jpg?v=1684389620',
+				'name' => 'deneme.jpg',
+				'size' => '5KB',
 				'position' => '1',
-				'variant_url' => 'https://botmake.io/storage/24c9e15e52afc47c225b757e7bee1f9d/users/7d2ca05e3c2770f4ce2a8456d2ee639c.jpg?v=1684389620',
-				'variant_name' => 'deneme / red',
+				'productUrl' => 'https://botmake.io/storage/24c9e15e52afc47c225b757e7bee1f9d/users/7d2ca05e3c2770f4ce2a8456d2ee639c.jpg?v=1684389620',
+				'productName' => 'deneme / red',
 				'sku' => 'deneme',
 			],
 			[
-				'thumbnail' => 'https://botmake.io/storage/24c9e15e52afc47c225b757e7bee1f9d/users/7d2ca05e3c2770f4ce2a8456d2ee639c.jpg?v=1684389620',
-				'image_name' => 'deneme.jpg',
-				'image_size' => '5KB',
+				'thumbnailUrl' => 'https://botmake.io/storage/24c9e15e52afc47c225b757e7bee1f9d/users/7d2ca05e3c2770f4ce2a8456d2ee639c.jpg?v=1684389620',
+				'name' => 'deneme.jpg',
+				'size' => '5KB',
 				'position' => '1',
-				'variant_url' => 'https://botmake.io/storage/24c9e15e52afc47c225b757e7bee1f9d/users/7d2ca05e3c2770f4ce2a8456d2ee639c.jpg?v=1684389620',
-				'variant_name' => 'deneme / red',
+				'productUrl' => 'https://botmake.io/storage/24c9e15e52afc47c225b757e7bee1f9d/users/7d2ca05e3c2770f4ce2a8456d2ee639c.jpg?v=1684389620',
+				'productName' => 'deneme / red',
 				'sku' => 'deneme',
 			]
 		],
 		'non_matched_images' => [
 			[
-				'thumbnail' => 'https://botmake.io/storage/24c9e15e52afc47c225b757e7bee1f9d/users/7d2ca05e3c2770f4ce2a8456d2ee639c.jpg?v=1684389620',
-				'image_name' => 'olmadi.jpg',
-				'image_size' => '8kb',
-				'expected_sku' => 'olmadi',
+				'thumbnailUrl' => 'https://botmake.io/storage/24c9e15e52afc47c225b757e7bee1f9d/users/7d2ca05e3c2770f4ce2a8456d2ee639c.jpg?v=1684389620',
+				'name' => 'olmadi.jpg',
+				'size' => '8kb',
+				'expectedSku' => 'olmadi',
 			]
 		]
 	];

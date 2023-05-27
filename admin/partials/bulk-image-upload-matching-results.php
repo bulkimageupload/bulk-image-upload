@@ -36,20 +36,20 @@
 				<?php foreach ($args['matching_results']['matched_images'] as $bulk_image_upload_matched_image) { ?>
 					<tr style="text-align: left;">
 						<td>
-							<img height="150" referrerPolicy="no-referrer" src="<?php echo esc_html($bulk_image_upload_matched_image['thumbnail']); ?>">
+							<img height="150" referrerPolicy="no-referrer" src="<?php echo esc_html($bulk_image_upload_matched_image['thumbnailUrl']); ?>">
 						</td>
 						<td>
-							<?php echo esc_html($bulk_image_upload_matched_image['image_name']); ?>
+							<?php echo esc_html($bulk_image_upload_matched_image['name']); ?>
 						</td>
 						<td>
-							<?php echo esc_html($bulk_image_upload_matched_image['image_size']); ?>
+							<?php echo esc_html($bulk_image_upload_matched_image['size']); ?>
 						</td>
 						<td>
 							<?php echo esc_html($bulk_image_upload_matched_image['position']); ?>
 						</td>
 						<td>
-							<a target="_blank" href="<?php echo esc_html($bulk_image_upload_matched_image['variant_url']); ?>">
-								<?php echo esc_html($bulk_image_upload_matched_image['variant_name']); ?>
+							<a target="_blank" href="<?php echo esc_html($bulk_image_upload_matched_image['productUrl']); ?>">
+								<?php echo esc_html($bulk_image_upload_matched_image['productName']); ?>
 							</a>
 						</td>
 						<td>
@@ -84,16 +84,16 @@
 				<?php foreach ($args['matching_results']['non_matched_images'] as $bulk_image_upload_non_matched_image) { ?>
 					<tr style="text-align: left;">
 						<td>
-							<img width="150" referrerPolicy="no-referrer" src="<?php echo esc_html($bulk_image_upload_non_matched_image['thumbnail']); ?>">
+							<img width="150" referrerPolicy="no-referrer" src="<?php echo esc_html($bulk_image_upload_non_matched_image['thumbnailUrl']); ?>">
 						</td>
 						<td>
-							<?php echo esc_html($bulk_image_upload_non_matched_image['image_name']); ?>
+							<?php echo esc_html($bulk_image_upload_non_matched_image['name']); ?>
 						</td>
 						<td>
-							<?php echo esc_html($bulk_image_upload_non_matched_image['image_size']); ?>
+							<?php echo esc_html($bulk_image_upload_non_matched_image['size']); ?>
 						</td>
 						<td>
-							<?php echo esc_html(strtoupper($bulk_image_upload_non_matched_image['expected_sku'])); ?>
+							<?php echo esc_html(strtoupper($bulk_image_upload_non_matched_image['expectedSku'])); ?>
 						</td>
 					</tr>
 				<?php } ?>
