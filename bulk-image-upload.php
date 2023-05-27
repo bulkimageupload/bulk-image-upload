@@ -132,12 +132,16 @@ function bulk_image_upload_render_matching_results() {
 	$response = wp_remote_get( 'https://bulkimageupload.com/woo-commerce/match-images?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&folderKey=' . urlencode( $folder_id ) . '&matchingMethod=' . urlencode($matching_method) );
 
 	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
-		//Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
+		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
 	}
 
 	$body             = wp_remote_retrieve_body( $response );
 	$matching_results = json_decode( $body, true );
 
+	echo "<pre>";
+	var_dump($matching_results);exit;
+
+	/*
 	$matching_results = [
 		'matching_key' => uniqid(),
 		'matched_images' => [
@@ -169,6 +173,7 @@ function bulk_image_upload_render_matching_results() {
 			]
 		]
 	];
+	*/
 
 	load_template(
 		plugin_dir_path( __FILE__ ) . 'admin/partials/bulk-image-upload-matching-results.php',
