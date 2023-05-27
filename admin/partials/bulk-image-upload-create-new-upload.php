@@ -35,7 +35,10 @@
 
 				<div class="biu-description">
 					<?php esc_html_e( 'If you want to connect different Google Drive account', 'bulk-image-upload' ); ?>
-					<a href="#"><?php esc_html_e( 'click here', 'bulk-image-upload' ); ?></a>
+					<?php
+					$bulk_image_upload_remove_google_drive_connection = get_admin_url( null, 'admin.php?page=bulk-image-upload-remove-google-drive-connection' );
+					?>
+					<a href="<?php echo esc_url($bulk_image_upload_remove_google_drive_connection); ?>"><?php esc_html_e( 'click here', 'bulk-image-upload' ); ?></a>
 				</div>
 
 				<select id="choose-folder-dropdown" class="biu-select">
