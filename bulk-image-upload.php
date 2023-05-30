@@ -125,9 +125,7 @@ function bulk_image_upload_remove_google_drive_connection() {
 
 	$remove_google_drive_connection_endpoint_url = 'https://bulkimageupload.com/google-drive?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key );
 
-	$response = wp_remote_get( $remove_google_drive_connection_endpoint_url );
-
-	\WP_Http::request( $remove_google_drive_connection_endpoint_url, [
+	$response = wp_remote_request( $remove_google_drive_connection_endpoint_url, [
 		'method' => 'DELETE'
 	] );
 
