@@ -123,9 +123,13 @@ function bulk_image_upload_remove_google_drive_connection() {
 	$domain = get_site_url();
 	$key    = get_option( 'bulk_image_upload_security_key' );
 
-	$remove_google_drive_connection_endpoint_url = 'https://bulkimageupload.com/google/remove-connection?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key );
+	$remove_google_drive_connection_endpoint_url = 'https://bulkimageupload.com/google-drive?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key );
 
 	$response = wp_remote_get( $remove_google_drive_connection_endpoint_url );
+
+	\WP_Http::request( $remove_google_drive_connection_endpoint_url, [
+		'method' => 'DELETE'
+	] );
 
 	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
