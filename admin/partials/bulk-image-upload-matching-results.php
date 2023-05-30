@@ -13,9 +13,9 @@
 		<hr>
 		<h2><?php esc_html_e('Matching Results', 'bulk-image-upload'); ?></h2>
 
-		<?php if (count($args['matching_results']['matched_images']) > 0) { ?>
+		<?php if (count($args['matching_results']['matchedImages']) > 0) { ?>
 			<div class="notice notice-success biu-notice">
-				Total <?php echo esc_html(count($args['matching_results']['matched_images'])); ?> images successfully matched.
+				Total <?php echo esc_html(count($args['matching_results']['matchedImages'])); ?> images successfully matched.
 				<br>
 				<div class="biu-mt-10">
 					<a class="button button-primary">
@@ -64,7 +64,7 @@
 
 		<?php if (count($args['matching_results']['nonMatchedImages']) > 0) { ?>
 			<div class="notice notice-error biu-notice biu-mt-20">
-				Total <?php echo esc_html(count($args['matching_results']['non_matched_images'])); ?> images couldn't be matched.
+				Total <?php echo esc_html(count($args['matching_results']['nonMatchedImages'])); ?> images couldn't be matched.
 				<br>
 				<div class="biu-mt-10">
 					<a href="/" id="try-again" class="button button-primary">
@@ -81,7 +81,7 @@
 					<th>Image Size</th>
 					<th>Expected SKU</th>
 				</thead>
-				<?php foreach ($args['matching_results']['non_matched_images'] as $bulk_image_upload_non_matched_image) { ?>
+				<?php foreach ($args['matching_results']['nonMatchedImages'] as $bulk_image_upload_non_matched_image) { ?>
 					<tr style="text-align: left;">
 						<td>
 							<img width="150" referrerPolicy="no-referrer" src="<?php echo esc_html($bulk_image_upload_non_matched_image['thumbnailUrl']); ?>">
