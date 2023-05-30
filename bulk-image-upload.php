@@ -178,7 +178,7 @@ function bulk_image_upload_render_matching_results() {
 	$matching_results = json_decode( $body, true );
 
 	echo "<pre>";
-	var_dump($matching_results);exit;
+	var_dump($body);exit;
 
 	/*
 	$matching_results = [
