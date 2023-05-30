@@ -33,7 +33,7 @@
 				<th>Variant</th>
 				<th>SKU</th>
 				</thead>
-				<?php foreach ($args['matching_results']['matched_images'] as $bulk_image_upload_matched_image) { ?>
+				<?php foreach ($args['matching_results']['matchedImages'] as $bulk_image_upload_matched_image) { ?>
 					<tr style="text-align: left;">
 						<td>
 							<img height="150" referrerPolicy="no-referrer" src="<?php echo esc_html($bulk_image_upload_matched_image['thumbnailUrl']); ?>">
@@ -62,7 +62,7 @@
 
 
 
-		<?php if (count($args['matching_results']['non_matched_images']) > 0) { ?>
+		<?php if (count($args['matching_results']['nonMatchedImages']) > 0) { ?>
 			<div class="notice notice-error biu-notice biu-mt-20">
 				Total <?php echo esc_html(count($args['matching_results']['non_matched_images'])); ?> images couldn't be matched.
 				<br>
