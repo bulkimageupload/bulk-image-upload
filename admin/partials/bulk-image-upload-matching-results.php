@@ -14,15 +14,34 @@
 		<h2><?php esc_html_e('Matching Results', 'bulk-image-upload'); ?></h2>
 
 		<?php if (count($args['matching_results']['matchedImages']) > 0) { ?>
-			<div class="notice notice-success biu-notice">
-				Total <?php echo esc_html(count($args['matching_results']['matchedImages'])); ?> images successfully matched.
+		<div class="notice notice-success biu-notice">
+			Total <?php echo esc_html(count($args['matching_results']['matchedImages'])); ?> images successfully matched.
+			<br>
+			<div class="biu-mt-10">
+				<a class="button button-primary">
+					Start Upload
+				</a>
+			</div>
+		</div>
+		<?php } ?>
+
+		<?php if (count($args['matching_results']['nonMatchedImages']) > 0) { ?>
+			<div class="notice notice-error biu-notice biu-mt-20">
+				Total <?php echo esc_html(count($args['matching_results']['nonMatchedImages'])); ?> images couldn't be matched.
 				<br>
 				<div class="biu-mt-10">
-					<a class="button button-primary">
-						Start Upload
+					<a href="/" id="try-again" class="button button-primary">
+						Restart Matching
+						<img style="margin-top: 10px; display: none" id="loading-try-again" width="10"
+						     src="<?php echo esc_url( Bulk_Image_Upload_Folder::get_images_url() . 'loading.gif' ); ?>"/>
 					</a>
 				</div>
 			</div>
+		<?php } ?>
+
+		<?php if (count($args['matching_results']['matchedImages']) > 0) { ?>
+
+			<h2>Matched Images</h2>
 
 			<table class="widefat fixed biu-mt-20 striped">
 				<thead style="background-color: #68de7c">
@@ -63,17 +82,9 @@
 
 
 		<?php if (count($args['matching_results']['nonMatchedImages']) > 0) { ?>
-			<div class="notice notice-error biu-notice biu-mt-20">
-				Total <?php echo esc_html(count($args['matching_results']['nonMatchedImages'])); ?> images couldn't be matched.
-				<br>
-				<div class="biu-mt-10">
-					<a href="/" id="try-again" class="button button-primary">
-						Restart Matching
-						<img style="margin-top: 10px; display: none" id="loading-try-again" width="10"
-							 src="<?php echo esc_url( Bulk_Image_Upload_Folder::get_images_url() . 'loading.gif' ); ?>"/>
-					</a>
-				</div>
-			</div>
+
+			<h2>Non Matched Images</h2>
+
 			<table class="widefat fixed biu-mt-20 striped">
 				<thead style="background-color: #ff8085">
 					<th>Image Preview</th>
