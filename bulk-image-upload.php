@@ -168,9 +168,7 @@ function bulk_image_upload_render_matching_results() {
 
 	$matching_endpoint_url = 'https://bulkimageupload.com/woo-commerce/match-images?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&folderKey=' . urlencode( $folder_id ) . '&matchingMethod=' . urlencode($matching_method);
 
-	echo $matching_endpoint_url;exit;
-
-	$response = wp_remote_get( $matching_endpoint_url );
+	$response = wp_remote_get( $matching_endpoint_url, ['timeout' => 3600] );
 
 	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
