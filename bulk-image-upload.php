@@ -174,11 +174,11 @@ function bulk_image_upload_render_matching_results() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
 	}
 
+	echo "<pre>";
+	var_dump($response);exit;
+
 	$body             = wp_remote_retrieve_body( $response );
 	$matching_results = json_decode( $body, true );
-
-	echo "<pre>";
-	var_dump($body);exit;
 
 	/*
 	$matching_results = [
