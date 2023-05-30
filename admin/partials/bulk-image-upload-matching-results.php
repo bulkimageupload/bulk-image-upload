@@ -93,7 +93,7 @@
 							<?php echo esc_html($bulk_image_upload_non_matched_image['size']); ?>
 						</td>
 						<td>
-							<?php echo esc_html(strtoupper($bulk_image_upload_non_matched_image['expectedSku'])); ?>
+							<?php echo esc_html(strtoupper($bulk_image_upload_non_matched_image['sku'])); ?>
 						</td>
 					</tr>
 				<?php } ?>
