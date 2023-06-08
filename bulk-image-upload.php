@@ -108,6 +108,45 @@ function bulk_image_upload_register_menu_page() {
 		'bulk-image-upload-remove-google-drive-connection',
 		'bulk_image_upload_remove_google_drive_connection'
 	);
+
+	add_submenu_page(
+		null,
+		'Send Upload Request',
+		'Send Upload Request',
+		'manage_woocommerce',
+		'bulk-image-upload-send-upload-request',
+		'bulk_image_upload_send_upload_request'
+	);
+}
+
+/**
+ * The function sending request to the Bulk Image Upload service to start upload job
+ *
+ * @return void
+ */
+function bulk_image_upload_send_upload_request() {
+	if ( ! bulk_image_upload_is_woocommerce_plugin_active() ) {
+		Bulk_Image_Upload_Error_Template::show_error_template( 'WooCommerce plugin needs to be installed.' );
+	}
+
+	if ( empty( $_GET['matching_hash'] ) ) {
+		Bulk_Image_Upload_Error_Template::show_error_template( 'matching_hash is mandatory parameter.' );
+	}
+
+	$domain = get_site_url();
+	$key    = get_option( 'bulk_image_upload_security_key' );
+
+	$upload_request_endpoint_url = 'https://bulkimageupload.com/google-drive?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key );
+
+	$response = wp_remote_request( $upload_request_endpoint_url );
+
+	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
+		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
+	}
+
+	$dashboard_url = get_admin_url( null, 'admin.php?page=bulk-image-upload' );
+	wp_redirect( $dashboard_url );
+	exit;
 }
 
 /**
