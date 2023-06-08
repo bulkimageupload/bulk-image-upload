@@ -18,7 +18,7 @@
 			Total <?php echo esc_html(count($args['matching_results']['matchedImages'])); ?> images successfully matched.
 			<br>
 			<div class="biu-mt-10">
-				<a href="<?php echo esc_url(get_admin_url( null, 'admin.php?page=bulk-image-upload-send-upload-request' ).'&matching_hash='.$args['matching_results']['hash']) ?>" class="button button-primary">
+				<a href="<?php echo esc_url(get_admin_url( null, 'admin.php?page=bulk-image-upload-send-upload-request' ) . '&matching_hash=' . $args['matching_results']['hash']); ?>" class="button button-primary">
 					Start Upload
 				</a>
 			</div>
@@ -33,7 +33,7 @@
 					<a href="/" id="try-again" class="button button-primary">
 						Restart Matching
 						<img style="margin-top: 10px; display: none" id="loading-try-again" width="10"
-						     src="<?php echo esc_url( Bulk_Image_Upload_Folder::get_images_url() . 'loading.gif' ); ?>"/>
+							 src="<?php echo esc_url( Bulk_Image_Upload_Folder::get_images_url() . 'loading.gif' ); ?>"/>
 					</a>
 				</div>
 			</div>
