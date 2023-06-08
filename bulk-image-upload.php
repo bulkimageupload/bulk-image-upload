@@ -250,6 +250,8 @@ function bulk_image_upload_render_matching_results() {
 	];
 	*/
 
+	echo "<pre>";var_dump($matching_results);exit;
+
 	load_template(
 		plugin_dir_path( __FILE__ ) . 'admin/partials/bulk-image-upload-matching-results.php',
 		true,
