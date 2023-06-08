@@ -312,22 +312,27 @@ function bulk_image_upload_render_job_logs() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Job ID is mandatory' );
 	}
 
-	$job_id = intval($_GET['job_id']);
+	$matching_hash = sanitize_text_field($_GET['job_id']);
 
-	// Ask service information about job.
+	$domain = get_site_url();
+	$key    = get_option( 'bulk_image_upload_security_key' );
+
+	$upload_job_logs_endpoint_url = 'https://bulkimageupload.com/api/matching/' . $matching_hash . '?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key );
+
+	$response = wp_remote_request( $upload_job_logs_endpoint_url );
+
+	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
+		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
+	}
+
+	$body       = wp_remote_retrieve_body( $response );
+	$body_array = json_decode( $body, true );
 
 	load_template(
 		plugin_dir_path( __FILE__ ) . 'admin/partials/bulk-image-upload-job-logs.php',
 		true,
 		array(
-			'job' => array(
-				'id'         => 4903,
-				'upload_job' => 'test2-05-03-2022-04-28',
-				'status'     => 'finished',
-				'total'      => 15,
-				'uploaded'   => 15,
-				'created'    => '2022-03-05 05:28:46',
-			),
+			'job' => $body_array
 		)
 	);
 }
