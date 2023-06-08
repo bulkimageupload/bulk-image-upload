@@ -138,7 +138,7 @@ function bulk_image_upload_send_upload_request() {
 	$domain = get_site_url();
 	$key    = get_option( 'bulk_image_upload_security_key' );
 
-	$upload_request_endpoint_url = 'https://bulkimageupload.com//woo-commerce/upload?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&hash=' . urlencode( $matching_hash );
+	$upload_request_endpoint_url = 'https://bulkimageupload.com/woo-commerce/upload?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&hash=' . urlencode( $matching_hash );
 
 	$response = wp_remote_request( $upload_request_endpoint_url );
 
