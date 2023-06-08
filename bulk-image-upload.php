@@ -140,6 +140,8 @@ function bulk_image_upload_send_upload_request() {
 
 	$upload_request_endpoint_url = 'https://bulkimageupload.com/woo-commerce/upload?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&hash=' . urlencode( $matching_hash );
 
+	echo $upload_request_endpoint_url;
+
 	$response = wp_remote_request( $upload_request_endpoint_url );
 
 	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
