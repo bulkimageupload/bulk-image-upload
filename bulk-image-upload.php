@@ -133,10 +133,12 @@ function bulk_image_upload_send_upload_request() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'matching_hash is mandatory parameter.' );
 	}
 
+	$matching_hash = sanitize_text_field($_GET['matching_hash']);
+
 	$domain = get_site_url();
 	$key    = get_option( 'bulk_image_upload_security_key' );
 
-	$upload_request_endpoint_url = 'https://bulkimageupload.com/google-drive?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key );
+	$upload_request_endpoint_url = 'https://bulkimageupload.com//woo-commerce/upload?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&hash=' . urlencode( $matching_hash );
 
 	$response = wp_remote_request( $upload_request_endpoint_url );
 
