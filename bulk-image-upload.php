@@ -142,7 +142,9 @@ function bulk_image_upload_send_upload_request() {
 
 	echo $upload_request_endpoint_url;
 
-	$response = wp_remote_request( $upload_request_endpoint_url );
+	$response = wp_remote_request( $upload_request_endpoint_url, [
+		'method' => 'POST'
+	]);
 
 	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
