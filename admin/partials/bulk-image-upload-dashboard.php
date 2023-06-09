@@ -145,7 +145,7 @@ $bulk_image_upload_key    = $args['key'];
 					window.location = url;
 				});
 
-                jQuery('head').append('<meta http-equiv="refresh" content="5"/>');
+                //jQuery('head').append('<meta http-equiv="refresh" content="5"/>');
 			});
 		</script>
 	</div>
