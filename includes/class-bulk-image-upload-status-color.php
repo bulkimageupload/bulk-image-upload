@@ -14,11 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Bulk_Image_Upload_Status_Color {
 
-	const JOB_STATUS_PENDING              = 'pending';
-	const JOB_STATUS_PROCESSING           = 'processing';
-	const JOB_STATUS_COMPLETED            = 'completed';
-	const JOB_STATUS_FINISHED_WITH_ERRORS = 'finished_with_errors';
-	const JOB_STATUS_FAILED               = 'failed';
+	const JOB_STATUS_PENDING               = 'pending';
+	const JOB_STATUS_PROCESSING            = 'processing';
+	const JOB_STATUS_COMPLETED             = 'completed';
+	const JOB_STATUS_COMPLETED_WITH_ERRORS = 'completed_with_errors';
+	const JOB_STATUS_FAILED                = 'failed';
 
 	/**
 	 * Mapping of statuses to color codes
@@ -26,11 +26,11 @@ class Bulk_Image_Upload_Status_Color {
 	 * @var string[]
 	 */
 	private static $colors_by_statuses = array(
-		self::JOB_STATUS_FAILED               => '#ffabaf',
-		self::JOB_STATUS_COMPLETED            => '#68de7c',
-		self::JOB_STATUS_PROCESSING           => '#c5d9ed',
-		self::JOB_STATUS_PENDING              => '#f5e6ab',
-		self::JOB_STATUS_FINISHED_WITH_ERRORS => '#b8e6bf',
+		self::JOB_STATUS_FAILED                => '#ffabaf',
+		self::JOB_STATUS_COMPLETED             => '#68de7c',
+		self::JOB_STATUS_PROCESSING            => '#c5d9ed',
+		self::JOB_STATUS_PENDING               => '#f5e6ab',
+		self::JOB_STATUS_COMPLETED_WITH_ERRORS => '#b8e6bf',
 	);
 
 	/**

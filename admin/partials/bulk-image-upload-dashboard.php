@@ -19,7 +19,6 @@ $bulk_image_upload_key    = $args['key'];
 		<hr>
 
 		<?php if ( array_key_exists( 'is_connected_to_service', $args ) && false === $args['is_connected_to_service'] ) { ?>
-
 			<div class="biu-mt-20">
 				<img style="width: 350px"
 					src="<?php echo esc_url( Bulk_Image_Upload_Folder::get_images_url() . 'going-up.svg' ); ?>">
@@ -32,7 +31,18 @@ $bulk_image_upload_key    = $args['key'];
 			</div>
 
 			<?php
-			$bulk_image_upload_connection_url = 'https://bulkimageupload.com/woo-commerce/register?domain=' . urlencode( $bulk_image_upload_domain ) . '&key=' . urlencode( $bulk_image_upload_key ) . '&user_id=' . get_current_user_id();
+
+			$bulk_image_upload_date_format = get_option('date_format').' '.get_option('time_format');
+			if(empty($bulk_image_upload_date_format)){
+				$bulk_image_upload_date_format = 'd/m/Y H:i';
+			}
+
+			$bulk_image_upload_timezone = get_option('timezone_string');
+			if(empty($bulk_image_upload_timezone)){
+				$bulk_image_upload_timezone = 'Europe/Amsterdam';
+			}
+
+			$bulk_image_upload_connection_url = 'https://bulkimageupload.com/woo-commerce/register?domain=' . urlencode( $bulk_image_upload_domain ) . '&key=' . urlencode( $bulk_image_upload_key ) . '&user_id=' . get_current_user_id(). '&date_format='.urlencode($bulk_image_upload_date_format).'&timezone='.urldecode($bulk_image_upload_timezone);
 			echo '<a href="' . esc_url( $bulk_image_upload_connection_url ) . '" class="button button-primary button-large">' . esc_html__( 'Connect', 'bulk-image-upload' ) . '</a>';
 			?>
 

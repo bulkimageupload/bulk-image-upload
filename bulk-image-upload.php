@@ -350,11 +350,6 @@ function bulk_image_upload_render_plugin_page() {
 
 	$domain      = get_site_url();
 	$key         = get_option( 'bulk_image_upload_security_key' );
-	$date_format = get_option('date_format').' '.get_option('time_format');
-
-	if(empty($date_format)){
-		$date_format = 'd/m/Y H:i';
-	}
 
 	if ( empty( $key ) ) {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Security Key not found. Please reactivate the app to fix the issue.' );
@@ -372,13 +367,9 @@ function bulk_image_upload_render_plugin_page() {
 	$shop_data = array(
 		'domain'      => $domain,
 		'key'         => $key,
-		'date_format' => $date_format,
 	);
 
 	$arguments = array_merge( $shop_data, $body_json );
-
-	echo "<pre>";
-	var_dump($arguments);exit;
 
 	load_template(
 		plugin_dir_path( __FILE__ ) . 'admin/partials/bulk-image-upload-dashboard.php',
