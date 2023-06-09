@@ -8,4 +8,3 @@ Bulk Image Upload.
 ## Fix Standards
 
 phpcbf --standard=phpcs.xml .
-
