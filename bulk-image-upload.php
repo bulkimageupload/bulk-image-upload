@@ -414,8 +414,6 @@ function bulk_image_upload_render_plugin_page() {
 
 	$arguments = array_merge( $shop_data, $body_json );
 
-	echo '<pre>';var_dump($arguments);exit;
-
 	load_template(
 		plugin_dir_path( __FILE__ ) . 'admin/partials/bulk-image-upload-dashboard.php',
 		true,
