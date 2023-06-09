@@ -119,7 +119,7 @@ $bulk_image_upload_key    = $args['key'];
 									<?php echo esc_html( $bulk_image_upload_job['status'] ); ?>
 								</div>
 							</td>
-							<td><?php echo esc_html( date_format($bulk_image_upload_job['createdAt']['date'], $args['date_format']) ); ?></td>
+							<td><?php echo esc_html( date($args['date_format'], strtotime($bulk_image_upload_job['createdAt']['date']))); ?></td>
 							<td><?php echo esc_html( $bulk_image_upload_job['totalImageCount'] ); ?></td>
 							<td><?php echo esc_html( $bulk_image_upload_job['uploadedImageCount'] ); ?></td>
 							<td>
