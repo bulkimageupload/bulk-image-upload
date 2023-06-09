@@ -348,8 +348,8 @@ function bulk_image_upload_render_plugin_page() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'WooCommerce plugin needs to be installed.' );
 	}
 
-	$domain      = get_site_url();
-	$key         = get_option( 'bulk_image_upload_security_key' );
+	$domain = get_site_url();
+	$key    = get_option( 'bulk_image_upload_security_key' );
 
 	if ( empty( $key ) ) {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Security Key not found. Please reactivate the app to fix the issue.' );

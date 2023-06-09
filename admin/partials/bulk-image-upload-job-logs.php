@@ -18,7 +18,7 @@
 
 		<script type="text/javascript">
 			jQuery(document).ready(function () {
-                jQuery('head').append('<meta http-equiv="refresh" content="5"/>');
+				jQuery('head').append('<meta http-equiv="refresh" content="5"/>');
 			});
 		</script>
 	</div>
