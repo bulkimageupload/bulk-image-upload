@@ -21,11 +21,11 @@
 			</div>
 		</h2>
 
-		<?php if(empty($args['job']['uploadLogs'])){ ?>
+		<?php if (empty($args['job']['uploadLogs'])) { ?>
 			<?php esc_html_e( 'Upload job is waiting in queue. It automatically will be processed.', 'bulk-image-upload' ); ?>
-		<?php }else{ ?>
+		<?php } else { ?>
 			<div style="background-color: #dfe0e1; text-align: left; padding: 5px">
-			<?php foreach ($args['job']['uploadLogs'] as $bulk_image_upload_log){ ?>
+			<?php foreach ($args['job']['uploadLogs'] as $bulk_image_upload_log) { ?>
 				<?php echo $bulk_image_upload_log; ?><br>
 			<?php } ?>
 			</div>
