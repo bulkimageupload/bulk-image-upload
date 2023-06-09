@@ -24,7 +24,7 @@
 		<?php if(empty($args['job']['uploadLogs'])){ ?>
 			<?php esc_html_e( 'Upload job is waiting in queue. It automatically will be processed.', 'bulk-image-upload' ); ?>
 		<?php }else{ ?>
-			<div style="background-color: #dfe0e1">
+			<div style="background-color: #dfe0e1; text-align: left">
 			<?php foreach ($args['job']['uploadLogs'] as $bulk_image_upload_log){ ?>
 				<?php echo $bulk_image_upload_log; ?><br>
 			<?php } ?>
