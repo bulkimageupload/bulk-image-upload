@@ -329,7 +329,7 @@ function bulk_image_upload_render_job_logs() {
 	$body_array = json_decode( $body, true );
 
 	echo '<pre>';
-	var_dump($body_array);exit;
+	var_dump($body_array);
 
 	load_template(
 		plugin_dir_path( __FILE__ ) . 'admin/partials/bulk-image-upload-job-logs.php',
