@@ -39,6 +39,13 @@
 			</div>
 		<?php } ?>
 
+		<div class="biu-mt-20">
+			<a class="button button-primary"
+			   href="<?php echo esc_url( get_admin_url( null, 'admin.php?page=bulk-image-upload' ) ); ?>">
+				Go to Dashboard
+			</a>
+		</div>
+
 		<script type="text/javascript">
 			jQuery(document).ready(function () {
 				jQuery('head').append('<meta http-equiv="refresh" content="5"/>');
