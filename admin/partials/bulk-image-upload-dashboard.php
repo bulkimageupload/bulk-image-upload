@@ -97,25 +97,25 @@ $bulk_image_upload_key    = $args['key'];
 					<thead style="background-color: #dcdcde">
 					<tr>
 						<th>
-							Job ID
+							<?php esc_html_e( 'Job ID', 'bulk-image-upload' ); ?>
 						</th>
 						<th>
-							Name
+							<?php esc_html_e( 'Name', 'bulk-image-upload' ); ?>
 						</th>
 						<th>
-							Status
+							<?php esc_html_e( 'Status', 'bulk-image-upload' ); ?>
 						</th>
 						<th>
-							Created
+							<?php esc_html_e( 'Created', 'bulk-image-upload' ); ?>
 						</th>
 						<th>
-							Total
+							<?php esc_html_e( 'Total', 'bulk-image-upload' ); ?>
 						</th>
 						<th>
-							Uploaded
+							<?php esc_html_e( 'Uploaded', 'bulk-image-upload' ); ?>
 						</th>
 						<th>
-							Details
+							<?php esc_html_e( 'Details', 'bulk-image-upload' ); ?>
 						</th>
 					</tr>
 					</thead>
@@ -134,7 +134,7 @@ $bulk_image_upload_key    = $args['key'];
 							<td><?php echo esc_html( $bulk_image_upload_job['uploadedImageCount'] ); ?></td>
 							<td>
 								<a href="<?php echo esc_url( get_admin_url( null, 'admin.php?page=bulk-image-upload-job-logs' ) . '&job_id=' . $bulk_image_upload_job['id'] ); ?>">
-								Show Logs
+									<?php esc_html_e( 'Show Logs', 'bulk-image-upload' ); ?>
 								</a>
 							</td>
 						</tr>

@@ -14,7 +14,18 @@
 
 		<hr>
 
-		<h2><?php echo esc_html( $args['job']['hash'] ); ?></h2>
+		<h2>
+			<?php echo esc_html( $args['job']['hash'] ); ?>
+			<div class="biu-badge" style="background-color: <?php echo esc_html( Bulk_Image_Upload_Status_Color::get_color_by_status( $args['job']['status'] ) ); ?>">
+				<?php echo esc_html( $args['job']['status']  ); ?>
+			</div>
+		</h2>
+
+		<?php if(empty($args['job']['uploadLogs'])){ ?>
+			<?php esc_html_e( 'Upload job is waiting in queue. It automatically will be processed.', 'bulk-image-upload' ); ?>
+		<?php }else{ ?>
+			<pre><?php echo esc_html( $args['job']['uploadLogs']); ?></pre>
+		<?php } ?>
 
 		<script type="text/javascript">
 			jQuery(document).ready(function () {
