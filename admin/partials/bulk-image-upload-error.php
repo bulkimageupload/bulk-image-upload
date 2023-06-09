@@ -23,7 +23,7 @@
 		<div class="biu-mt-20">
 			<a class="button button-primary"
 			   href="<?php echo esc_url( get_admin_url( null, 'admin.php?page=bulk-image-upload' ) ); ?>">
-				Go to Dashboard
+				<?php esc_html_e( 'Go to Dashboard', 'bulk-image-upload' ); ?>
 			</a>
 		</div>
 

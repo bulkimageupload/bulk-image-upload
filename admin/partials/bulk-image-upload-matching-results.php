@@ -41,16 +41,16 @@
 
 		<?php if (count($args['matching_results']['matchedImages']) > 0) { ?>
 
-			<h2>Matched Images</h2>
+			<h2><?php esc_html_e( 'Matched Images', 'bulk-image-upload' ); ?></h2>
 
 			<table class="widefat fixed biu-mt-20 striped">
 				<thead style="background-color: #68de7c">
-				<th>Image Preview</th>
-				<th>Image Name</th>
-				<th>Image Size</th>
-				<th>Position</th>
-				<th>Variant</th>
-				<th>SKU</th>
+				<th><?php esc_html_e( 'Image Preview', 'bulk-image-upload' ); ?></th>
+				<th><?php esc_html_e( 'Image Name', 'bulk-image-upload' ); ?></th>
+				<th><?php esc_html_e( 'Image Size', 'bulk-image-upload' ); ?></th>
+				<th><?php esc_html_e( 'Position', 'bulk-image-upload' ); ?></th>
+				<th><?php esc_html_e( 'Product', 'bulk-image-upload' ); ?></th>
+				<th><?php esc_html_e( 'SKU', 'bulk-image-upload' ); ?></th>
 				</thead>
 				<?php foreach ($args['matching_results']['matchedImages'] as $bulk_image_upload_matched_image) { ?>
 					<tr style="text-align: left;">
@@ -83,14 +83,14 @@
 
 		<?php if (count($args['matching_results']['nonMatchedImages']) > 0) { ?>
 
-			<h2>Non Matched Images</h2>
+			<h2><?php esc_html_e( 'Non Matched Images', 'bulk-image-upload' ); ?></h2>
 
 			<table class="widefat fixed biu-mt-20 striped">
 				<thead style="background-color: #ff8085">
-					<th>Image Preview</th>
-					<th>Image Name</th>
-					<th>Image Size</th>
-					<th>Expected SKU</th>
+					<th><?php esc_html_e( 'Image Preview', 'bulk-image-upload' ); ?></th>
+					<th><?php esc_html_e( 'Image Name', 'bulk-image-upload' ); ?></th>
+					<th><?php esc_html_e( 'Image Size', 'bulk-image-upload' ); ?></th>
+					<th><?php esc_html_e( 'Expected SKU', 'bulk-image-upload' ); ?></th>
 				</thead>
 				<?php foreach ($args['matching_results']['nonMatchedImages'] as $bulk_image_upload_non_matched_image) { ?>
 					<tr style="text-align: left;">
