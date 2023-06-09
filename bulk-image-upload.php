@@ -193,14 +193,19 @@ function bulk_image_upload_render_matching_results() {
 	}
 
 	if ( empty( $_GET['folder_id'] ) ) {
-		Bulk_Image_Upload_Error_Template::show_error_template( 'folder is mandatory parameter.' );
+		Bulk_Image_Upload_Error_Template::show_error_template( 'folder_id is mandatory parameter.' );
 	}
 
 	if ( empty( $_GET['matching_method'] ) ) {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'matching_method is mandatory parameter.' );
 	}
 
+	if ( empty( $_GET['folder_name'] ) ) {
+		Bulk_Image_Upload_Error_Template::show_error_template( 'folder_name is mandatory parameter.' );
+	}
+
 	$folder_id       = sanitize_text_field($_GET['folder_id']);
+	$folder_name     = sanitize_text_field($_GET['folder_name']);
 	$matching_method = sanitize_text_field($_GET['matching_method']);
 	$domain          = get_site_url();
 	$key             = get_option( 'bulk_image_upload_security_key' );
@@ -209,7 +214,7 @@ function bulk_image_upload_render_matching_results() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Security Key not found. Please reactivate the app to fix the issue.' );
 	}
 
-	$matching_endpoint_url = 'https://bulkimageupload.com/woo-commerce/match-images?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&folderKey=' . urlencode( $folder_id ) . '&matchingMethod=' . urlencode($matching_method);
+	$matching_endpoint_url = 'https://bulkimageupload.com/woo-commerce/match-images?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&folderKey=' . urlencode( $folder_id ) . '&matchingMethod=' . urlencode( $matching_method ) . '&folderName=' . urlencode( $folder_name );
 
 	$response = wp_remote_get( $matching_endpoint_url, ['timeout' => 3600] );
 
@@ -328,7 +333,9 @@ function bulk_image_upload_render_job_logs() {
 	$body       = wp_remote_retrieve_body( $response );
 	$body_array = json_decode( $body, true );
 
-	echo '<pre>';var_dump($body_array);exit;
+	echo '<pre>';
+var_dump($body_array);
+exit;
 
 	load_template(
 		plugin_dir_path( __FILE__ ) . 'admin/partials/bulk-image-upload-job-logs.php',

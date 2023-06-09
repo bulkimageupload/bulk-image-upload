@@ -106,7 +106,7 @@
 
 					let folder_id = jQuery("#choose-folder-dropdown").val();
 					let matching_method = jQuery("#choose-matching-dropdown").val();
-                    let folder_name = jQuery("#choose-folder-dropdown").find('option:selected').text().trim();
+					let folder_name = jQuery("#choose-folder-dropdown").find('option:selected').text().trim();
 
 					jQuery("#choose-folder-dropdown").prop('disabled', 'disabled');
 					jQuery("#choose-matching-dropdown").prop('disabled', 'disabled');
