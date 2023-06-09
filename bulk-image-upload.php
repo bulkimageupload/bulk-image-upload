@@ -328,6 +328,8 @@ function bulk_image_upload_render_job_logs() {
 	$body       = wp_remote_retrieve_body( $response );
 	$body_array = json_decode( $body, true );
 
+	var_dump($body_array);exit;
+
 	load_template(
 		plugin_dir_path( __FILE__ ) . 'admin/partials/bulk-image-upload-job-logs.php',
 		true,
