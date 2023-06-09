@@ -343,12 +343,18 @@ function bulk_image_upload_render_job_logs() {
  * @return void
  */
 function bulk_image_upload_render_plugin_page() {
+
 	if ( ! bulk_image_upload_is_woocommerce_plugin_active() ) {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'WooCommerce plugin needs to be installed.' );
 	}
 
-	$domain = get_site_url();
-	$key    = get_option( 'bulk_image_upload_security_key' );
+	$domain      = get_site_url();
+	$key         = get_option( 'bulk_image_upload_security_key' );
+	$date_format = get_option('date_format');
+
+	if(empty($date_format)){
+		$date_format = 'd/m/Y';
+	}
 
 	if ( empty( $key ) ) {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Security Key not found. Please reactivate the app to fix the issue.' );
@@ -408,8 +414,9 @@ function bulk_image_upload_render_plugin_page() {
 	);
 
 	$shop_data = array(
-		'domain' => $domain,
-		'key'    => $key,
+		'domain'      => $domain,
+		'key'         => $key,
+		'date_format' => $date_format,
 	);
 
 	$arguments = array_merge( $shop_data, $body_json );
