@@ -111,10 +111,12 @@ $bulk_image_upload_key    = $args['key'];
 					</thead>
 					<tbody>
 					<?php foreach ( $args['uploads'] as $bulk_image_upload_job ) { ?>
-						<tr style="text-align: left; background-color: <?php echo esc_html( Bulk_Image_Upload_Status_Color::get_color_by_status( $bulk_image_upload_job['status'] ) ); ?>">
+						<tr style="text-align: left;">
 						<td><?php echo esc_html( $bulk_image_upload_job['id'] ); ?></td>
 							<td><?php echo esc_html( $bulk_image_upload_job['name'] ); ?></td>
-							<td><?php echo esc_html( $bulk_image_upload_job['status'] ); ?></td>
+							<td style="background-color: <?php echo esc_html( Bulk_Image_Upload_Status_Color::get_color_by_status( $bulk_image_upload_job['status'] ) ); ?>" >
+								<?php echo esc_html( $bulk_image_upload_job['status'] ); ?>
+							</td>
 							<td><?php echo esc_html( $bulk_image_upload_job['createdAt']['date'] ); ?></td>
 							<td><?php echo esc_html( $bulk_image_upload_job['totalImageCount'] ); ?></td>
 							<td><?php echo esc_html( $bulk_image_upload_job['uploadedImageCount'] ); ?></td>
