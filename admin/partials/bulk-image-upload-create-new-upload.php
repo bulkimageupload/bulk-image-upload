@@ -106,11 +106,12 @@
 
 					let folder_id = jQuery("#choose-folder-dropdown").val();
 					let matching_method = jQuery("#choose-matching-dropdown").val();
+                    let folder_name = jQuery("#choose-folder-dropdown").find('option:selected').text();
 
 					jQuery("#choose-folder-dropdown").prop('disabled', 'disabled');
 					jQuery("#choose-matching-dropdown").prop('disabled', 'disabled');
 
-					let url= "<?php echo esc_url(get_admin_url( null, 'admin.php?page=bulk-image-upload-matching-results' )); ?>&folder_id="+folder_id+"&matching_method="+matching_method;
+					let url= "<?php echo esc_url(get_admin_url( null, 'admin.php?page=bulk-image-upload-matching-results' )); ?>&folder_id="+folder_id+"&matching_method="+matching_method+"&folder_name="+encodeURIComponent(folder_name);
 					window.location=url;
 				});
 			});
