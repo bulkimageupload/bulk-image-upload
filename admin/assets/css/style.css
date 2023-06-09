@@ -29,3 +29,10 @@
 .biu-notice {
 	padding: 10px;
 }
+
+.biu-badge {
+	color: black;
+	padding: 4px 8px;
+	text-align: center;
+	border-radius: 5px;
+}

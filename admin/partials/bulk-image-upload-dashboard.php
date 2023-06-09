@@ -87,10 +87,10 @@ $bulk_image_upload_key    = $args['key'];
 					<thead style="background-color: #dcdcde">
 					<tr>
 						<th>
-							ID
+							Job ID
 						</th>
 						<th>
-							Upload Job
+							Name
 						</th>
 						<th>
 							Status
@@ -112,10 +112,12 @@ $bulk_image_upload_key    = $args['key'];
 					<tbody>
 					<?php foreach ( $args['uploads'] as $bulk_image_upload_job ) { ?>
 						<tr style="text-align: left;">
-						<td><?php echo esc_html( $bulk_image_upload_job['id'] ); ?></td>
+							<td><?php echo esc_html( $bulk_image_upload_job['id'] ); ?></td>
 							<td><?php echo esc_html( $bulk_image_upload_job['name'] ); ?></td>
-							<td style="background-color: <?php echo esc_html( Bulk_Image_Upload_Status_Color::get_color_by_status( $bulk_image_upload_job['status'] ) ); ?>" >
-								<?php echo esc_html( $bulk_image_upload_job['status'] ); ?>
+							<td>
+								<div class="biu-badge" style="background-color: <?php echo esc_html( Bulk_Image_Upload_Status_Color::get_color_by_status( $bulk_image_upload_job['status'] ) ); ?>">
+									<?php echo esc_html( $bulk_image_upload_job['status'] ); ?>
+								</div>
 							</td>
 							<td><?php echo esc_html( $bulk_image_upload_job['createdAt']['date'] ); ?></td>
 							<td><?php echo esc_html( $bulk_image_upload_job['totalImageCount'] ); ?></td>
