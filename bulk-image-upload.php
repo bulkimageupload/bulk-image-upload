@@ -350,7 +350,7 @@ function bulk_image_upload_render_plugin_page() {
 
 	$domain      = get_site_url();
 	$key         = get_option( 'bulk_image_upload_security_key' );
-	$date_format = get_option('date_format');
+	$date_format = get_option('date_format').' '.get_option('time_format');
 
 	if(empty($date_format)){
 		$date_format = 'd/m/Y';
