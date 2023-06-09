@@ -353,7 +353,7 @@ function bulk_image_upload_render_plugin_page() {
 	$date_format = get_option('date_format').' '.get_option('time_format');
 
 	if(empty($date_format)){
-		$date_format = 'd/m/Y';
+		$date_format = 'd/m/Y H:i';
 	}
 
 	if ( empty( $key ) ) {
@@ -368,50 +368,6 @@ function bulk_image_upload_render_plugin_page() {
 
 	$body      = wp_remote_retrieve_body( $response );
 	$body_json = json_decode( $body, true );
-
-	// sorted by newest first.
-	$last_uploads = array(
-		array(
-			'id'         => 4905,
-			'upload_job' => 'test1-05-03-2022-04-28',
-			'status'     => 'pending',
-			'total'      => 15,
-			'uploaded'   => 0,
-			'created'    => '2022-03-05 04:28:46',
-		),
-		array(
-			'id'         => 4904,
-			'upload_job' => 'test1-05-03-2022-04-28',
-			'status'     => 'running',
-			'total'      => 15,
-			'uploaded'   => 3,
-			'created'    => '2022-03-05 04:28:46',
-		),
-		array(
-			'id'         => 4903,
-			'upload_job' => 'test2-05-03-2022-04-28',
-			'status'     => 'finished',
-			'total'      => 15,
-			'uploaded'   => 15,
-			'created'    => '2022-03-05 05:28:46',
-		),
-		array(
-			'id'         => 4902,
-			'upload_job' => 'test2-05-03-2022-04-28',
-			'status'     => 'finished_with_errors',
-			'total'      => 15,
-			'uploaded'   => 14,
-			'created'    => '2022-03-05 05:28:46',
-		),
-		array(
-			'id'         => 4901,
-			'upload_job' => 'test2-05-03-2022-04-28',
-			'status'     => 'failed',
-			'total'      => 15,
-			'uploaded'   => 0,
-			'created'    => '2022-03-05 05:28:46',
-		),
-	);
 
 	$shop_data = array(
 		'domain'      => $domain,
