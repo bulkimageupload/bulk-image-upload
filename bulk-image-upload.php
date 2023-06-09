@@ -317,9 +317,7 @@ function bulk_image_upload_render_job_logs() {
 	$domain = get_site_url();
 	$key    = get_option( 'bulk_image_upload_security_key' );
 
-	$upload_job_logs_endpoint_url = 'https://bulkimageupload.com/api/matching/' . $matching_hash . '?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key );
-
-	echo $upload_job_logs_endpoint_url;exit;
+	$upload_job_logs_endpoint_url = 'https://bulkimageupload.com/api/matchings/' . $matching_hash . '?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key );
 
 	$response = wp_remote_request( $upload_job_logs_endpoint_url );
 
