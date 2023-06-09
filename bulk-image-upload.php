@@ -225,8 +225,6 @@ function bulk_image_upload_render_matching_results() {
 	$body             = wp_remote_retrieve_body( $response );
 	$matching_results = json_decode( $body, true );
 
-	echo '<pre>';var_dump($matching_results);exit;
-
 	/*
 	$matching_results = [
 		'hash' => uniqid(),
