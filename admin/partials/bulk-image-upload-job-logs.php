@@ -26,7 +26,15 @@
 		<?php } else { ?>
 			<div style="background-color: #dfe0e1; text-align: left; padding: 5px">
 			<?php foreach ($args['job']['uploadLogs'] as $bulk_image_upload_log) { ?>
-				<?php echo $bulk_image_upload_log; ?><br>
+				<?php 
+				echo wp_kses($bulk_image_upload_log, array(
+					'a' => array(
+						'href' => array(),
+						'title' => array()
+					)
+				)); 
+				?>
+				<br>
 			<?php } ?>
 			</div>
 		<?php } ?>
