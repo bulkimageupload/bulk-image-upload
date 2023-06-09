@@ -319,6 +319,8 @@ function bulk_image_upload_render_job_logs() {
 
 	$upload_job_logs_endpoint_url = 'https://bulkimageupload.com/api/matching/' . $matching_hash . '?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key );
 
+	echo $upload_job_logs_endpoint_url;exit;
+
 	$response = wp_remote_request( $upload_job_logs_endpoint_url );
 
 	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
