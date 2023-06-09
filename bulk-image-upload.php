@@ -446,7 +446,7 @@ function bulk_image_upload_is_woocommerce_plugin_active() {
  * @return void
  */
 function bulk_image_upload_register_styles() {
-	$css_version = '1';
+	$css_version = '2';
 	$plugin_url  = plugin_dir_url( __FILE__ );
 	wp_enqueue_style( 'style', $plugin_url . '/admin/assets/css/style.css', array(), $css_version );
 }
