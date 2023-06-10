@@ -225,40 +225,6 @@ function bulk_image_upload_render_matching_results() {
 	$body             = wp_remote_retrieve_body( $response );
 	$matching_results = json_decode( $body, true );
 
-	/*
-	$matching_results = [
-		'hash' => uniqid(),
-		'matched_images' => [
-			[
-				'thumbnailUrl' => 'https://botmake.io/storage/24c9e15e52afc47c225b757e7bee1f9d/users/7d2ca05e3c2770f4ce2a8456d2ee639c.jpg?v=1684389620',
-				'name' => 'deneme.jpg',
-				'size' => '5KB',
-				'position' => '1',
-				'productUrl' => 'https://botmake.io/storage/24c9e15e52afc47c225b757e7bee1f9d/users/7d2ca05e3c2770f4ce2a8456d2ee639c.jpg?v=1684389620',
-				'productName' => 'deneme / red',
-				'sku' => 'deneme',
-			],
-			[
-				'thumbnailUrl' => 'https://botmake.io/storage/24c9e15e52afc47c225b757e7bee1f9d/users/7d2ca05e3c2770f4ce2a8456d2ee639c.jpg?v=1684389620',
-				'name' => 'deneme.jpg',
-				'size' => '5KB',
-				'position' => '1',
-				'productUrl' => 'https://botmake.io/storage/24c9e15e52afc47c225b757e7bee1f9d/users/7d2ca05e3c2770f4ce2a8456d2ee639c.jpg?v=1684389620',
-				'productName' => 'deneme / red',
-				'sku' => 'deneme',
-			]
-		],
-		'non_matched_images' => [
-			[
-				'thumbnailUrl' => 'https://botmake.io/storage/24c9e15e52afc47c225b757e7bee1f9d/users/7d2ca05e3c2770f4ce2a8456d2ee639c.jpg?v=1684389620',
-				'name' => 'olmadi.jpg',
-				'size' => '8kb',
-				'expectedSku' => 'olmadi',
-			]
-		]
-	];
-	*/
-
 	//echo "<pre>";var_dump($matching_results);exit;
 
 	load_template(
