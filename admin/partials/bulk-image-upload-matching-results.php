@@ -67,8 +67,8 @@
 							<?php echo esc_html($bulk_image_upload_matched_image['position']); ?>
 						</td>
 						<td>
-							<a target="_blank" href="<?php echo esc_html($bulk_image_upload_matched_image['productUrl']); ?>">
-								<?php echo esc_html($bulk_image_upload_matched_image['productName']); ?>
+							<a target="_blank" href="<?php echo esc_html($bulk_image_upload_matched_image['product']['adminUrl']); ?>">
+								<?php echo esc_html($bulk_image_upload_matched_image['product']['name']); ?>
 							</a>
 						</td>
 						<td>
