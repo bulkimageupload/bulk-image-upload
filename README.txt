@@ -25,12 +25,16 @@ App will show you all the matching results immediately and you can see clearly i
 If everything looks good you can simply click on "Start Upload" and we will upload all images automatically. While upload in progress you will be able to clearly see all details in our user-friendly logs.
 
 == Installation ==
-1. Upload 'bulk-image-upload-for-woocommerce' to the '/wp-content/plugins/' directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Click on "Bulk Image Upload" under the WooCommerce menu.
-4. Allow Bulk Image Upload service connect to WooCommerce Rest API by clicking on Connect button in the main page.
-5. Connect your Google Drive account and give permission to read images.
-6. You are ready to create your first upload job.
+1. Upload “bulk-image-upload-for-woocommerce” to the “/wp-content/plugins/” directory.
+2. Activate the plugin through the “Plugins” menu in WordPress.
+3. Click on “Bulk Image Upload” under the WooCommerce menu.
+4. Allow Bulk Image Upload service to connect to WooCommerce Rest API by clicking the “Connect” button on the main page.
+5. Connect your Google Drive account and give permission to read images. Select all asked permissions manually.
+6. Click “Create Upload Job” to create your first upload.
+7. In the next screen, choose a folder and matching method.
+8. Click the “Start Matching” button to see the matching results.
+9. If unsatisfied with matching results, you can fix SKU or image names and click the “Try Again” button. If you are happy with the matching, you can start the upload process by clicking the “Start Upload” button.
+10. You will be redirected to the dashboard, where you can see an overview of all uploads and the details of uploads by clicking on the “Show Logs” button for the specific upload you are interested in.
 
 == Screenshots ==
 
