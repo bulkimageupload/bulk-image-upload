@@ -15,7 +15,7 @@
 		<hr>
 
 		<h2>
-			<?php echo esc_html( $args['job']['hash'] ); ?>
+			<?php echo esc_html( $args['job']['name'] ); ?>
 			<div class="biu-badge biu-mt-20" style="background-color: <?php echo esc_html( Bulk_Image_Upload_Status_Color::get_color_by_status( $args['job']['status'] ) ); ?>">
 				<?php echo esc_html( $args['job']['status']  ); ?>
 			</div>
