@@ -61,7 +61,7 @@
 							<?php echo esc_html($bulk_image_upload_matched_image['name']); ?>
 						</td>
 						<td>
-							<?php echo esc_html($bulk_image_upload_matched_image['size']); ?>
+							<?php echo esc_html($bulk_image_upload_matched_image['humanSize']); ?>
 						</td>
 						<td>
 							<?php echo esc_html($bulk_image_upload_matched_image['position']); ?>
