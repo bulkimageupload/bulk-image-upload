@@ -108,16 +108,17 @@
 		<?php } ?>
 
 		<script type="text/javascript">
+			
+            jQuery(window).bind("unload", function() {
+                console.log(jQuery('#choose-folder-dropdown').val());
+
+                if( jQuery('#choose-folder-dropdown').val() !== 'Select Folder' ) {
+                    console.log('remove disabled from matching button');
+                    jQuery("#matching-button").removeClass('disabled');
+                }
+            });
+
 			jQuery(document).ready(function () {
-
-                jQuery(window).bind("unload", function() {
-                    console.log(jQuery('#choose-folder-dropdown').val());
-
-                    if( jQuery('#choose-folder-dropdown').val() !== 'Select Folder' ) {
-                        console.log('remove disabled from matching button');
-                        jQuery("#matching-button").removeClass('disabled');
-                    }
-                });
 
 				jQuery("#choose-folder-dropdown").on('change', function(){
 					if(this.value === 'Select Folder'){
