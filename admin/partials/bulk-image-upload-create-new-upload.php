@@ -117,9 +117,9 @@
 
 				jQuery("#choose-folder-dropdown").on('change', function(){
 					if(this.value === 'Select Folder'){
-                        jQuery("#matching-button").removeClass('disabled');
-					}else{
                         jQuery("#matching-button").addClass('disabled');
+					}else{
+                        jQuery("#matching-button").removeClass('disabled');
 					}
 				});
 
