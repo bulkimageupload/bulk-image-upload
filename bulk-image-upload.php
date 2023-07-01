@@ -219,7 +219,7 @@ function bulk_image_upload_render_matching_results() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Security Key not found. Please reactivate the app to fix the issue.' );
 	}
 
-	$matching_endpoint_url = 'https://bulkimageupload.com/woo-commerce/match-images?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&folderKey=' . urlencode( $folder_id ) . '&matchingMethod=' . urlencode( $matching_method ).'&replacementMethod=' . urlencode( $replacement_method ) . '&folderName=' . urlencode( $folder_name );
+	$matching_endpoint_url = 'https://bulkimageupload.com/woo-commerce/match-images?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&folderKey=' . urlencode( $folder_id ) . '&matchingMethod=' . urlencode( $matching_method ) . '&replacementMethod=' . urlencode( $replacement_method ) . '&folderName=' . urlencode( $folder_name );
 
 	$response = wp_remote_get( $matching_endpoint_url, ['timeout' => 3600] );
 

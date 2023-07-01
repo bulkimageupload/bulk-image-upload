@@ -111,15 +111,15 @@
 
 			jQuery(document).ready(function () {
 
-                if( jQuery('#choose-folder-dropdown').val() === 'Select Folder' ) {
-                    jQuery("#matching-button").addClass('disabled');
-                }
+				if( jQuery('#choose-folder-dropdown').val() === 'Select Folder' ) {
+					jQuery("#matching-button").addClass('disabled');
+				}
 
 				jQuery("#choose-folder-dropdown").on('change', function(){
 					if(this.value === 'Select Folder'){
-                        jQuery("#matching-button").addClass('disabled');
+						jQuery("#matching-button").addClass('disabled');
 					}else{
-                        jQuery("#matching-button").removeClass('disabled');
+						jQuery("#matching-button").removeClass('disabled');
 					}
 				});
 
@@ -130,12 +130,12 @@
 
 					let folder_id = jQuery("#choose-folder-dropdown").val();
 					let matching_method = jQuery("#choose-matching-dropdown").val();
-                    let replacement_method = jQuery("#choose-replacement-dropdown").val();
+					let replacement_method = jQuery("#choose-replacement-dropdown").val();
 					let folder_name = jQuery("#choose-folder-dropdown").find('option:selected').text().trim();
 
 					jQuery("#choose-folder-dropdown").prop('disabled', 'disabled');
 					jQuery("#choose-matching-dropdown").prop('disabled', 'disabled');
-                    jQuery("#choose-replacement-dropdown").prop('disabled', 'disabled');
+					jQuery("#choose-replacement-dropdown").prop('disabled', 'disabled');
 
 					let url= "<?php echo esc_url(get_admin_url( null, 'admin.php?page=bulk-image-upload-matching-results' )); ?>&folder_id="+folder_id+"&matching_method="+matching_method+"&replacement_method="+replacement_method+"&folder_name="+encodeURIComponent(folder_name);
 					window.location=url;
