@@ -109,6 +109,11 @@
 
 		<script type="text/javascript">
 			jQuery(document).ready(function () {
+
+                if( !jQuery('#choose-folder-dropdown').val() ) {
+                    jQuery("#matching-button").removeClass('disabled');
+                }
+
 				jQuery("#choose-folder-dropdown").on('change', function(){
 					if(this.value === 'Select Folder'){
 						jQuery("#matching-button").addClass('disabled');
