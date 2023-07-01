@@ -71,7 +71,25 @@
 
 			<hr class="biu-mt-10">
 
-			<h2><?php esc_html_e( 'Step 3: See matching results', 'bulk-image-upload' ); ?></h2>
+			<h2><?php esc_html_e( 'Step 3: Would you like to replace the current images?', 'bulk-image-upload' ); ?></h2>
+
+			<div class="notice notice-info biu-notice">
+				<div class="biu-description">
+					<?php esc_html_e( 'You can decide to delete current images and replace them with new images or add new images without removing current product images.', 'bulk-image-upload' ); ?>
+				</div>
+
+				<select id="choose-replacement-dropdown" class="biu-select">
+					<?php foreach ($args['replacement_methods'] as $bulk_image_upload_replacement_method_key => $bulk_image_upload_replacement_method) { ?>
+						<option value="<?php echo esc_html($bulk_image_upload_replacement_method_key); ?>">
+							<?php echo esc_html($bulk_image_upload_replacement_method); ?>
+						</option>
+					<?php } ?>
+				</select>
+			</div>
+
+			<hr class="biu-mt-10">
+
+			<h2><?php esc_html_e( 'Step 4: See matching results', 'bulk-image-upload' ); ?></h2>
 
 			<div class="notice notice-info biu-notice">
 				<div class="biu-description">
@@ -106,12 +124,14 @@
 
 					let folder_id = jQuery("#choose-folder-dropdown").val();
 					let matching_method = jQuery("#choose-matching-dropdown").val();
+                    let replacement_method = jQuery("#choose-replacement-dropdown").val();
 					let folder_name = jQuery("#choose-folder-dropdown").find('option:selected').text().trim();
 
 					jQuery("#choose-folder-dropdown").prop('disabled', 'disabled');
 					jQuery("#choose-matching-dropdown").prop('disabled', 'disabled');
+                    jQuery("#choose-replacement-dropdown").prop('disabled', 'disabled');
 
-					let url= "<?php echo esc_url(get_admin_url( null, 'admin.php?page=bulk-image-upload-matching-results' )); ?>&folder_id="+folder_id+"&matching_method="+matching_method+"&folder_name="+encodeURIComponent(folder_name);
+					let url= "<?php echo esc_url(get_admin_url( null, 'admin.php?page=bulk-image-upload-matching-results' )); ?>&folder_id="+folder_id+"&matching_method="+matching_method+"&replacement_method="+replacement_method+"&folder_name="+encodeURIComponent(folder_name);
 					window.location=url;
 				});
 			});
