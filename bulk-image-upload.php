@@ -223,6 +223,8 @@ function bulk_image_upload_render_matching_results() {
 
 	$response = wp_remote_get( $matching_endpoint_url, ['timeout' => 3600] );
 
+	echo $matching_endpoint_url;exit;
+
 	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
 	}
