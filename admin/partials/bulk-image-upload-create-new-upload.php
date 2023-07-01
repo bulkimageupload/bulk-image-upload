@@ -99,7 +99,7 @@
 				</div>
 
 				<div class="biu-mt-10">
-					<?php echo '<a id="matching-button" href="#" class="button button-primary disabled">' . esc_html__( 'Start Matching', 'bulk-image-upload' ) . '</a>'; ?>
+					<?php echo '<a id="matching-button" href="#" class="button button-primary">' . esc_html__( 'Start Matching', 'bulk-image-upload' ) . '</a>'; ?>
 					<img style="margin-top: 10px; display: none" id="loading-start-matching" width="10"
 						 src="<?php echo esc_url( Bulk_Image_Upload_Folder::get_images_url() . 'loading.gif' ); ?>"/>
 				</div>
@@ -108,23 +108,18 @@
 		<?php } ?>
 
 		<script type="text/javascript">
-			
-            jQuery(window).bind("unload", function() {
-                console.log(jQuery('#choose-folder-dropdown').val());
-
-                if( jQuery('#choose-folder-dropdown').val() !== 'Select Folder' ) {
-                    console.log('remove disabled from matching button');
-                    jQuery("#matching-button").removeClass('disabled');
-                }
-            });
 
 			jQuery(document).ready(function () {
 
+                if( jQuery('#choose-folder-dropdown').val() === 'Select Folder' ) {
+                    jQuery("#matching-button").addClass('disabled');
+                }
+
 				jQuery("#choose-folder-dropdown").on('change', function(){
 					if(this.value === 'Select Folder'){
-						jQuery("#matching-button").addClass('disabled');
+                        jQuery("#matching-button").removeClass('disabled');
 					}else{
-						jQuery("#matching-button").removeClass('disabled');
+                        jQuery("#matching-button").addClass('disabled');
 					}
 				});
 
