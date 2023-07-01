@@ -261,6 +261,9 @@ function bulk_image_upload_render_create_new_upload_page() {
 	$body = wp_remote_retrieve_body( $response );
 	$data = json_decode( $body, true );
 
+	echo "<pre>";
+	var_dump($data);exit;
+
 	load_template(
 		plugin_dir_path( __FILE__ ) . 'admin/partials/bulk-image-upload-create-new-upload.php',
 		true,
