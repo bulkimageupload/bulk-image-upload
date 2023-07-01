@@ -110,12 +110,14 @@
 		<script type="text/javascript">
 			jQuery(document).ready(function () {
 
-                console.log(jQuery('#choose-folder-dropdown').val());
+                jQuery(window).bind("unload", function() {
+                    console.log(jQuery('#choose-folder-dropdown').val());
 
-                if( jQuery('#choose-folder-dropdown').val() !== 'Select Folder' ) {
-                    console.log('remove disabled from matching button');
-                    jQuery("#matching-button").removeClass('disabled');
-                }
+                    if( jQuery('#choose-folder-dropdown').val() !== 'Select Folder' ) {
+                        console.log('remove disabled from matching button');
+                        jQuery("#matching-button").removeClass('disabled');
+                    }
+                });
 
 				jQuery("#choose-folder-dropdown").on('change', function(){
 					if(this.value === 'Select Folder'){
