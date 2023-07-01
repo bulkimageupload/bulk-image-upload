@@ -110,7 +110,7 @@
 		<script type="text/javascript">
 			jQuery(document).ready(function () {
 
-                if( !jQuery('#choose-folder-dropdown').val() ) {
+                if( jQuery('#choose-folder-dropdown').val() !== 'Select Folder' ) {
                     jQuery("#matching-button").removeClass('disabled');
                 }
 
