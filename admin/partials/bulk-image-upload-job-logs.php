@@ -30,8 +30,10 @@
 				echo wp_kses($bulk_image_upload_log, array(
 					'a' => array(
 						'href' => array(),
-						'title' => array()
-					)
+						'title' => array(),
+						'target' => array()
+					),
+					'b' => array()
 				)); 
 				?>
 				<br>
