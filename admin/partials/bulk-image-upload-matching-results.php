@@ -61,7 +61,7 @@
 				<?php foreach ($args['matching_results']['matchedImages'] as $bulk_image_upload_matched_image) { ?>
 					<tr style="text-align: left;">
 						<td>
-							<img height="150" referrerPolicy="no-referrer" src="<?php echo esc_html($bulk_image_upload_matched_image['thumbnailUrl']); ?>">
+							<img style="max-width: 150px" height="150" referrerPolicy="no-referrer" src="<?php echo esc_html($bulk_image_upload_matched_image['thumbnailUrl']); ?>">
 						</td>
 						<td>
 							<?php echo esc_html($bulk_image_upload_matched_image['name']); ?>
@@ -101,7 +101,7 @@
 				<?php foreach ($args['matching_results']['nonMatchedImages'] as $bulk_image_upload_non_matched_image) { ?>
 					<tr style="text-align: left;">
 						<td>
-							<img width="150" referrerPolicy="no-referrer" src="<?php echo esc_html($bulk_image_upload_non_matched_image['thumbnailUrl']); ?>">
+							<img style="max-width: 150px" width="150" referrerPolicy="no-referrer" src="<?php echo esc_html($bulk_image_upload_non_matched_image['thumbnailUrl']); ?>">
 						</td>
 						<td>
 							<?php echo esc_html($bulk_image_upload_non_matched_image['name']); ?>
