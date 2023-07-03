@@ -13,13 +13,19 @@
 		<hr>
 		<h2><?php esc_html_e('Matching Results', 'bulk-image-upload'); ?></h2>
 
+		<?php if (count($args['matching_results']['matchedImages']) === 0 && count($args['matching_results']['matchedImages']) === 0) { ?>
+			<div class="notice notice-warning biu-notice">
+				<?php esc_html_e('Images not found inside the folder', 'bulk-image-upload'); ?>
+			</div>
+		<?php } ?>
+
 		<?php if (count($args['matching_results']['matchedImages']) > 0) { ?>
 		<div class="notice notice-success biu-notice">
 			Total <?php echo esc_html(count($args['matching_results']['matchedImages'])); ?> images successfully matched.
 			<br>
 			<div class="biu-mt-10">
 				<a href="<?php echo esc_url(get_admin_url( null, 'admin.php?page=bulk-image-upload-send-upload-request' ) . '&matching_hash=' . $args['matching_results']['hash']); ?>" class="button button-primary">
-					Start Upload
+					<?php esc_html_e( 'Start Upload', 'bulk-image-upload' ); ?>
 				</a>
 			</div>
 		</div>
