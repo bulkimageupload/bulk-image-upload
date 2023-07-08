@@ -59,7 +59,7 @@ $bulk_image_upload_key    = $args['key'];
 
 			<?php
 			$bulk_image_upload_connection_url = 'https://bulkimageupload.com/google-drive/woo-commerce?domain=' . urlencode( $bulk_image_upload_domain ) . '&key=' . urlencode( $bulk_image_upload_key );
-			echo '<a href="' . esc_url( $bulk_image_upload_connection_url ) . '" class="button button-primary button-large">' . esc_html__( 'Connect to Google Drive™', 'bulk-image-upload' ) . '</a>';
+			echo '<a href="' . esc_url( $bulk_image_upload_connection_url ) . '" class="button button-primary button-large">' . esc_html__( 'Connect to "Google Drive™"', 'bulk-image-upload' ) . '</a>';
 			?>
 
 		<?php } else { ?>
