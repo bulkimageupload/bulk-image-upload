@@ -336,15 +336,24 @@ function bulk_image_upload_render_plugin_page() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
 	}
 
-	$body      = wp_remote_retrieve_body( $response );
-	$body_json = json_decode( $body, true );
+	$body       = wp_remote_retrieve_body( $response );
+	$body_array = json_decode( $body, true );
+
+	$is_refresh_needed = false;
+
+	foreach ($body_array['uploads'] as $upload) {
+		if ('pending' === $upload['status'] || 'processing' === $upload['status']) {
+			$is_refresh_needed = true;
+		}
+	}
 
 	$shop_data = array(
-		'domain'      => $domain,
-		'key'         => $key,
+		'domain'            => $domain,
+		'key'               => $key,
+		'is_refresh_needed' => $is_refresh_needed
 	);
 
-	$arguments = array_merge( $shop_data, $body_json );
+	$arguments = array_merge( $shop_data, $body_array );
 
 	load_template(
 		plugin_dir_path( __FILE__ ) . 'admin/partials/bulk-image-upload-dashboard.php',

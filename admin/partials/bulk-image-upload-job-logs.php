@@ -50,7 +50,7 @@
 
 		<script type="text/javascript">
 			jQuery(document).ready(function () {
-                <?php if($args['job']['status'] === 'pending' || $args['job']['status'] === 'processing') { ?>
+				<?php if ('pending' === $args['job']['status'] || 'processing' === $args['job']['status']) { ?>
 					jQuery('head').append('<meta http-equiv="refresh" content="5"/>');
 				<?php } ?>
 			});
