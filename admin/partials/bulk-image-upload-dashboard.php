@@ -54,7 +54,7 @@ $bulk_image_upload_key    = $args['key'];
 			</div>
 
 			<div class="biu-description">
-				<?php esc_html_e( 'Connect to Google Drive™. We need permission to access product images.', 'bulk-image-upload' ); ?>
+				<?php esc_html_e( 'Connect to "Google Drive™". We need permission to access product images.', 'bulk-image-upload' ); ?>
 			</div>
 
 			<?php
