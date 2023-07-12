@@ -54,13 +54,12 @@ $bulk_image_upload_key    = $args['key'];
 			</div>
 
 			<div class="biu-description">
-				<?php esc_html_e( 'Connect to Google Drive™. We need permission to access product images.', 'bulk-image-upload' ); ?>
+				<?php esc_html_e( 'Connect with Google Drive™. We need permission to access product images.', 'bulk-image-upload' ); ?>
 			</div>
 
 			<?php
 			$bulk_image_upload_connection_url = 'https://bulkimageupload.com/google-drive/woo-commerce?domain=' . urlencode( $bulk_image_upload_domain ) . '&key=' . urlencode( $bulk_image_upload_key );
-			echo '<a href="' . esc_url( $bulk_image_upload_connection_url ) . '" class="">' . esc_html__( 'Connect', 'bulk-image-upload' ) . '</a> <span>to Google Drive</span>';
-
+			echo '<br><a style="font-size:18px;" href="' . esc_url( $bulk_image_upload_connection_url ) . '" class="">' . esc_html__( 'Connect', 'bulk-image-upload' ) . '</a> <span style="font-size:20px;" >with</span> <span><img style="display: inline-block;vertical-align: middle; margin-top: -5px" height="20" src="'.esc_url( Bulk_Image_Upload_Folder::get_images_url() . 'drive.png' ).'" /></span> <span style="font-size:20px">Drive</span>';
 			?>
 
 		<?php } else { ?>
