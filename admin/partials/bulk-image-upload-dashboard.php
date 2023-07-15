@@ -62,6 +62,10 @@ $bulk_image_upload_key    = $args['key'];
 			echo '<br><a style="font-size:18px;" href="' . esc_url( $bulk_image_upload_connection_url ) . '" class="">' . esc_html__( 'Connect', 'bulk-image-upload' ) . '</a> <span style="font-size:20px;" >with</span> <span><img alt="Google Drive Logo" style="display: inline-block;vertical-align: middle; margin-top: -5px" height="20" src="' . esc_url( Bulk_Image_Upload_Folder::get_images_url() . 'drive.png' ) . '" /></span> <span style="font-size:20px">Google Drive</span>';
 			?>
 
+			<div style="padding: 50px" class="biu-mt-20">
+				"Bulk Image Upload"'s use and transfer of information received from Google APIs to any other app will adhere to <a target="_blank" href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.
+			</div>
+
 		<?php } else { ?>
 
 			<?php if ( array_key_exists( 'is_upload_created', $args ) && false === $args['is_upload_created'] ) { ?>
