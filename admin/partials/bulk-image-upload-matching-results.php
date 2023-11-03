@@ -13,7 +13,17 @@
 		<hr>
 		<h2><?php esc_html_e('Matching Results', 'bulk-image-upload'); ?></h2>
 
-		<?php if (count($args['matching_results']['matchedImages']) === 0 && count($args['matching_results']['matchedImages']) === 0) { ?>
+        <?php if (!isset(['matching_results']['matchedImages'])) { ?>
+            <div class="notice notice-info biu-notice">
+                <?php esc_html_e('Matching is in progress...', 'bulk-image-upload'); ?>
+                <img style="margin-top: 10px;" id="loading-try-again" width="10"
+                     src="<?php echo esc_url( Bulk_Image_Upload_Folder::get_images_url() . 'loading.gif' ); ?>"/>
+                <br><br>
+                <?php esc_html_e('Matching may take up to 30 minutes based on number of images and products', 'bulk-image-upload'); ?>
+            </div>
+        <?php } ?>
+
+		<?php if (isset(['matching_results']['matchedImages']) && count($args['matching_results']['matchedImages']) === 0 && count($args['matching_results']['matchedImages']) === 0) { ?>
 			<div class="notice notice-warning biu-notice">
 				<?php esc_html_e('Images not found inside the folder', 'bulk-image-upload'); ?>
 			</div>
@@ -128,5 +138,9 @@
 			jQuery("#loading-try-again").show();
 			location.reload();
 		});
+
+        <?php if (!isset(['matching_results']['matchedImages'])) { ?>
+            jQuery('head').append('<meta http-equiv="refresh" content="5"/>');
+        <?php } ?>
 	});
 </script>
