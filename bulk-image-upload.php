@@ -221,6 +221,10 @@ function bulk_image_upload_render_matching_results() {
 
 	$matching_endpoint_url = 'https://bulkimageupload.com/woo-commerce/match-images?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&folderKey=' . urlencode( $folder_id ) . '&matchingMethod=' . urlencode( $matching_method ) . '&replacementMethod=' . urlencode( $replacement_method ) . '&folderName=' . urlencode( $folder_name );
 
+    if(!empty($_GET['matching_id'])){
+        $matching_endpoint_url .= '&id='.urlencode($_GET['matching_id']);
+    }
+
 	$response = wp_remote_get( $matching_endpoint_url, ['timeout' => 3600] );
 
 	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
@@ -230,7 +234,12 @@ function bulk_image_upload_render_matching_results() {
 	$body             = wp_remote_retrieve_body( $response );
 	$matching_results = json_decode( $body, true );
 
-	load_template(
+    if(empty($_GET['matching_id'])){
+        $current_page_url = home_url($_SERVER['REQUEST_URI']).'&matching_id='.urlencode($matching_results['id']);
+        wp_redirect($current_page_url);
+    }
+
+    load_template(
 		plugin_dir_path( __FILE__ ) . 'admin/partials/bulk-image-upload-matching-results.php',
 		true,
 		array(
