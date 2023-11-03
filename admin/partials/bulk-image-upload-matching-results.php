@@ -13,7 +13,7 @@
 		<hr>
 		<h2><?php esc_html_e('Matching Results', 'bulk-image-upload'); ?></h2>
 
-        <?php if (!isset(['matching_results']['matchedImages'])) { ?>
+        <?php if ($args['matching_results']['status'] !== 'waiting_for_upload' ) { ?>
             <div class="notice notice-info biu-notice">
                 <?php esc_html_e('Matching is in progress...', 'bulk-image-upload'); ?>
                 <img style="margin-top: 10px;" id="loading-try-again" width="10"
@@ -139,7 +139,7 @@
 			location.reload();
 		});
 
-        <?php if (!isset(['matching_results']['matchedImages'])) { ?>
+        <?php if ($args['matching_results']['status'] !== 'waiting_for_upload' ) { ?>
             jQuery('head').append('<meta http-equiv="refresh" content="5"/>');
         <?php } ?>
 	});
