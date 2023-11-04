@@ -228,7 +228,8 @@ function bulk_image_upload_render_matching_results() {
 	$matching_endpoint_url = 'https://bulkimageupload.com/woo-commerce/match-images?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&folderKey=' . urlencode( $folder_id ) . '&matchingMethod=' . urlencode( $matching_method ) . '&replacementMethod=' . urlencode( $replacement_method ) . '&folderName=' . urlencode( $folder_name );
 
 	if (!empty($_GET['matching_id'])) {
-		$matching_endpoint_url .= '&id=' . urlencode($_GET['matching_id']);
+		$matching_id            = (int) $_GET['matching_id'];
+		$matching_endpoint_url .= '&id=' . urlencode($matching_id);
 	}
 
 	$response = wp_remote_get( $matching_endpoint_url, ['timeout' => 60] );
