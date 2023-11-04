@@ -16,7 +16,16 @@ $bulk_image_upload_key    = $args['key'];
 
 		<h1><?php esc_html_e( 'Bulk Image Upload', 'bulk-image-upload' ); ?></h1>
 
-		<hr>
+        <hr>
+
+        <?php if ($args['plan']['name'] === 'Free' ) { ?>
+            <div class="notice notice-warning biu-notice">
+                <h3><?php esc_html_e('You are currently using a FREE plan.', 'bulk-image-upload'); ?></h3>
+                <?php esc_html_e('You can use the FREE plan to upload up to 100 product images.', 'bulk-image-upload'); ?><br>
+                <?php esc_html_e('For more usage, please upgrade your account.', 'bulk-image-upload'); ?><br><br>
+                <?php echo '<a target="_blank" href="https://woo.bulkimageupload.com/product/bulk-product-image-upload-for-woocommerce/" class="button">' . esc_html__( 'Upgrade to Premium', 'bulk-image-upload' ) . '</a>';  ?>
+            </div>
+        <?php } ?>
 
 		<?php if ( array_key_exists( 'is_connected_to_service', $args ) && false === $args['is_connected_to_service'] ) { ?>
 			<div class="biu-mt-20">
