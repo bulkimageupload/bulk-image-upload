@@ -133,7 +133,12 @@ function bulk_image_upload_send_upload_request() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'matching_hash is mandatory parameter.' );
 	}
 
+    if ( empty( $_GET['matching_id'] ) ) {
+        Bulk_Image_Upload_Error_Template::show_error_template( 'matching_id is mandatory parameter.' );
+    }
+
 	$matching_hash = sanitize_text_field($_GET['matching_hash']);
+    $matching_id = sanitize_text_field($_GET['matching_id']);
 
 	$domain = get_site_url();
 	$key    = get_option( 'bulk_image_upload_security_key' );
@@ -148,8 +153,8 @@ function bulk_image_upload_send_upload_request() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
 	}
 
-	$dashboard_url = get_admin_url( null, 'admin.php?page=bulk-image-upload' );
-	wp_redirect( $dashboard_url );
+    $log_url = get_admin_url( null, 'admin.php?page=bulk-image-upload-job-logs' ) . '&job_id=' . $matching_id;
+	wp_redirect( $log_url );
 	exit;
 }
 
