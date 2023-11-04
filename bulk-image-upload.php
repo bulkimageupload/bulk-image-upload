@@ -34,6 +34,7 @@ require_once __DIR__ . '/includes/class-bulk-image-upload-folder.php';
 register_activation_hook( __FILE__, 'bulk_image_upload_activation_hook' );
 
 add_action( 'admin_menu', 'bulk_image_upload_register_menu_page' );
+add_action('admin_enqueue_scripts', 'bulk_image_upload_enqueue_autocomplete_scripts');
 add_action( 'admin_print_styles', 'bulk_image_upload_register_styles' );
 add_action( 'admin_init', 'bulk_image_upload_redirect_to_onboarding_page' );
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'add_plugin_action_links' );
@@ -424,6 +425,16 @@ function bulk_image_upload_redirect_to_onboarding_page() {
 		wp_redirect( $bulk_image_upload_plugin_url );
 		exit;
 	}
+}
+
+function bulk_image_upload_enqueue_autocomplete_scripts() {
+    if (is_admin()) {
+        wp_enqueue_script('jquery');
+        wp_enqueue_script('jquery-ui-core');
+        wp_enqueue_script('jquery-ui-widget');
+        wp_enqueue_script('jquery-ui-position');
+        wp_enqueue_script('jquery-ui-autocomplete');
+    }
 }
 
 /**

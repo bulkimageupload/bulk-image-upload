@@ -41,8 +41,9 @@
 					<a href="<?php echo esc_url($bulk_image_upload_remove_google_drive_connection); ?>"><?php esc_html_e( 'click here', 'bulk-image-upload' ); ?></a>
 				</div>
 
-				<select id="choose-folder-dropdown" class="biu-select">
-					<option>Select Folder</option>
+                <input style="width: 90%; text-align: center" type="text" id="autocomplete-input" placeholder="Type folder name here...">
+                <input type="hidden" id="selected-folder" name="selected_folder">
+				<select id="folder-select" class="biu-select" style="display: none;">
 					<?php foreach ( $args['folders'] as $bulk_image_upload_folder_key => $bulk_image_upload_folder ) { ?>
 						<option value="<?php echo esc_html( $bulk_image_upload_folder_key ); ?>">
 							<?php echo esc_html( $bulk_image_upload_folder['name'] ); ?>
@@ -60,7 +61,7 @@
 					<?php esc_html_e( 'We recommend to match images by exact SKU for the maximum efficiency.', 'bulk-image-upload' ); ?>
 				</div>
 
-				<select id="choose-matching-dropdown" class="biu-select">
+				<select style="width: 90%; text-align: center" id="choose-matching-dropdown" class="biu-select">
 					<?php foreach ($args['matching_methods'] as $bulk_image_upload_matching_method_key => $bulk_image_upload_matching_method) { ?>
 					<option value="<?php echo esc_html($bulk_image_upload_matching_method_key); ?>">
 						<?php echo esc_html($bulk_image_upload_matching_method); ?>
@@ -78,7 +79,7 @@
 					<?php esc_html_e( 'You can decide to delete current images and replace them with new images or add new images without removing current product images.', 'bulk-image-upload' ); ?>
 				</div>
 
-				<select id="choose-replacement-dropdown" class="biu-select">
+				<select style="width: 90%; text-align: center" id="choose-replacement-dropdown" class="biu-select">
 					<?php foreach ($args['replacement_methods'] as $bulk_image_upload_replacement_method_key => $bulk_image_upload_replacement_method) { ?>
 						<option value="<?php echo esc_html($bulk_image_upload_replacement_method_key); ?>">
 							<?php echo esc_html($bulk_image_upload_replacement_method); ?>
@@ -99,7 +100,7 @@
 				</div>
 
 				<div class="biu-mt-10">
-					<?php echo '<a id="matching-button" href="#" class="button button-primary">' . esc_html__( 'Start Matching', 'bulk-image-upload' ) . '</a>'; ?>
+					<?php echo '<a id="matching-button" href="#" class="button button-primary disabled">' . esc_html__( 'Start Matching', 'bulk-image-upload' ) . '</a>'; ?>
 					<img style="margin-top: 10px; display: none" id="loading-start-matching" width="10"
 						 src="<?php echo esc_url( Bulk_Image_Upload_Folder::get_images_url() . 'loading.gif' ); ?>"/>
 				</div>
@@ -111,35 +112,59 @@
 
 			jQuery(document).ready(function () {
 
-				if( jQuery('#choose-folder-dropdown').val() === 'Select Folder' ) {
-					jQuery("#matching-button").addClass('disabled');
-				}
+                jQuery('#autocomplete-input').autocomplete({
+                    source: function(request, response) {
+                        console.log(request.term);
+                        var term = request.term.toLowerCase();
+                        var options = [];
+                        // Collect the options from the hidden select element
+                        jQuery('#folder-select option').each(function() {
+                            options.push({ label: jQuery(this).text().trim(), value: jQuery(this).val().trim() });
+                        });
 
-				jQuery("#choose-folder-dropdown").on('change', function(){
-					if(this.value === 'Select Folder'){
-						jQuery("#matching-button").addClass('disabled');
-					}else{
-						jQuery("#matching-button").removeClass('disabled');
-					}
-				});
+                        var matches = customFilter(options, term);
+                        response(matches);
+                    },
+                    minLength: 1, // Auto-complete suggestions start immediately
+                    select: function(event, ui) {
+                        event.preventDefault();
+                        // Set the selected option's value in the hidden input
+                        jQuery('#selected-folder').val(ui.item.value);
+                        jQuery('#autocomplete-input').val(ui.item.label);
+                        jQuery("#matching-button").removeClass('disabled');
+                    },
+                });
 
 				jQuery("#matching-button").click(function (e) {
 					e.preventDefault();
+
+                    if(jQuery("#matching-button").hasClass('disabled')){
+                        alert("Please choose a folder");
+                        return;
+                    }
+
 					jQuery("#matching-button").addClass('disabled');
 					jQuery("#loading-start-matching").show();
 
-					let folder_id = jQuery("#choose-folder-dropdown").val();
+					let folder_id = jQuery("#selected-folder").val();
 					let matching_method = jQuery("#choose-matching-dropdown").val();
 					let replacement_method = jQuery("#choose-replacement-dropdown").val();
-					let folder_name = jQuery("#choose-folder-dropdown").find('option:selected').text().trim();
+					let folder_name = jQuery("#autocomplete-input").val();
 
-					jQuery("#choose-folder-dropdown").prop('disabled', 'disabled');
+					jQuery("#autocomplete-input").prop('disabled', 'disabled');
 					jQuery("#choose-matching-dropdown").prop('disabled', 'disabled');
 					jQuery("#choose-replacement-dropdown").prop('disabled', 'disabled');
 
 					let url= "<?php echo esc_url(get_admin_url( null, 'admin.php?page=bulk-image-upload-matching-results' )); ?>&folder_id="+folder_id+"&matching_method="+matching_method+"&replacement_method="+replacement_method+"&folder_name="+encodeURIComponent(folder_name);
 					window.location=url;
 				});
+
+                function customFilter(options, term) {
+                    term = term.toLowerCase();
+                    return options.filter(function(option) {
+                        return option.label.toLowerCase().indexOf(term) !== -1;
+                    });
+                }
 			});
 		</script>
 	</div>
