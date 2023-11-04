@@ -133,8 +133,7 @@
 
 <script type="text/javascript">
 	jQuery(document).ready(function () {
-		console.log(<?php echo esc_textarea($args['body']); ?>);
-
+        
 		jQuery("#try-again").click(function (e) {
 			e.preventDefault();
 			jQuery("#try-again").addClass("disabled");
