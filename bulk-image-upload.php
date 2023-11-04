@@ -239,7 +239,7 @@ function bulk_image_upload_render_matching_results() {
         wp_redirect($current_page_url);
     }
 
-    echo '<pre>';var_dump($matching_results);
+    echo '<pre>';var_dump($matching_results);echo '</pre>';
 
     load_template(
 		plugin_dir_path( __FILE__ ) . 'admin/partials/bulk-image-upload-matching-results.php',
