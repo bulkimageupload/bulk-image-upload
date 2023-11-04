@@ -19,7 +19,8 @@
                 <img style="margin-top: 10px;" id="loading-try-again" width="10"
                      src="<?php echo esc_url( Bulk_Image_Upload_Folder::get_images_url() . 'loading.gif' ); ?>"/>
                 <br><br>
-                <?php esc_html_e('Matching may take up to 30 minutes based on number of images and products', 'bulk-image-upload'); ?>
+                <?php esc_html_e('Matching may take up to 30 minutes based on number of images and products', 'bulk-image-upload'); ?><br><br>
+                <?php esc_html_e("Please don't close this tab", 'bulk-image-upload'); ?>
             </div>
         <?php } ?>
 
