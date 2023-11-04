@@ -13,16 +13,16 @@
 		<hr>
 		<h2><?php esc_html_e('Matching Results', 'bulk-image-upload'); ?></h2>
 
-        <?php if ($args['matching_results']['status'] !== 'waiting_for_upload' ) { ?>
-            <div class="notice notice-info biu-notice">
-                <?php esc_html_e('Matching is in progress...', 'bulk-image-upload'); ?>
-                <img style="margin-top: 10px;" id="loading-try-again" width="10"
-                     src="<?php echo esc_url( Bulk_Image_Upload_Folder::get_images_url() . 'loading.gif' ); ?>"/>
-                <br><br>
-                <?php esc_html_e('Matching may take up to 30 minutes based on number of images and products', 'bulk-image-upload'); ?><br><br>
-                <?php esc_html_e("Please don't close this tab", 'bulk-image-upload'); ?>
-            </div>
-        <?php } ?>
+		<?php if ($args['matching_results']['status'] !== 'waiting_for_upload' ) { ?>
+			<div class="notice notice-info biu-notice">
+				<?php esc_html_e('Matching is in progress...', 'bulk-image-upload'); ?>
+				<img style="margin-top: 10px;" id="loading-try-again" width="10"
+					 src="<?php echo esc_url( Bulk_Image_Upload_Folder::get_images_url() . 'loading.gif' ); ?>"/>
+				<br><br>
+				<?php esc_html_e('Matching may take up to 30 minutes based on number of images and products', 'bulk-image-upload'); ?><br><br>
+				<?php esc_html_e("Please don't close this tab", 'bulk-image-upload'); ?>
+			</div>
+		<?php } ?>
 
 		<?php if ($args['matching_results']['status'] === 'waiting_for_upload' && isset($args['matching_results']['matchedImages']) && count($args['matching_results']['matchedImages']) === 0 && count($args['matching_results']['nonMatchedImages']) === 0) { ?>
 			<div class="notice notice-error biu-notice">
@@ -35,7 +35,7 @@
 			Total <?php echo esc_html(count($args['matching_results']['matchedImages'])); ?> images successfully matched.
 			<br>
 			<div class="biu-mt-10">
-				<a href="<?php echo esc_url(get_admin_url( null, 'admin.php?page=bulk-image-upload-send-upload-request' ) . '&matching_hash=' . $args['matching_results']['hash'].'&matching_id='.$args['matching_results']['id']); ?>" class="button button-primary">
+				<a href="<?php echo esc_url(get_admin_url( null, 'admin.php?page=bulk-image-upload-send-upload-request' ) . '&matching_hash=' . $args['matching_results']['hash'] . '&matching_id=' . $args['matching_results']['id']); ?>" class="button button-primary">
 					<?php esc_html_e( 'Start Upload', 'bulk-image-upload' ); ?>
 				</a>
 			</div>
@@ -133,7 +133,7 @@
 
 <script type="text/javascript">
 	jQuery(document).ready(function () {
-        console.log(<?php echo $args['body'] ?? '' ?>);
+		console.log(<?php echo $args['body'] ?? ''; ?>);
 
 		jQuery("#try-again").click(function (e) {
 			e.preventDefault();
@@ -142,10 +142,10 @@
 			location.reload();
 		});
 
-        <?php if ($args['matching_results']['status'] !== 'waiting_for_upload' ) { ?>
-            jQuery('head').append('<meta http-equiv="refresh" content="5"/>');
-        <?php }else{ ?>
-            window.$crisp=[];window.CRISP_WEBSITE_ID="4ddb6546-61da-448f-b2d9-5ebe639a09d6";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
-        <?php } ?>
+		<?php if ($args['matching_results']['status'] !== 'waiting_for_upload' ) { ?>
+			jQuery('head').append('<meta http-equiv="refresh" content="5"/>');
+		<?php } else { ?>
+			window.$crisp=[];window.CRISP_WEBSITE_ID="4ddb6546-61da-448f-b2d9-5ebe639a09d6";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+		<?php } ?>
 	});
 </script>

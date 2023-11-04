@@ -41,8 +41,8 @@
 					<a href="<?php echo esc_url($bulk_image_upload_remove_google_drive_connection); ?>"><?php esc_html_e( 'click here', 'bulk-image-upload' ); ?></a>
 				</div>
 
-                <input style="width: 90%; text-align: center" type="text" id="autocomplete-input" placeholder="Type folder name here...">
-                <input type="hidden" id="selected-folder" name="selected_folder">
+				<input style="width: 90%; text-align: center" type="text" id="autocomplete-input" placeholder="Type folder name here...">
+				<input type="hidden" id="selected-folder" name="selected_folder">
 				<select id="folder-select" class="biu-select" style="display: none;">
 					<?php foreach ( $args['folders'] as $bulk_image_upload_folder_key => $bulk_image_upload_folder ) { ?>
 						<option value="<?php echo esc_html( $bulk_image_upload_folder_key ); ?>">
@@ -112,36 +112,36 @@
 
 			jQuery(document).ready(function () {
 
-                jQuery('#autocomplete-input').autocomplete({
-                    source: function(request, response) {
-                        console.log(request.term);
-                        var term = request.term.toLowerCase();
-                        var options = [];
-                        // Collect the options from the hidden select element
-                        jQuery('#folder-select option').each(function() {
-                            options.push({ label: jQuery(this).text().trim(), value: jQuery(this).val().trim() });
-                        });
+				jQuery('#autocomplete-input').autocomplete({
+					source: function(request, response) {
+						console.log(request.term);
+						var term = request.term.toLowerCase();
+						var options = [];
+						// Collect the options from the hidden select element
+						jQuery('#folder-select option').each(function() {
+							options.push({ label: jQuery(this).text().trim(), value: jQuery(this).val().trim() });
+						});
 
-                        var matches = customFilter(options, term);
-                        response(matches);
-                    },
-                    minLength: 1, // Auto-complete suggestions start immediately
-                    select: function(event, ui) {
-                        event.preventDefault();
-                        // Set the selected option's value in the hidden input
-                        jQuery('#selected-folder').val(ui.item.value);
-                        jQuery('#autocomplete-input').val(ui.item.label);
-                        jQuery("#matching-button").removeClass('disabled');
-                    },
-                });
+						var matches = customFilter(options, term);
+						response(matches);
+					},
+					minLength: 1, // Auto-complete suggestions start immediately
+					select: function(event, ui) {
+						event.preventDefault();
+						// Set the selected option's value in the hidden input
+						jQuery('#selected-folder').val(ui.item.value);
+						jQuery('#autocomplete-input').val(ui.item.label);
+						jQuery("#matching-button").removeClass('disabled');
+					},
+				});
 
 				jQuery("#matching-button").click(function (e) {
 					e.preventDefault();
 
-                    if(jQuery("#matching-button").hasClass('disabled')){
-                        alert("Please choose a folder");
-                        return;
-                    }
+					if(jQuery("#matching-button").hasClass('disabled')){
+						alert("Please choose a folder");
+						return;
+					}
 
 					jQuery("#matching-button").addClass('disabled');
 					jQuery("#loading-start-matching").show();
@@ -159,15 +159,15 @@
 					window.location=url;
 				});
 
-                function customFilter(options, term) {
-                    term = term.toLowerCase();
-                    return options.filter(function(option) {
-                        return option.label.toLowerCase().indexOf(term) !== -1;
-                    });
-                }
+				function customFilter(options, term) {
+					term = term.toLowerCase();
+					return options.filter(function(option) {
+						return option.label.toLowerCase().indexOf(term) !== -1;
+					});
+				}
 			});
 		</script>
 
-        <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="4ddb6546-61da-448f-b2d9-5ebe639a09d6";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+		<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="4ddb6546-61da-448f-b2d9-5ebe639a09d6";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 	</div>
 </div>

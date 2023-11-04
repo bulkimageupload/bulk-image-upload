@@ -134,12 +134,12 @@ function bulk_image_upload_send_upload_request() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'matching_hash is mandatory parameter.' );
 	}
 
-    if ( empty( $_GET['matching_id'] ) ) {
-        Bulk_Image_Upload_Error_Template::show_error_template( 'matching_id is mandatory parameter.' );
-    }
+	if ( empty( $_GET['matching_id'] ) ) {
+		Bulk_Image_Upload_Error_Template::show_error_template( 'matching_id is mandatory parameter.' );
+	}
 
 	$matching_hash = sanitize_text_field($_GET['matching_hash']);
-    $matching_id = sanitize_text_field($_GET['matching_id']);
+	$matching_id   = sanitize_text_field($_GET['matching_id']);
 
 	$domain = get_site_url();
 	$key    = get_option( 'bulk_image_upload_security_key' );
@@ -154,7 +154,7 @@ function bulk_image_upload_send_upload_request() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
 	}
 
-    $log_url = get_admin_url( null, 'admin.php?page=bulk-image-upload-job-logs' ) . '&job_id=' . $matching_id;
+	$log_url = get_admin_url( null, 'admin.php?page=bulk-image-upload-job-logs' ) . '&job_id=' . $matching_id;
 	wp_redirect( $log_url );
 	exit;
 }
@@ -227,9 +227,9 @@ function bulk_image_upload_render_matching_results() {
 
 	$matching_endpoint_url = 'https://bulkimageupload.com/woo-commerce/match-images?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&folderKey=' . urlencode( $folder_id ) . '&matchingMethod=' . urlencode( $matching_method ) . '&replacementMethod=' . urlencode( $replacement_method ) . '&folderName=' . urlencode( $folder_name );
 
-    if(!empty($_GET['matching_id'])){
-        $matching_endpoint_url .= '&id='.urlencode($_GET['matching_id']);
-    }
+	if (!empty($_GET['matching_id'])) {
+		$matching_endpoint_url .= '&id=' . urlencode($_GET['matching_id']);
+	}
 
 	$response = wp_remote_get( $matching_endpoint_url, ['timeout' => 60] );
 
@@ -240,17 +240,17 @@ function bulk_image_upload_render_matching_results() {
 	$body             = wp_remote_retrieve_body( $response );
 	$matching_results = json_decode( $body, true );
 
-    if(empty($_GET['matching_id'])){
-        $current_page_url = home_url($_SERVER['REQUEST_URI']).'&matching_id='.urlencode($matching_results['id']);
-        wp_redirect($current_page_url);
-    }
+	if (empty($_GET['matching_id'])) {
+		$current_page_url = home_url($_SERVER['REQUEST_URI']) . '&matching_id=' . urlencode($matching_results['id']);
+		wp_redirect($current_page_url);
+	}
 
-    load_template(
+	load_template(
 		plugin_dir_path( __FILE__ ) . 'admin/partials/bulk-image-upload-matching-results.php',
 		true,
 		array(
 			'matching_results' => $matching_results,
-            'body' => $body,
+			'body' => $body,
 		)
 	);
 }
@@ -346,12 +346,12 @@ function bulk_image_upload_render_plugin_page() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Security Key not found. Please reactivate the app to fix the issue.' );
 	}
 
-    $url = 'https://bulkimageupload.com/woo-commerce/dashboard?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key );
+	$url      = 'https://bulkimageupload.com/woo-commerce/dashboard?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key );
 	$response = wp_remote_get( $url, ['timeout' => 60]);
 
-    if($response instanceof WP_Error){
-        Bulk_Image_Upload_Error_Template::show_error_template( $response->get_error_message().' '.$url );
-    }
+	if ($response instanceof WP_Error) {
+		Bulk_Image_Upload_Error_Template::show_error_template( $response->get_error_message() . ' ' . $url );
+	}
 
 	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
@@ -428,13 +428,13 @@ function bulk_image_upload_redirect_to_onboarding_page() {
 }
 
 function bulk_image_upload_enqueue_autocomplete_scripts() {
-    if (is_admin()) {
-        wp_enqueue_script('jquery');
-        wp_enqueue_script('jquery-ui-core');
-        wp_enqueue_script('jquery-ui-widget');
-        wp_enqueue_script('jquery-ui-position');
-        wp_enqueue_script('jquery-ui-autocomplete');
-    }
+	if (is_admin()) {
+		wp_enqueue_script('jquery');
+		wp_enqueue_script('jquery-ui-core');
+		wp_enqueue_script('jquery-ui-widget');
+		wp_enqueue_script('jquery-ui-position');
+		wp_enqueue_script('jquery-ui-autocomplete');
+	}
 }
 
 /**
