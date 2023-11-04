@@ -13,7 +13,7 @@
 		<hr>
 		<h2><?php esc_html_e('Matching Results', 'bulk-image-upload'); ?></h2>
 
-		<?php if ($args['matching_results']['status'] !== 'waiting_for_upload' ) { ?>
+		<?php if ('waiting_for_upload' !== $args['matching_results']['status'] ) { ?>
 			<div class="notice notice-info biu-notice">
 				<?php esc_html_e('Matching is in progress...', 'bulk-image-upload'); ?>
 				<img style="margin-top: 10px;" id="loading-try-again" width="10"
@@ -24,7 +24,7 @@
 			</div>
 		<?php } ?>
 
-		<?php if ($args['matching_results']['status'] === 'waiting_for_upload' && isset($args['matching_results']['matchedImages']) && count($args['matching_results']['matchedImages']) === 0 && count($args['matching_results']['nonMatchedImages']) === 0) { ?>
+		<?php if ('waiting_for_upload' === $args['matching_results']['status'] && isset($args['matching_results']['matchedImages']) && count($args['matching_results']['matchedImages']) === 0 && count($args['matching_results']['nonMatchedImages']) === 0) { ?>
 			<div class="notice notice-error biu-notice">
 				<?php esc_html_e('Images not found inside the folder', 'bulk-image-upload'); ?>
 			</div>
@@ -133,7 +133,7 @@
 
 <script type="text/javascript">
 	jQuery(document).ready(function () {
-		console.log(<?php echo $args['body'] ?? ''; ?>);
+		console.log(<?php echo esc_textarea($args['body']); ?>);
 
 		jQuery("#try-again").click(function (e) {
 			e.preventDefault();
@@ -142,7 +142,7 @@
 			location.reload();
 		});
 
-		<?php if ($args['matching_results']['status'] !== 'waiting_for_upload' ) { ?>
+		<?php if ('waiting_for_upload' !== $args['matching_results']['status'] ) { ?>
 			jQuery('head').append('<meta http-equiv="refresh" content="5"/>');
 		<?php } else { ?>
 			window.$crisp=[];window.CRISP_WEBSITE_ID="4ddb6546-61da-448f-b2d9-5ebe639a09d6";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
