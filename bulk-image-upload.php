@@ -241,9 +241,11 @@ function bulk_image_upload_render_matching_results() {
 	$body             = wp_remote_retrieve_body( $response );
 	$matching_results = json_decode( $body, true );
 
-	if (empty($_GET['matching_id'])) {
-		$current_page_url = home_url($_SERVER['REQUEST_URI']) . '&matching_id=' . urlencode($matching_results['id']);
-		wp_redirect($current_page_url);
+	if (empty($_GET['matching_id']) && !empty($matching_results['id'])) {
+		$matching_id               = $matching_results['id'];
+		$matching_results_page_url = get_admin_url( null, 'admin.php?page=bulk-image-upload-matching-results' ) . '&folder_id=' . urlencode($folder_id) . '&folder_name=' . urlencode($folder_name) . '&matching_method=' . urlencode($matching_method) . '&replacement_method=' . urlencode($replacement_method) . '&matching_id=' . urlencode($matching_id);
+		wp_redirect($matching_results_page_url);
+		exit;
 	}
 
 	load_template(
