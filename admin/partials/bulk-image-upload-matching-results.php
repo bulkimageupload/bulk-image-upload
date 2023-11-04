@@ -23,7 +23,7 @@
             </div>
         <?php } ?>
 
-		<?php if (isset($args['matching_results']['matchedImages']) && count($args['matching_results']['matchedImages']) === 0 && count($args['matching_results']['matchedImages']) === 0) { ?>
+		<?php if ($args['matching_results']['status'] === 'waiting_for_upload' && isset($args['matching_results']['matchedImages']) && count($args['matching_results']['matchedImages']) === 0 && count($args['matching_results']['matchedImages']) === 0) { ?>
 			<div class="notice notice-error biu-notice">
 				<?php esc_html_e('Images not found inside the folder', 'bulk-image-upload'); ?>
 			</div>
