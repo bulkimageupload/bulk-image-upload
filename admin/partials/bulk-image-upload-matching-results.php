@@ -133,6 +133,8 @@
 
 <script type="text/javascript">
 	jQuery(document).ready(function () {
+        console.log(<?php echo $args['body'] ?? '' ?>);
+
 		jQuery("#try-again").click(function (e) {
 			e.preventDefault();
 			jQuery("#try-again").addClass("disabled");
@@ -143,9 +145,7 @@
         <?php if ($args['matching_results']['status'] !== 'waiting_for_upload' ) { ?>
             jQuery('head').append('<meta http-equiv="refresh" content="5"/>');
         <?php }else{ ?>
-            <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="4ddb6546-61da-448f-b2d9-5ebe639a09d6";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+            window.$crisp=[];window.CRISP_WEBSITE_ID="4ddb6546-61da-448f-b2d9-5ebe639a09d6";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
         <?php } ?>
-
-        console.log(<?php echo $args['body'] ?? '' ?>);
 	});
 </script>
