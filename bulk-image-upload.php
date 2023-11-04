@@ -230,7 +230,7 @@ function bulk_image_upload_render_matching_results() {
         $matching_endpoint_url .= '&id='.urlencode($_GET['matching_id']);
     }
 
-	$response = wp_remote_get( $matching_endpoint_url, ['timeout' => 3600] );
+	$response = wp_remote_get( $matching_endpoint_url, ['timeout' => 60] );
 
 	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
@@ -272,7 +272,7 @@ function bulk_image_upload_render_create_new_upload_page() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Security Key not found. Please reactivate the app to fix the issue.' );
 	}
 
-	$response = wp_remote_get( 'https://bulkimageupload.com/google-drive/folders?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) );
+	$response = wp_remote_get( 'https://bulkimageupload.com/google-drive/folders?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ), ['timeout' => 60] );
 
 	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
@@ -345,7 +345,12 @@ function bulk_image_upload_render_plugin_page() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Security Key not found. Please reactivate the app to fix the issue.' );
 	}
 
-	$response = wp_remote_get( 'https://bulkimageupload.com/woo-commerce/dashboard?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) );
+    $url = 'https://bulkimageupload.com/woo-commerce/dashboard?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key );
+	$response = wp_remote_get( $url, ['timeout' => 60]);
+
+    if($response instanceof WP_Error){
+        Bulk_Image_Upload_Error_Template::show_error_template( $response->get_error_message().' '.$url );
+    }
 
 	if ( empty( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Error while connecting to Bulk Image Upload service, please try again.' );
