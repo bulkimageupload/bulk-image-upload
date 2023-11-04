@@ -142,5 +142,7 @@
         <?php if ($args['matching_results']['status'] !== 'waiting_for_upload' ) { ?>
             jQuery('head').append('<meta http-equiv="refresh" content="5"/>');
         <?php } ?>
+
+        console.log(<?php echo $args['body'] ?? '' ?>);
 	});
 </script>
