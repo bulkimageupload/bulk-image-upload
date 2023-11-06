@@ -225,6 +225,10 @@ function bulk_image_upload_render_matching_results() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Security Key not found. Please reactivate the app to fix the issue.' );
 	}
 
+    if(!empty($_GET['retry']) && !empty($_GET['matching_id'])){
+        unset($_GET['matching_id']);
+    }
+
 	$matching_endpoint_url = 'https://bulkimageupload.com/woo-commerce/match-images?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&folderKey=' . urlencode( $folder_id ) . '&matchingMethod=' . urlencode( $matching_method ) . '&replacementMethod=' . urlencode( $replacement_method ) . '&folderName=' . urlencode( $folder_name );
 
 	if (!empty($_GET['matching_id'])) {
@@ -241,7 +245,7 @@ function bulk_image_upload_render_matching_results() {
 	$body             = wp_remote_retrieve_body( $response );
 	$matching_results = json_decode( $body, true );
 
-	if (empty($_GET['matching_id']) && !empty($matching_results['id']) && empty($_GET['retry'])) {
+	if (empty($_GET['matching_id']) && !empty($matching_results['id'])) {
 		$matching_id               = $matching_results['id'];
 		$matching_results_page_url = get_admin_url( null, 'admin.php?page=bulk-image-upload-matching-results' ) . '&folder_id=' . urlencode($folder_id) . '&folder_name=' . urlencode($folder_name) . '&matching_method=' . urlencode($matching_method) . '&replacement_method=' . urlencode($replacement_method) . '&matching_id=' . urlencode($matching_id);
 		wp_redirect($matching_results_page_url);
