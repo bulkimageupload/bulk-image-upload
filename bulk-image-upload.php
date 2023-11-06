@@ -225,9 +225,9 @@ function bulk_image_upload_render_matching_results() {
 		Bulk_Image_Upload_Error_Template::show_error_template( 'Security Key not found. Please reactivate the app to fix the issue.' );
 	}
 
-    if(!empty($_GET['retry']) && !empty($_GET['matching_id'])){
-        unset($_GET['matching_id']);
-    }
+	if (!empty($_GET['retry']) && !empty($_GET['matching_id'])) {
+		unset($_GET['matching_id']);
+	}
 
 	$matching_endpoint_url = 'https://bulkimageupload.com/woo-commerce/match-images?domain=' . urlencode( $domain ) . '&key=' . urlencode( $key ) . '&folderKey=' . urlencode( $folder_id ) . '&matchingMethod=' . urlencode( $matching_method ) . '&replacementMethod=' . urlencode( $replacement_method ) . '&folderName=' . urlencode( $folder_name );
 
