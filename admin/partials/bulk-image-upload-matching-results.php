@@ -138,7 +138,13 @@
 			e.preventDefault();
 			jQuery("#try-again").addClass("disabled");
 			jQuery("#loading-try-again").show();
-			location.reload();
+
+			var url=window.location.href,
+				separator = (url.indexOf("?")===-1)?"?":"&",
+				newParam=separator + "retry=true";
+			newUrl=url.replace(newParam,"");
+			newUrl+=newParam;
+			window.location.href = newUrl;
 		});
 
 		<?php if ('waiting_for_upload' !== $args['matching_results']['status'] ) { ?>
