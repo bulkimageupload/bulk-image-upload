@@ -41,7 +41,16 @@ If everything looks good you can simply click on "Start Upload" and we will uplo
 1. Connect to Bulk Image Upload
 2. Bulk Image Upload dashboard.
 
-== Upgrade Notice ==
+== Changelog ==
 
-= 1.0 =
-* First release
+= 1.0.3 - 2023-11-09 =
+* Don't delete security key after uninstall.
+
+= 1.0.2 - 2023-11-06 =
+* Restart matching functionality bug fixed
+
+= 1.0.1 - 2023-11-04 =
+* UX/UI Improvements in select folder functionality.
+
+= 1.0.0 - 2023-05-25 =
+* Initial release
