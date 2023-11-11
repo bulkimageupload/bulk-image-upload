@@ -1,5 +1,8 @@
 *** Bulk Image Upload for WooCommerce ***
 
+2023-11-11 - version 1.0.4
+* HPOS compatibility issue fixed.
+
 2023-11-09 - version 1.0.3
 * Don't delete security key after uninstall.
 

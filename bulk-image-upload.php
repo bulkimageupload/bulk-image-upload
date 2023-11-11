@@ -3,7 +3,7 @@
  * Plugin Name: Bulk Image Upload for WooCommerce
  * Plugin URI: https://bulkimageupload.com
  * Description: This extension allows customers to bulk upload product images to their products in WooCommerce using Google Drive.
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: Bulk Image Upload
  * Author URI: https://bulkimageupload.com
  * License: GPL-3.0+
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'BULK_IMAGE_UPLOAD_VERSION', '1.0.3' );
+define( 'BULK_IMAGE_UPLOAD_VERSION', '1.0.4' );
 
 require_once __DIR__ . '/includes/class-bulk-image-upload-status-color.php';
 require_once __DIR__ . '/includes/class-bulk-image-upload-error-template.php';
@@ -475,3 +475,9 @@ function add_plugin_action_links( $links ) {
 
 	return array_merge( $custom_links, $links );
 }
+
+add_action( 'before_woocommerce_init', function() {
+	if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+	}
+} );
