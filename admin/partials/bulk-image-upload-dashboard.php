@@ -18,7 +18,7 @@ $bulk_image_upload_key    = $args['key'];
 
 		<hr>
 
-		<?php if ('Free' === $args['plan']['name'] ) { ?>
+		<?php if (!empty($args['plan']['name']) && 'Free' === $args['plan']['name'] ) { ?>
 			<div class="notice notice-warning biu-notice">
 				<h3><?php esc_html_e('You are currently using a FREE plan.', 'bulk-image-upload'); ?></h3>
 				<?php esc_html_e('You can use the FREE plan to upload up to 100 product images.', 'bulk-image-upload'); ?><br>

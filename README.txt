@@ -43,6 +43,9 @@ If everything looks good you can simply click on "Start Upload" and we will uplo
 
 == Changelog ==
 
+= 1.0.5 - 2023-11-11 =
+* Plan check issue fixed.
+
 = 1.0.4 - 2023-11-11 =
 * HPOS compatibility issue fixed.
 
