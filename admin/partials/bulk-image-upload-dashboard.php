@@ -7,6 +7,8 @@
  * @package bulk-image-upload
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 $bulk_image_upload_domain = $args['domain'];
 $bulk_image_upload_key    = $args['key'];
 ?>
