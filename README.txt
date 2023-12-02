@@ -36,13 +36,14 @@ If everything looks good you can simply click on "Start Upload" and we will uplo
 9. If unsatisfied with matching results, you can fix SKU or image names and click the “Try Again” button. If you are happy with the matching, you can start the upload process by clicking the “Start Upload” button.
 10. You will be redirected to the dashboard, where you can see an overview of all uploads and the details of uploads by clicking on the “Show Logs” button for the specific upload you are interested in.
 
-== Screenshots ==
-
-1. Connect to Bulk Image Upload
-2. Bulk Image Upload dashboard.
+== Third Party Service Usage (bulkimageupload.com) ==
+This plugin uses bulkimageupload.com service to upload images to WooCommerce.
+This service provides all the core backend functionality of the plugin, which means it responsible for Google Drive integration, image matching, and image uploading.
+Service URL: https://bulkimageupload.com
+You can find the privacy policy of the service here: https://bulkimageupload.com/privacy
+For all your questions and concerns regarding the service, please contact us at hello@bulkimageupload.com
 
 == Changelog ==
-
 = 1.0.5 - 2023-11-11 =
 * Plan check issue fixed.
 
