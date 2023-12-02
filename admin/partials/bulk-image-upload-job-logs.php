@@ -2,7 +2,7 @@
 /**
  * This view is being displayed in admin when user wants to see details of upload job.
  *
- * @package bulk-image-upload-for-woocommerce
+ * @package bulk-image-upload
  */
 
 ?>

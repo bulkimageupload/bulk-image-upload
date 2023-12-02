@@ -2,7 +2,7 @@
 /**
  * This class provides functionality to help with folder structure.
  *
- * @package bulk-image-upload-for-woocommerce
+ * @package bulk-image-upload
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

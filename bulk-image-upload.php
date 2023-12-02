@@ -16,7 +16,7 @@
  * Developer URI: https://woo.bulkimageupload.com
  * Woo:
  *
- * @package bulk-image-upload-for-woocommerce
+ * @package bulk-image-upload
  */
 
 // If this file is called directly, abort.

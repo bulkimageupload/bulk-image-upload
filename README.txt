@@ -25,7 +25,7 @@ App will show you all the matching results immediately and you can see clearly i
 If everything looks good you can simply click on "Start Upload" and we will upload all images automatically. While upload in progress you will be able to clearly see all details in our user-friendly logs.
 
 == Installation ==
-1. Upload “bulk-image-upload-for-woocommerce” to the “/wp-content/plugins/” directory.
+1. Upload “bulk-image-upload” to the “/wp-content/plugins/” directory.
 2. Activate the plugin through the “Plugins” menu in WordPress.
 3. Click on “Bulk Image Upload” under the WooCommerce menu.
 4. Allow Bulk Image Upload service to connect to WooCommerce Rest API by clicking the “Connect” button on the main page.

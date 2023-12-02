@@ -2,7 +2,7 @@
 /**
  * This class provides functionality to help with visual representation of statuses.
  *
- * @package bulk-image-upload-for-woocommerce
+ * @package bulk-image-upload
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

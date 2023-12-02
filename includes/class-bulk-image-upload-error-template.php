@@ -2,7 +2,7 @@
 /**
  * The class to help with error display
  *
- * @package bulk-image-upload-for-woocommerce
+ * @package bulk-image-upload
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

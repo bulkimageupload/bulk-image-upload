@@ -2,7 +2,7 @@
 /**
  * This view is being displayed in admin when user sees image matching results.
  *
- * @package bulk-image-upload-for-woocommerce
+ * @package bulk-image-upload
  */
 
 ?>

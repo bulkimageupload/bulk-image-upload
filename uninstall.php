@@ -2,7 +2,7 @@
 /**
  * Removing option which was added to options during activation.
  *
- * @package bulk-image-upload-for-woocommerce
+ * @package bulk-image-upload
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

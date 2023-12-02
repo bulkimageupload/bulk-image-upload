@@ -4,7 +4,7 @@
  * User should be able to connect mandatory service and see the button to create new upload
  * Additionally last upload jobs created shown in this view.
  *
- * @package bulk-image-upload-for-woocommerce
+ * @package bulk-image-upload
  */
 
 $bulk_image_upload_domain = $args['domain'];

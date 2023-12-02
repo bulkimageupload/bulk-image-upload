@@ -2,7 +2,7 @@
 /**
  * This view being shown when user is creating new upload.
  *
- * @package bulk-image-upload-for-woocommerce
+ * @package bulk-image-upload
  */
 
 ?>
