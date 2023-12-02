@@ -52,6 +52,11 @@ Service URL: https://crisp.chat
 You can find the privacy policy of the service here: https://crisp.chat/en/privacy
 
 == Changelog ==
+= 1.0.6 - 2023-12-02 =
+* Third party service usage section added to readme.txt
+* Function name uniqueness issue fixed.
+* Security improvements to avoid direct file access in PHP files.
+
 = 1.0.5 - 2023-11-11 =
 * Plan check issue fixed.
 
