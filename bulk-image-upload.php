@@ -37,7 +37,7 @@ add_action( 'admin_menu', 'bulk_image_upload_register_menu_page' );
 add_action('admin_enqueue_scripts', 'bulk_image_upload_enqueue_autocomplete_scripts');
 add_action( 'admin_print_styles', 'bulk_image_upload_register_styles' );
 add_action( 'admin_init', 'bulk_image_upload_redirect_to_onboarding_page' );
-add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'add_plugin_action_links' );
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'bulk_image_upload_add_plugin_action_links' );
 
 /**
  * Performs actions after activation of plugin.
@@ -451,7 +451,7 @@ function bulk_image_upload_enqueue_autocomplete_scripts() {
  *
  * @return array
  */
-function add_plugin_action_links( $links ) {
+function bulk_image_upload_add_plugin_action_links( $links ) {
 
 	$custom_links = array();
 
