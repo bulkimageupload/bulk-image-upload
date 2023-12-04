@@ -289,14 +289,10 @@ function bulk_image_upload_render_create_new_upload_page() {
 	$body = wp_remote_retrieve_body( $response );
 	$data = json_decode( $body, true );
 
-    $folders = [];
-    if(!empty($data['folders'])){
-        echo '<pre>';
-        $folders = $data['folders'];
-        var_dump($folders);
-        natcasesort($folders);
-        var_dump($folders);exit;
-    }
+	$folders = [];
+	if (!empty($data['folders'])) {
+		$folders = $data['folders'];
+	}
 
 	load_template(
 		plugin_dir_path( __FILE__ ) . 'admin/partials/bulk-image-upload-create-new-upload.php',
