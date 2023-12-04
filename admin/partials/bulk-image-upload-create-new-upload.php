@@ -138,7 +138,7 @@ exit; // Exit if accessed directly
 						jQuery("#matching-button").removeClass('disabled');
 					},
 				}).focus(function () {
-                    $(this).autocomplete('search', $(this).val());
+                    jQuery(this).autocomplete('search', jQuery(this).val());
                 });
 
 				jQuery("#matching-button").click(function (e) {
