@@ -27,7 +27,7 @@ $bulk_image_upload_key    = $args['key'];
 				<h3><?php esc_html_e('You are currently using a FREE plan.', 'bulk-image-upload'); ?></h3>
 				<?php esc_html_e('You can use the FREE plan to upload up to 100 product images.', 'bulk-image-upload'); ?><br>
 				<?php esc_html_e('For more usage, please upgrade your account.', 'bulk-image-upload'); ?><br><br>
-				<?php echo '<a target="_blank" href="https://woo.bulkimageupload.com/checkout/" class="button">' . esc_html__( 'Upgrade to Premium', 'bulk-image-upload' ) . '</a>'; ?>
+				<?php echo '<a target="_blank" href="https://woo.bulkimageupload.com/product/bulk-product-image-upload-for-woocommerce/?utm_source=woo_plugin&utm_medium=upgrade_link&utm_campaign="' . urlencode($bulk_image_upload_domain) . ' class="button">' . esc_html__( 'Upgrade to Premium', 'bulk-image-upload' ) . '</a>'; ?>
 			</div>
 		<?php } ?>
 
