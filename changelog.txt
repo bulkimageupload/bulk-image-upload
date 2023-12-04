@@ -1,4 +1,12 @@
-*** Bulk Image Upload for WooCommerce ***
+*** Bulk Image Upload ***
+
+2023-12-04 - version 1.0.7
+* List folder options on focus before user starts typing.
+
+2023-12-02 - version 1.0.6
+* Third party service usage section added to readme.txt
+* Function name uniqueness issue fixed.
+* Security improvements to avoid direct file access in PHP files.
 
 2023-11-11 - version 1.0.5
 * Plan check fixed.
