@@ -129,7 +129,8 @@ exit; // Exit if accessed directly
 						var matches = customFilter(options, term);
 						response(matches);
 					},
-					minLength: 1, // Auto-complete suggestions start immediately
+					minLength: 0, // Auto-complete suggestions start immediately
+                    minChars: 0,
 					select: function(event, ui) {
 						event.preventDefault();
 						// Set the selected option's value in the hidden input
