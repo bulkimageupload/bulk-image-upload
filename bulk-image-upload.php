@@ -292,7 +292,9 @@ function bulk_image_upload_render_create_new_upload_page() {
     $folders = [];
     if(!empty($data['folders'])){
         $folders = $data['folders'];
+        var_dump($folders);
         natcasesort($folders);
+        var_dump($folders);exit;
     }
 
 	load_template(
