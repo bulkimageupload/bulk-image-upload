@@ -291,6 +291,7 @@ function bulk_image_upload_render_create_new_upload_page() {
 
     $folders = [];
     if(!empty($data['folders'])){
+        echo '<pre>';
         $folders = $data['folders'];
         var_dump($folders);
         natcasesort($folders);
