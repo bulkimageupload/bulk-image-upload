@@ -130,7 +130,6 @@ exit; // Exit if accessed directly
 						response(matches);
 					},
 					minLength: 0, // Auto-complete suggestions start immediately
-                    minChars: 0,
 					select: function(event, ui) {
 						event.preventDefault();
 						// Set the selected option's value in the hidden input
@@ -138,7 +137,9 @@ exit; // Exit if accessed directly
 						jQuery('#autocomplete-input').val(ui.item.label);
 						jQuery("#matching-button").removeClass('disabled');
 					},
-				});
+				}).focus(function () {
+                    $(this).autocomplete('search', $(this).val());
+                });
 
 				jQuery("#matching-button").click(function (e) {
 					e.preventDefault();
