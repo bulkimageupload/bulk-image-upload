@@ -420,9 +420,8 @@ function bulk_image_upload_is_woocommerce_plugin_active() {
  * @return void
  */
 function bulk_image_upload_register_styles() {
-	$css_version = '2';
-	$plugin_url  = plugin_dir_url( __FILE__ );
-	wp_enqueue_style( 'style', $plugin_url . '/admin/assets/css/style.css', array(), $css_version );
+	$plugin_url = plugin_dir_url( __FILE__ );
+	wp_enqueue_style( 'style', $plugin_url . '/admin/assets/css/style.css', array(), BULK_IMAGE_UPLOAD_VERSION );
 }
 
 /**
@@ -441,11 +440,13 @@ function bulk_image_upload_redirect_to_onboarding_page() {
 
 function bulk_image_upload_enqueue_autocomplete_scripts() {
 	if (is_admin()) {
+		$plugin_url = plugin_dir_url( __FILE__ );
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery-ui-core');
 		wp_enqueue_script('jquery-ui-widget');
 		wp_enqueue_script('jquery-ui-position');
 		wp_enqueue_script('jquery-ui-autocomplete');
+		wp_enqueue_script( 'crisp', $plugin_url . '/admin/assets/js/crisp.js', array(), BULK_IMAGE_UPLOAD_VERSION );
 	}
 }
 

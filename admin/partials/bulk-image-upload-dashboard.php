@@ -174,8 +174,6 @@ $bulk_image_upload_key    = $args['key'];
 
 				<?php if ($args['is_refresh_needed']) { ?>
 					jQuery('head').append('<meta http-equiv="refresh" content="5"/>');
-				<?php } else { ?>
-					window.$crisp=[];window.CRISP_WEBSITE_ID="4ddb6546-61da-448f-b2d9-5ebe639a09d6";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
 				<?php } ?>
 			});
 		</script>
