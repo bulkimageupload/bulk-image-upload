@@ -1,5 +1,8 @@
 *** Bulk Image Upload ***
 
+2023-12-05 - version 1.0.8
+* Javascript code injection issue fixed.
+
 2023-12-04 - version 1.0.7
 * List folder options on focus before user starts typing.
 

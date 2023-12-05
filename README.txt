@@ -1,4 +1,4 @@
-=== Bulk Image Upload for WooCommerce ===
+=== Bulk Image Upload ===
 Contributors: faridmovsumov
 Tags: woocommerce, bulk upload, product images
 Requires at least: 5.3
@@ -52,6 +52,9 @@ Service URL: https://crisp.chat
 You can find the privacy policy of the service here: https://crisp.chat/en/privacy
 
 == Changelog ==
+= 1.0.8 - 2023-12-05 =
+* Javascript code injection issue fixed.
+
 = 1.0.7 - 2023-12-04 =
 * List folder options on focus before user starts typing.
 
