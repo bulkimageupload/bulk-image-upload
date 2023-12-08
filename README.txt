@@ -52,6 +52,9 @@ Service URL: https://crisp.chat
 You can find the privacy policy of the service here: https://crisp.chat/en/privacy
 
 == Changelog ==
+= 1.0.9 - 2023-12-08 =
+* Crisp chat included only on plugin pages.
+
 = 1.0.8 - 2023-12-05 =
 * Javascript code injection issue fixed.
 

@@ -1,5 +1,8 @@
 *** Bulk Image Upload ***
 
+2023-12-08 - version 1.0.9
+* Crisp chat included only on plugin pages.
+
 2023-12-05 - version 1.0.8
 * Javascript code injection issue fixed.
 
