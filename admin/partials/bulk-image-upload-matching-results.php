@@ -32,10 +32,6 @@ exit; // Exit if accessed directly
 			<div class="notice notice-error biu-notice">
 				<?php 
 				esc_html_e('Images not found inside the folder', 'bulk-image-upload');
-echo '<pre>';
-var_dump($args['matching_results']);
-echo '</pre>';
-exit; 
 				?>
 			</div>
 		<?php } ?>
