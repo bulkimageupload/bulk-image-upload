@@ -234,6 +234,7 @@ function bulk_image_upload_render_matching_results() {
 	if (!empty($_GET['matching_id'])) {
 		$matching_id            = (int) $_GET['matching_id'];
 		$matching_endpoint_url .= '&id=' . urlencode($matching_id);
+        echo '<pre>';var_dump($matching_endpoint_url);echo '</pre>';exit;
 	}
 
 	$response = wp_remote_get( $matching_endpoint_url, ['timeout' => 60] );
