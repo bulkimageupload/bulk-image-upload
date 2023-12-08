@@ -446,7 +446,9 @@ function bulk_image_upload_enqueue_autocomplete_scripts() {
 		wp_enqueue_script('jquery-ui-widget');
 		wp_enqueue_script('jquery-ui-position');
 		wp_enqueue_script('jquery-ui-autocomplete');
-		wp_enqueue_script( 'crisp', $plugin_url . '/admin/assets/js/crisp.js', array(), BULK_IMAGE_UPLOAD_VERSION );
+		if ( !empty($_GET['page']) && 'bulk-image-upload-create-new-upload' === $_GET['page'] ) {
+			wp_enqueue_script( 'crisp', $plugin_url . '/admin/assets/js/crisp.js', array(), BULK_IMAGE_UPLOAD_VERSION );
+		}
 	}
 }
 
