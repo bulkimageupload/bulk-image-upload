@@ -1,5 +1,8 @@
 *** Bulk Image Upload ***
 
+2024-01-07 - version 1.0.10
+* Esc variables for security reasons.
+
 2023-12-08 - version 1.0.9
 * Crisp chat included only on plugin pages.
 
